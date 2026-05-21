@@ -4,21 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - LLamala Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
+        html, body {
             margin: 0;
-            font-family: sans-serif;
             color: #333;
-        }
-        header, nav, footer {
-            background-color: #000080;
-            color: white;
-            padding: 10px 20px;
-        }
-        nav a, footer a {
-            color: white;
-            margin-right: 15px;
-            text-decoration: underline;
+            background-color: black;
         }
         main {
             padding: 20px;
@@ -40,11 +31,6 @@
             display: block;
             margin-bottom: 10px;
         }
-        form {
-            border: 1px solid #ccc;
-            padding: 15px;
-            max-width: 400px;
-        }
         .form-group {
             margin-bottom: 10px;
         }
@@ -56,49 +42,193 @@
             width: 100%;
             box-sizing: border-box;
         }
-        footer {
-            margin-top: 30px;
+        /* Estilos de botones inspirados en Tailwind */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 160px;
+            padding: 12px 0;
+            font-size: 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
             text-align: center;
+            font-weight: 500;
+            box-sizing: border-box;
+        }
+        .btn p {
+            margin: 0;
+            line-height: 1;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+        .btn-slate {
+            background-color: #334155;
+            color: white;
+        }
+        .btn-slate:hover {
+            background-color: #475569;
+        }
+        .btn-indigo {
+            background-color: #6366f1;
+            color: white;
+        }
+        .btn-indigo:hover {
+            background-color: #4f46e5;
+        }
+        .flex-btn {
+            gap: 6px;
+        }
+        .flex-btn svg {
+            margin-top: 1px;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col bg-black">
 
-<header>
-    <h1>LLamala Store</h1>
-    <p>Bienvenido a nuestra tienda</p>
-</header>
+    <nav class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
+        <a href="index.html" class="flex items-center gap-3">
+            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="m8.75 11.3 6.75 3.884 6.75-3.885M8.75 34.58v-7.755L2 22.939m27 0-6.75 3.885v7.754M2.405 15.408 15.5 22.954l13.095-7.546M15.5 38V22.939M29 28.915V16.962a2.98 2.98 0 0 0-1.5-2.585L17 8.4a3.01 3.01 0 0 0-3 0L3.5 14.377A3 3 0 0 0 2 16.962v11.953A2.98 2.98 0 0 0 3.5 31.5L14 37.477a3.01 3.01 0 0 0 3 0L27.5 31.5a3 3 0 0 0 1.5-2.585" stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="text-white font-bold text-xl tracking-wide">LLamala Store</span>
+        </a>
 
-<nav>
-    <a href="index.html">Inicio</a>
-    <a href="catalogo.html">Catálogo</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="contacto.html">Contacto</a>
-</nav>
+        <ul class="text-white md:flex hidden items-center gap-8">
+            <li><a class="hover:text-white/70 transition" href="index.html">Inicio</a></li>
+            <li><a class="hover:text-white/70 transition" href="catalogo.html">Catálogo</a></li>
+            <li><a class="hover:text-white/70 transition" href="servicios.html">Servicios</a></li>
+            <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4" href="contacto.html">Contacto</a></li>
+            <li><a class="hover:text-white/70 transition" href="ubicanos_demo.html">Ubícanos</a></li>
+        </ul>
 
-<main>
-    <h2>Contáctanos</h2>
-    <form action="#">
-        <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+        <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
+                <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"/>
+            </svg>
+        </button>
+
+        <div class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden md:hidden shadow-lg border-t border-white/10">
+            <ul class="flex flex-col space-y-4 text-white text-lg">
+                <li><a href="index.html" class="text-base hover:text-white/70 transition">Inicio</a></li>
+                <li><a href="catalogo.html" class="text-base hover:text-white/70 transition">Catálogo</a></li>
+                <li><a href="servicios.html" class="text-base hover:text-white/70 transition">Servicios</a></li>
+                <li><a href="contacto.html" class="text-base font-semibold hover:text-white/70 transition">Contacto</a></li>
+                <li><a href="ubicanos_demo.html" class="text-base hover:text-white/70 transition">Ubícanos</a></li>
+            </ul>
         </div>
-        <div class="form-group">
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" required>
-        </div>
-        <div class="form-group">
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-        </div>
-        <button type="submit">Enviar</button>
-    </form>
-</main>
+    </nav>
 
-<footer>
-    <p>&copy; 2026 - Todos los derechos reservados</p>
-    <p><a href="https://wa.me/51977507037" target="_blank">WhatsApp</a></p>
-</footer>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+    *{
+        font-family: "Geist", sans-serif;
+    }
+</style>
+<section class="bg-black px-4 py-24 flex-grow flex items-center justify-center">
+    <div class="w-full mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 max-w-5xl">
+       
+        <div class="flex flex-col max-w-md w-full">
+            <p class="text-sm max-md:text-center font-semibold text-[#5c7cff] uppercase mb-2 tracking-wider">Llamala store</p>
+            <h1 class="text-5xl/14 max-md:text-center font-bold text-white mb-4">Contáctanos</h1>
+            <p class="text-base/6 text-zinc-400 max-md:text-center">¿Quieres saber más sobre los servicios o los productos? No dudes en contactarnos.</p>
+            <div class="flex items-center max-md:justify-center gap-4 mt-7 cursor-pointer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.33a8.333 8.333 0 1 0 0-16.666 8.333 8.333 0 0 0 0 16.667" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.942 4.242C12.683 7.617 8.333 8.701 1.875 9.117m16.25 1.58c-5.517-1.175-10.117.834-13.65 5.267" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.133 2.29c3.642 5 5 7.85 6.667 14.766" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.333 6.664a5 5 0 0 1 5 5v5.833H15v-5.833a1.667 1.667 0 1 0-3.333 0v5.833H8.333v-5.833a5 5 0 0 1 5-5M5 7.5H1.667v10H5zM3.333 4.997a1.667 1.667 0 1 0 0-3.333 1.667 1.667 0 0 0 0 3.333" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.333 3.335s-.583 1.75-1.666 2.833c1.333 8.333-7.834 14.417-15 9.667 1.833.083 3.666-.5 5-1.667-4.167-1.25-6.25-6.167-4.167-10C4.333 6.335 7.167 7.585 10 7.501c-.75-3.5 3.333-5.5 5.833-3.166.917 0 2.5-1 2.5-1" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17.004a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4" stroke="#71717b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m10 15 5-3-5-3z" stroke="#71717b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+        </div>
 
+        <div class="w-full max-w-sm border border-neutral-800 rounded-2xl p-8 bg-neutral-950/50 backdrop-blur-sm">
+            <h2 class="text-base font-semibold text-white mb-5.5">Send Message</h2>
+            <form class="flex flex-col gap-4">
+                <div class="flex flex-col gap-2.5">
+                    <label class="text-xs text-zinc-400 font-medium">Name</label>
+                    <input type="text" placeholder="Enter your name" class="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-neutral-600 transition-colors" />
+                </div>
+                <div class="flex flex-col gap-2.5">
+                    <label class="text-xs text-zinc-400 font-medium">Email</label>
+                    <input type="email" placeholder="Enter your email" class="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-neutral-600 transition-colors" />
+                </div>
+                <div class="flex flex-col gap-2.5">
+                    <label class="text-xs text-zinc-400 font-medium">Message</label>
+                    <textarea placeholder="Your message.." rows="4" class="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-neutral-600 transition-colors resize-none"></textarea>
+                </div>
+                <button type="submit" class="bg-[#000080] hover:bg-[#0000b3] text-white text-base py-3 rounded-lg transition-colors cursor-pointer mt-1 font-semibold tracking-wide">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    footer * {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
+<footer class="flex flex-col bg-slate-50 items-center justify-around w-full py-16 text-sm text-gray-800/70">
+    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+        <a href="index.html" class="font-medium text-gray-500 hover:text-black transition-all">
+            Inicio
+        </a>
+        <a href="catalogo.html" class="font-medium text-gray-500 hover:text-black transition-all">
+            Catálogo
+        </a>
+        <a href="servicios.html" class="font-medium text-gray-500 hover:text-black transition-all">
+            Servicios
+        </a>
+        <a href="contacto.html" class="font-medium text-gray-500 hover:text-black transition-all">
+            Contacto
+        </a>
+        <a href="ubicanos_demo.html" class="font-medium text-gray-500 hover:text-black transition-all">
+            Ubícanos
+        </a>
+    </div>
+    <div class="flex items-center gap-4 mt-8 text-indigo-500">
+        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37m1.5-4.87h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6M6 9H2v12h4zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 18c-4.51 2-5-2-7-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+    </div>
+    <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
+    <script>
+        const menuButtons = document.querySelectorAll('.menu-btn');
+        const mobileMenus = document.querySelectorAll('.mobile-menu');
+
+        menuButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                mobileMenus[index].classList.toggle('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
