@@ -9,7 +9,7 @@
         html, body {
             margin: 0;
             color: #333;
-            background-color: black;
+            background-color: #f8fafc;
         }
         main {
             padding: 20px;
@@ -87,7 +87,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-black">
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-800">
 
     <nav class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
         <a href="index.html" class="flex items-center gap-3">
@@ -128,37 +128,45 @@
         font-family: "Geist", sans-serif;
     }
 </style>
-<section class="bg-black px-4 py-24 flex-grow flex items-center justify-center">
+<section class="bg-slate-50 px-4 py-24 flex-grow flex items-center justify-center">
     <div class="w-full mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 max-w-5xl">
        
         <div class="flex flex-col max-w-md w-full">
-            <p class="text-sm max-md:text-center font-semibold text-[#5c7cff] uppercase mb-2 tracking-wider">Llamala store</p>
-            <h1 class="text-5xl/14 max-md:text-center font-bold text-white mb-4">Contáctanos</h1>
-            <p class="text-base/6 text-zinc-400 max-md:text-center">¿Quieres saber más sobre los servicios o los productos? No dudes en contactarnos.</p>
-            <div class="flex items-center max-md:justify-center gap-4 mt-7 cursor-pointer">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.33a8.333 8.333 0 1 0 0-16.666 8.333 8.333 0 0 0 0 16.667" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.942 4.242C12.683 7.617 8.333 8.701 1.875 9.117m16.25 1.58c-5.517-1.175-10.117.834-13.65 5.267" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.133 2.29c3.642 5 5 7.85 6.667 14.766" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.333 6.664a5 5 0 0 1 5 5v5.833H15v-5.833a1.667 1.667 0 1 0-3.333 0v5.833H8.333v-5.833a5 5 0 0 1 5-5M5 7.5H1.667v10H5zM3.333 4.997a1.667 1.667 0 1 0 0-3.333 1.667 1.667 0 0 0 0 3.333" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.333 3.335s-.583 1.75-1.666 2.833c1.333 8.333-7.834 14.417-15 9.667 1.833.083 3.666-.5 5-1.667-4.167-1.25-6.25-6.167-4.167-10C4.333 6.335 7.167 7.585 10 7.501c-.75-3.5 3.333-5.5 5.833-3.166.917 0 2.5-1 2.5-1" stroke="#71717b" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17.004a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4" stroke="#71717b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m10 15 5-3-5-3z" stroke="#71717b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-sm max-md:text-center font-bold text-indigo-600 uppercase mb-2 tracking-wider">Llamala store</p>
+            <h1 class="text-5xl/14 max-md:text-center font-bold text-slate-800 mb-4">Contáctanos</h1>
+            <p class="text-base/6 text-slate-600 max-md:text-center">¿Quieres saber más sobre los servicios o los productos? No dudes en contactarnos.</p>
+            <div class="flex items-center max-md:justify-center gap-4 mt-7">
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors duration-300" aria-label="Dribbble">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 18.33a8.333 8.333 0 1 0 0-16.666 8.333 8.333 0 0 0 0 16.667" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.942 4.242C12.683 7.617 8.333 8.701 1.875 9.117m16.25 1.58c-5.517-1.175-10.117.834-13.65 5.267" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.133 2.29c3.642 5 5 7.85 6.667 14.766" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors duration-300" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.333 6.664a5 5 0 0 1 5 5v5.833H15v-5.833a1.667 1.667 0 1 0-3.333 0v5.833H8.333v-5.833a5 5 0 0 1 5-5M5 7.5H1.667v10H5zM3.333 4.997a1.667 1.667 0 1 0 0-3.333 1.667 1.667 0 0 0 0 3.333" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors duration-300" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.333 3.335s-.583 1.75-1.666 2.833c1.333 8.333-7.834 14.417-15 9.667 1.833.083 3.666-.5 5-1.667-4.167-1.25-6.25-6.167-4.167-10C4.333 6.335 7.167 7.585 10 7.501c-.75-3.5 3.333-5.5 5.833-3.166.917 0 2.5-1 2.5-1" stroke="currentColor" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors duration-300" aria-label="YouTube">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 17.004a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0 2 2 0 0 1 1.4 1.4 24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0 2 2 0 0 1-1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m10 15 5-3-5-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
             </div>
         </div>
 
-        <div class="w-full max-w-sm border border-neutral-800 rounded-2xl p-8 bg-neutral-950/50 backdrop-blur-sm">
-            <h2 class="text-base font-semibold text-white mb-5.5">Send Message</h2>
+        <div class="w-full max-w-md bg-white border border-slate-200/80 rounded-2xl p-8 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-800 mb-6">Enviar Mensaje</h2>
             <form class="flex flex-col gap-4">
-                <div class="flex flex-col gap-2.5">
-                    <label class="text-xs text-zinc-400 font-medium">Name</label>
-                    <input type="text" placeholder="Enter your name" class="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-neutral-600 transition-colors" />
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Nombre</label>
+                    <input type="text" placeholder="Ingresa tu nombre completo" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner" />
                 </div>
-                <div class="flex flex-col gap-2.5">
-                    <label class="text-xs text-zinc-400 font-medium">Email</label>
-                    <input type="email" placeholder="Enter your email" class="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-neutral-600 transition-colors" />
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Correo Electrónico</label>
+                    <input type="email" placeholder="correo@ejemplo.com" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner" />
                 </div>
-                <div class="flex flex-col gap-2.5">
-                    <label class="text-xs text-zinc-400 font-medium">Message</label>
-                    <textarea placeholder="Your message.." rows="4" class="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-3 text-sm text-white placeholder-zinc-600 outline-none focus:border-neutral-600 transition-colors resize-none"></textarea>
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Mensaje</label>
+                    <textarea placeholder="¿En qué podemos ayudarte? Escribe tu mensaje aquí..." rows="4" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all resize-none shadow-inner"></textarea>
                 </div>
-                <button type="submit" class="bg-[#000080] hover:bg-[#0000b3] text-white text-base py-3 rounded-lg transition-colors cursor-pointer mt-1 font-semibold tracking-wide">Send Message</button>
+                <button type="submit" class="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-base py-3.5 rounded-lg transition-all duration-300 cursor-pointer mt-2 font-bold tracking-wide shadow-md shadow-indigo-600/10 active:scale-[0.98]">Enviar Mensaje</button>
             </form>
         </div>
     </div>

@@ -96,7 +96,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
     <nav class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
         <a href="index.html" class="flex items-center gap-3">
@@ -131,57 +131,150 @@
         </div>
     </nav>
 
-<main>
-    <section>
-        <h2>Nuestros Servicios</h2>
+<main class="flex-grow py-16 px-4 md:px-8 max-w-7xl mx-auto w-full">
+    <section class="flex flex-col items-center justify-center">
+        <span class="text-indigo-600 font-bold uppercase tracking-wider text-sm mb-2">Soporte Profesional</span>
+        <h2 class="text-4xl font-extrabold mb-4 text-slate-800 text-center">Nuestros Servicios</h2>
+        <p class="text-slate-600 mb-12 text-center max-w-2xl leading-relaxed">
+            Ofrecemos soporte técnico de alta calidad y mantenimiento profesional para optimizar tus equipos al máximo. ¡Déjalo en manos de expertos!
+        </p>
         
-        <article>
-            <h3>Mantenimiento preventivo de Laptop</h3>
-            <p>Servicio integral para optimizar y asegurar el buen funcionamiento de tu equipo portátil.</p>
-            <p>Precio: S/. 80.00</p>
-            <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-        </article>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+            
+            <!-- Card 1: Mantenimiento Preventivo Laptop -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/mantenimiento_laptop.png" alt="Mantenimiento preventivo de Laptop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Mantenimiento preventivo de Laptop</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Servicio integral para optimizar y asegurar el buen funcionamiento de tu equipo portátil.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 80.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
 
-        <article>
-            <h3>Mantenimiento de PC de escritorio</h3>
-            <p>Limpieza y mantenimiento general de componentes internos para computadoras de escritorio.</p>
-            <p>Precio: S/. 100.00</p>
-            <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-        </article>
+            <!-- Card 2: Mantenimiento PC Escritorio -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/mantenimiento_pc.png" alt="Mantenimiento de PC de escritorio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Mantenimiento de PC de escritorio</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Limpieza y mantenimiento general de componentes internos para computadoras de escritorio.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 100.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
 
-        <article>
-            <h3>Actualización de drivers</h3>
-            <p>Instalación y actualización de los últimos controladores de software para mayor estabilidad.</p>
-            <p>Precio: S/. 40.00</p>
-            <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-        </article>
-        <article>
-    <h3>Formateo e Instalación de SO</h3>
-    <p>Instalación limpia de Windows o distribuciones Linux. Incluye configuración inicial y utilidades básicas.</p>
-    <p>Precio: S/. 60.00</p>
-    <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-</article>
+            <!-- Card 3: Actualización de Drivers -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/actualizacion_drivers.png" alt="Actualización de drivers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Software</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Actualización de drivers</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación y actualización de los últimos controladores de software para mayor estabilidad.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 40.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
 
-<article>
-    <h3>Upgrade de RAM y SSD</h3>
-    <p>Instalación de nuevos componentes para acelerar tu equipo. (El precio no incluye el costo del componente).</p>
-    <p>Precio: S/. 20.00</p>
-    <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-</article>
+            <!-- Card 4: Formateo e Instalación de SO -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/instalacion_so.png" alt="Formateo e Instalación de SO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Sistema</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Formateo e Instalación de SO</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación limpia de Windows o distribuciones Linux. Incluye configuración inicial y utilidades básicas.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 60.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
 
-<article>
-    <h3>Cambio de Pasta Térmica Premium</h3>
-    <p>Limpieza del procesador y aplicación de pasta térmica de alto rendimiento para reducir drásticamente las temperaturas.</p>
-    <p>Precio: S/. 40.00</p>
-    <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-</article>
+            <!-- Card 5: Upgrade de RAM y SSD -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/upgrade_ram_ssd.png" alt="Upgrade de RAM y SSD" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Hardware</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Upgrade de RAM y SSD</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación de nuevos componentes para acelerar tu equipo. (El precio no incluye el costo del componente).</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 20.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
 
-<article>
-    <h3>Ensamblaje de PC Gamer</h3>
-    <p>Armado completo de tu computadora desde cero con excelente gestión de cables (cable management) y pruebas de estrés.</p>
-    <p>Precio: S/. 5|0.00</p>
-    <button type="button" class="btn btn-slate"><p>Solicitar</p></button>
-</article>
+            <!-- Card 6: Cambio de Pasta Térmica Premium -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/pasta_termica.png" alt="Cambio de Pasta Térmica Premium" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Cambio de Pasta Térmica Premium</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Limpieza del procesador y aplicación de pasta térmica de alto rendimiento para reducir drásticamente las temperaturas.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 40.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Ensamblaje de PC Gamer -->
+            <div class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                    <img src="img/ensamblaje_pc.png" alt="Ensamblaje de PC Gamer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <span class="absolute top-3 left-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Hardware</span>
+                </div>
+                <div class="p-5 flex flex-col flex-grow">
+                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Ensamblaje de PC Gamer</h3>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Armado completo de tu computadora desde cero con excelente gestión de cables (cable management) y pruebas de estrés.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                            <span class="text-xl font-extrabold text-indigo-600">S/. 150.00</span>
+                        </div>
+                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
 </main>
 
