@@ -1,25 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - LLamala Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* === PAGINACIÓN SIN JAVASCRIPT === */
+        .catalogue-page {
+            display: none;
+        }
+
+        /* Mostrar la página seleccionada */
+        #page-1:checked~#catalogue-page-1,
+        #page-2:checked~#catalogue-page-2,
+        #page-3:checked~#catalogue-page-3 {
+            display: flex;
+        }
+
+
+        #page-1:checked~* .page-btn-1,
+        #page-2:checked~* .page-btn-2,
+        #page-3:checked~* .page-btn-3 {
+            background-color: #4f46e5 !important;
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+
+
+        #page-1:checked~* .prev-btn-disabled {
+            display: flex;
+        }
+
+        #page-2:checked~* .prev-btn-active-1 {
+            display: flex;
+        }
+
+        #page-3:checked~* .prev-btn-active-2 {
+            display: flex;
+        }
+
+        #page-1:checked~* .next-btn-active-1 {
+            display: flex;
+        }
+
+        #page-2:checked~* .next-btn-active-2 {
+            display: flex;
+        }
+
+        #page-3:checked~* .next-btn-disabled {
+            display: flex;
+        }
+    </style>
 </head>
+
 <body class="font-geist">
 
-    <nav class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
+    <nav
+        class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
         <a href="index.html" class="flex items-center gap-3">
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="m8.75 11.3 6.75 3.884 6.75-3.885M8.75 34.58v-7.755L2 22.939m27 0-6.75 3.885v7.754M2.405 15.408 15.5 22.954l13.095-7.546M15.5 38V22.939M29 28.915V16.962a2.98 2.98 0 0 0-1.5-2.585L17 8.4a3.01 3.01 0 0 0-3 0L3.5 14.377A3 3 0 0 0 2 16.962v11.953A2.98 2.98 0 0 0 3.5 31.5L14 37.477a3.01 3.01 0 0 0 3 0L27.5 31.5a3 3 0 0 0 1.5-2.585" stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="m8.75 11.3 6.75 3.884 6.75-3.885M8.75 34.58v-7.755L2 22.939m27 0-6.75 3.885v7.754M2.405 15.408 15.5 22.954l13.095-7.546M15.5 38V22.939M29 28.915V16.962a2.98 2.98 0 0 0-1.5-2.585L17 8.4a3.01 3.01 0 0 0-3 0L3.5 14.377A3 3 0 0 0 2 16.962v11.953A2.98 2.98 0 0 0 3.5 31.5L14 37.477a3.01 3.01 0 0 0 3 0L27.5 31.5a3 3 0 0 0 1.5-2.585"
+                    stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             <span class="text-white font-bold text-xl tracking-wide">LLamala Store</span>
         </a>
 
         <ul class="text-white md:flex hidden items-center gap-8">
             <li><a class="hover:text-white/70 transition" href="index.html">Inicio</a></li>
-            <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4" href="catalogo.html">Catálogo</a></li>
+            <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4"
+                    href="catalogo.html">Catálogo</a></li>
             <li><a class="hover:text-white/70 transition" href="servicios.html">Servicios</a></li>
             <li><a class="hover:text-white/70 transition" href="contacto.html">Contacto</a></li>
             <li><a class="hover:text-white/70 transition" href="ubicanos_demo.html">Ubícanos</a></li>
@@ -27,14 +80,17 @@
 
         <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
-                <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"/>
+                <path
+                    d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z" />
             </svg>
         </button>
 
-        <div class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden md:hidden shadow-lg border-t border-white/10">
+        <div
+            class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden md:hidden shadow-lg border-t border-white/10">
             <ul class="flex flex-col space-y-4 text-white text-lg">
                 <li><a href="index.html" class="text-base hover:text-white/70 transition">Inicio</a></li>
-                <li><a href="catalogo.html" class="text-base font-semibold hover:text-white/70 transition">Catálogo</a></li>
+                <li><a href="catalogo.html" class="text-base font-semibold hover:text-white/70 transition">Catálogo</a>
+                </li>
                 <li><a href="servicios.html" class="text-base hover:text-white/70 transition">Servicios</a></li>
                 <li><a href="contacto.html" class="text-base hover:text-white/70 transition">Contacto</a></li>
                 <li><a href="ubicanos_demo.html" class="text-base hover:text-white/70 transition">Ubícanos</a></li>
@@ -42,434 +98,728 @@
         </div>
     </nav>
 
-<main>
-    <section class="bg-white flex flex-col items-center justify-center px-4 py-16">
-        <h2 class="text-2xl font-bold mb-8 text-neutral-800">Nuestro Catálogo</h2>
-        <div class="flex flex-wrap items-stretch justify-center gap-5">
-            
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    <main>
+        <section class="bg-white flex flex-col items-center justify-center px-4 py-16">
+            <h2 class="text-2xl font-bold mb-8 text-neutral-800">Nuestro Catálogo</h2>
+
+            <!-- Controles de paginación ocultos (radio buttons) -->
+            <input type="radio" id="page-1" name="catalogue-pages" class="hidden" checked />
+            <input type="radio" id="page-2" name="catalogue-pages" class="hidden" />
+            <input type="radio" id="page-3" name="catalogue-pages" class="hidden" />
+
+            <!-- Página 1 (Productos 1-8) -->
+            <div id="catalogue-page-1" class="catalogue-page flex-wrap items-stretch justify-center gap-5 w-full">
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
                     </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/TecladoAF81.png" alt="Producto 1" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Teclado Mecanico AF81</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca: AJAZZ</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/110.00</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/TecladoAF81.png" alt="Producto 1" class="max-h-full max-w-full object-contain" />
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Thermal Pad.png" alt="Producto 2" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Thermal Pad</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca: TEUCER</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/25.00 - S/75</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Teclado Mecanico AF81</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca: AJAZZ</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/110.00</span>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/ThermalPadTP3.avif" alt="Producto 3"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Thermal Pad Artic</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca: Artic</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/50</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Pasta Termica MX4 4G.avif" alt="Producto 4"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Pasta Termica MX4 4G</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Artic</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/25</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Gamesir Kaleid.avif" alt="Producto 5"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Gamesir Kaleid</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Gamesir</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/175</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Mause Razer.avif" alt="Producto 6" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Mouse Razer</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Razer</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/85</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Gamesir T7.avif" alt="Producto 7" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Gamesir T7</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Gamesir</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/125</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Gamesir Supernova.avif" alt="Producto 8"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Gamesir Supernova</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Gamesir</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/225</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
             </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <!-- Página 2 (Productos 9-16) -->
+            <div id="catalogue-page-2" class="catalogue-page flex-wrap items-stretch justify-center gap-5 w-full">
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">15%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
                     </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Asus.jpg" alt="Producto 9" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Monitor ASUS TUF Gaming VG27AQ</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Asus</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/1349.90</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Thermal Pad.png" alt="Producto 2" class="max-h-full max-w-full object-contain" />
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/Logitec.jpg" alt="Producto 10" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Teclado bluetooth Logitec Pebble Keys 2 K380s
+                        grafito</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitec</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/161.50</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Thermal Pad</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca: TEUCER</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/25.00 - S/75</span>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/AntryxAudífono.jpg" alt="Producto 11"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Audífonos Gamer con Micrófono Antryx Enigma
+                        SE White</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Antryx</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/171.00</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/CamaraWebLogitech.jpg" alt="Producto 12"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Cámara Web Logitech C922</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitech</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/340.00</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">25%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/MonitorAcer.jpg" alt="Producto 13" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Monitor Acer Predator</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Acer</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/750.00</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/ADATA.jpg" alt="Producto 14" class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Memoria DIMM ADATA XPG Lancer RGB 32Gb DDR5
+                        6400MHz CL32</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : ADATA</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/2099.00</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">15%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/FuryRenegade.jpg" alt="Producto 15"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Kingston Fury Renegade 32GB DDR5 6400MHz
+                        Negro</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Kingston</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/4999.90</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/mouseLogitech.jpg" alt="Producto 16"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Mouse Inalámbrico Logitech MX Master 3S
+                        Bluetooth Graphite</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitech</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/344</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
+                </div>
             </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <!-- Página 3 (Productos 17-19) -->
+            <div id="catalogue-page-3" class="catalogue-page flex-wrap items-stretch justify-center gap-5 w-full">
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
                     </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/MouseInalambrico.jpg" alt="Producto 17"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Mouse Inalámbrico Gamer recargable Luz RGB
+                        Blanco</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : TWOLF</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/55</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/ThermalPadTP3.avif" alt="Producto 3" class="max-h-full max-w-full object-contain" />
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/AudifonoLogitechGaming.jpg" alt="Producto 18"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Audífono Gamer Logitech G G432</p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitech</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/280.00</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Thermal Pad Artic</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca: Artic</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/50</span>
+
+                <div
+                    class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
+                                class="font-bold">20%</span> off</span>
+                        <div
+                            class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+                            <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z"
+                                    stroke="#27272a" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center h-40 mb-2">
+                        <img src="img/AudifonosRazer.jpg" alt="Producto 19"
+                            class="max-h-full max-w-full object-contain" />
+                    </div>
+                    <p class="text-sm font-semibold text-neutral-800 px-2">Audífonos Gamer Razer Blackshark V2 X Verde
+                    </p>
+                    <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Razer</p>
+                    <div class="flex items-center gap-2 px-2 mb-3">
+                        <span class="text-sm font-semibold text-neutral-800">Precio: S/179.90</span>
+                    </div>
+                    <button type="button" class="btn btn-indigo w-full mt-auto">
+                        <p>Comprar</p>
+                    </button>
                 </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
             </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Pasta Termica MX4 4G.avif" alt="Producto 4" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Pasta Termica MX4 4G</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Artic</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/25</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
+            <!-- Paginación -->
+            <div class="mt-16 flex justify-center w-full">
+                <div class="flex items-center gap-2 text-gray-500">
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <!-- Botón Previous Deshabilitado (Página 1) -->
+                    <div class="prev-btn-disabled hidden cursor-not-allowed opacity-40 mr-4 flex items-center gap-1">
+                        <svg class="mt-px" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75 12.5h11.5m-11.5 0 4.792-4.791M5.75 12.5l4.792 4.792" stroke="#6B7280"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>previous</span>
                     </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Gamesir Kaleid.avif" alt="Producto 5" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Gamesir Kaleid</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Gamesir</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/175</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-            
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Mause Razer.avif" alt="Producto 6" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Mouse Razer</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Razer</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/85</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
+                    <!-- Botones Previous Activos -->
+                    <label for="page-1"
+                        class="prev-btn-active-1 hidden cursor-pointer mr-4 flex items-center gap-1 active:scale-95 transition-all hover:text-indigo-600">
+                        <svg class="mt-px" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75 12.5h11.5m-11.5 0 4.792-4.791M5.75 12.5l4.792 4.792" stroke="#6B7280"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>previous</span>
+                    </label>
+                    <label for="page-2"
+                        class="prev-btn-active-2 hidden cursor-pointer mr-4 flex items-center gap-1 active:scale-95 transition-all hover:text-indigo-600">
+                        <svg class="mt-px" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.75 12.5h11.5m-11.5 0 4.792-4.791M5.75 12.5l4.792 4.792" stroke="#6B7280"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>previous</span>
+                    </label>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <!-- Números de Página -->
+                    <div class="flex gap-2 text-sm md:text-base">
+                        <label for="page-1"
+                            class="page-btn-1 cursor-pointer flex items-center justify-center active:scale-95 w-9 md:w-12 h-9 md:h-12 aspect-square rounded-md hover:bg-gray-100/70 border border-zinc-200/50 transition-all font-semibold">1</label>
+                        <label for="page-2"
+                            class="page-btn-2 cursor-pointer flex items-center justify-center active:scale-95 w-9 md:w-12 h-9 md:h-12 aspect-square rounded-md hover:bg-gray-100/70 border border-zinc-200/50 transition-all font-semibold">2</label>
+                        <label for="page-3"
+                            class="page-btn-3 cursor-pointer flex items-center justify-center active:scale-95 w-9 md:w-12 h-9 md:h-12 aspect-square rounded-md hover:bg-gray-100/70 border border-zinc-200/50 transition-all font-semibold">3</label>
                     </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Gamesir T7.avif" alt="Producto 7" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Gamesir T7</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Gamesir</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/125</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    <!-- Botones Next Activos -->
+                    <label for="page-2"
+                        class="next-btn-active-1 hidden cursor-pointer ml-4 flex items-center gap-1 active:scale-95 transition-all hover:text-indigo-600">
+                        <span>next</span>
+                        <svg class="mt-px" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.25 11.5H5.75m11.5 0-4.792-4.79m4.792 4.79-4.792 4.792" stroke="#6B7280"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </label>
+                    <label for="page-3"
+                        class="next-btn-active-2 hidden cursor-pointer ml-4 flex items-center gap-1 active:scale-95 transition-all hover:text-indigo-600">
+                        <span>next</span>
+                        <svg class="mt-px" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.25 11.5H5.75m11.5 0-4.792-4.79m4.792 4.79-4.792 4.792" stroke="#6B7280"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </label>
+                    <!-- Botón Next Deshabilitado (Página 3) -->
+                    <div class="next-btn-disabled hidden cursor-not-allowed opacity-40 ml-4 flex items-center gap-1">
+                        <span>next</span>
+                        <svg class="mt-px" width="23" height="23" viewBox="0 0 23 23" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.25 11.5H5.75m11.5 0-4.792-4.79m4.792 4.79-4.792 4.792" stroke="#6B7280"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
                     </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Gamesir Supernova.avif" alt="Producto 8" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Gamesir Supernova</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Gamesir</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/225</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">15%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
                 </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Asus.jpg" alt="Producto 9" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Monitor ASUS TUF Gaming VG27AQ</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Asus</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/1349.90</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
             </div>
+        </section>
+    </main>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/Logitec.jpg" alt="Producto 10" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Teclado bluetooth Logitec Pebble Keys 2 K380s grafito</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitec</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/161.50</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/AntryxAudífono.jpg" alt="Producto 11" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Audífonos Gamer con Micrófono Antryx Enigma SE White</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Antryx</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/171.00</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
 
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/CamaraWebLogitech.jpg" alt="Producto 12" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Cámara Web Logitech C922</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitech</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/340.00</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">25%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/MonitorAcer.jpg" alt="Producto 13" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Monitor Acer Predator</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Acer</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/750.00</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/ADATA.jpg" alt="Producto 14" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Memoria DIMM ADATA XPG Lancer RGB 32Gb DDR5 6400MHz CL32</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : ADATA</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/2099.00</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">15%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/FuryRenegade.jpg" alt="Producto 15" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Kingston Fury Renegade 32GB DDR5 6400MHz Negro</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Kingston</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/4999.90</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/mouseLogitech.jpg" alt="Producto 16" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Mouse Inalámbrico Logitech MX Master 3S Bluetooth Graphite</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitech</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/344</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/MouseInalambrico.jpg" alt="Producto 17" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Mouse Inalámbrico Gamer recargable Luz RGB Blanco</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : TWOLF</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/55</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/AudifonoLogitechGaming.jpg" alt="Producto 18" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Audífono Gamer Logitech G G432</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Logitech</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/280.00</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/AudifonosRazer.jpg" alt="Producto 19" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Audífonos Gamer Razer Blackshark V2 X Verde</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Razer</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/179.90</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
-            <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-56">
-                <div class="flex items-center justify-between mb-2">        
-                    <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
-                    <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
-                        <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center h-40 mb-2">
-                    <img src="img/AudifonosRazer.jpg" alt="Producto 20" class="max-h-full max-w-full object-contain" />
-                </div>
-                <p class="text-sm font-semibold text-neutral-800 px-2">Audífonos Gamer Razer Blackshark V2 X Verde</p>
-                <p class="text-xs text-neutral-500 mb-2 px-2">Marca : Razer</p>
-                <div class="flex items-center gap-2 px-2 mb-3">
-                    <span class="text-sm font-semibold text-neutral-800">Precio: S/179.90</span>
-                </div>
-                <button type="button" class="btn btn-indigo w-full mt-auto"><p>Comprar</p></button>
-            </div>
-
+    <footer class="flex flex-col bg-slate-50 items-center justify-around w-full py-16 text-sm text-gray-800/70">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+            <a href="index.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Inicio
+            </a>
+            <a href="catalogo.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Catálogo
+            </a>
+            <a href="servicios.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Servicios
+            </a>
+            <a href="contacto.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Contacto
+            </a>
+            <a href="ubicanos_demo.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Ubícanos
+            </a>
         </div>
-    </section>
-</main>
+        <div class="flex items-center gap-4 mt-8 text-indigo-500">
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37m1.5-4.87h.01" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6M6 9H2v12h4zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M9 18c-4.51 2-5-2-7-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
+        </div>
+        <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
+        <script>
+            // === INDICACIONES PARA LA PRESENTACIÓN ===
+            // Este script controla la interactividad del menú móvil (pantallas pequeñas).
+            // 1. Selecciona todos los botones con clase '.menu-btn' (hamburguesa).
+            // 2. Selecciona todos los contenedores del menú móvil con clase '.mobile-menu'.
+            // 3. Itera sobre cada botón y le añade un escuchador de eventos 'click'.
+            // 4. Al hacer clic, alterna (toggle) la clase CSS 'hidden' para mostrar u ocultar el menú móvil.
+            const menuButtons = document.querySelectorAll('.menu-btn');
+            const mobileMenus = document.querySelectorAll('.mobile-menu');
 
-
-
-<footer class="flex flex-col bg-slate-50 items-center justify-around w-full py-16 text-sm text-gray-800/70">
-    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-        <a href="index.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Inicio
-        </a>
-        <a href="catalogo.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Catálogo
-        </a>
-        <a href="servicios.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Servicios
-        </a>
-        <a href="contacto.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Contacto
-        </a>
-        <a href="ubicanos_demo.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Ubícanos
-        </a>
-    </div>
-    <div class="flex items-center gap-4 mt-8 text-indigo-500">
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37m1.5-4.87h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6M6 9H2v12h4zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M9 18c-4.51 2-5-2-7-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-    </div>
-    <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
-    <script>
-        const menuButtons = document.querySelectorAll('.menu-btn');
-        const mobileMenus = document.querySelectorAll('.mobile-menu');
-
-        menuButtons.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                mobileMenus[index].classList.toggle('hidden');
+            menuButtons.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    mobileMenus[index].classList.toggle('hidden');
+                });
             });
-        });
-    </script>
+        </script>
 </body>
+
 </html>

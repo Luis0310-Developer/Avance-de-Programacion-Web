@@ -122,7 +122,12 @@
     </main>
 
     <script>
-        // Lógica del menú móvil
+        // === INDICACIONES PARA LA PRESENTACIÓN ===
+        // Este script controla la interactividad de la página de Ubicación:
+        // 1. Menú móvil: despliega/oculta la navegación móvil al dar clic en '.menu-btn'.
+        // 2. Mapa interactivo: utiliza Leaflet.js para crear un mapa web personalizado sin bases de datos complejas.
+
+        // --- 1. Lógica del menú móvil ---
         const menuButtons = document.querySelectorAll('.menu-btn');
         const mobileMenus = document.querySelectorAll('.mobile-menu');
 
@@ -132,20 +137,23 @@
             });
         });
 
-        // Inicializar el mapa oscuro Leaflet
+        // --- 2. Lógica del Mapa Interactivo (Leaflet.js) ---
+        
+        // Inicializar el mapa centrado en las coordenadas geográficas de la tienda: [-11.9672688, -77.0674268] (San Juan de Lurigancho, Lima)
+        // Zoom inicial establecido en nivel 13, deshabilitando zoom con rueda del mouse por usabilidad.
         const map = L.map('map', {
             zoomControl: true,
             scrollWheelZoom: false
         }).setView([-11.9672688, -77.0674268], 13);
 
-        // Capa de mosaicos CartoDB Dark Matter (Estilo de mapa oscuro)
+        // Capa de mosaicos CartoDB Dark Matter (Estilo premium oscuro que combina con la paleta de colores del sitio)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
             maxZoom: 20
         }).addTo(map);
 
-        // Icono personalizado interactivo (efecto de pulso animado en color índigo)
+        // Icono de marcador personalizado (Efecto de pulso / ping animado usando clases CSS y Tailwind de manera interactiva)
         const storeIcon = L.divIcon({
             html: `
                 <div class="relative flex items-center justify-center">
@@ -158,7 +166,7 @@
             iconAnchor: [12, 12]
         });
 
-        // Añadir el marcador y el popup interactivo
+        // Añadir el marcador interactivo y desplegar el cartel informativo (Popup) al cargarse la página
         const marker = L.marker([-11.9672688, -77.0674268], { icon: storeIcon }).addTo(map);
         marker.bindPopup(`
             <div class="text-slate-800 p-1 font-sans">

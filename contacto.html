@@ -68,19 +68,36 @@
 
         <div class="w-full max-w-md bg-white border border-slate-200/80 rounded-2xl p-8 shadow-sm">
             <h2 class="text-lg font-bold text-slate-800 mb-6">Enviar Mensaje</h2>
-            <form class="flex flex-col gap-4">
+            <form id="contact-form" class="flex flex-col gap-4">
                 <div class="flex flex-col gap-2">
-                    <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Nombre</label>
-                    <input type="text" placeholder="Ingresa tu nombre completo" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner" />
+                    <label for="nombre" class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Nombre</label>
+                    <input id="nombre" type="text" placeholder="Ingresa tu nombre completo" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner" />
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Correo Electrónico</label>
-                    <input type="email" placeholder="correo@ejemplo.com" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner" />
+                    <label for="email" class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Correo Electrónico</label>
+                    <input id="email" type="email" placeholder="correo@ejemplo.com" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all shadow-inner" />
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Mensaje</label>
-                    <textarea placeholder="¿En qué podemos ayudarte? Escribe tu mensaje aquí..." rows="4" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all resize-none shadow-inner"></textarea>
+                    <label for="mensaje" class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Mensaje</label>
+                    <textarea id="mensaje" placeholder="¿En qué podemos ayudarte? Escribe tu mensaje aquí..." rows="4" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all resize-none shadow-inner"></textarea>
                 </div>
+
+                <!-- Mensaje de advertencia simple -->
+                <div id="warning-message" class="hidden flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 text-amber-800 rounded-lg text-sm transition-all duration-300">
+                    <svg class="w-5 h-5 shrink-0 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <span>Por favor, rellena todos los campos.</span>
+                </div>
+
+                <!-- Mensaje de éxito (opcional, para una mejor experiencia de usuario) -->
+                <div id="success-message" class="hidden flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm transition-all duration-300">
+                    <svg class="w-5 h-5 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>¡Mensaje enviado con éxito! Nos comunicaremos pronto.</span>
+                </div>
+
                 <button type="submit" class="bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-base py-3.5 rounded-lg transition-all duration-300 cursor-pointer mt-2 font-bold tracking-wide shadow-md shadow-indigo-600/10 active:scale-[0.98]">Enviar Mensaje</button>
             </form>
         </div>
@@ -138,6 +155,12 @@
     </div>
     <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
     <script>
+        // === INDICACIONES PARA LA PRESENTACIÓN ===
+        // Este script controla la interactividad del menú móvil (pantallas pequeñas).
+        // 1. Selecciona todos los botones con clase '.menu-btn' (hamburguesa).
+        // 2. Selecciona todos los contenedores del menú móvil con clase '.mobile-menu'.
+        // 3. Itera sobre cada botón y le añade un escuchador de eventos 'click'.
+        // 4. Al hacer clic, alterna (toggle) la clase CSS 'hidden' para mostrar u ocultar el menú móvil.
         const menuButtons = document.querySelectorAll('.menu-btn');
         const mobileMenus = document.querySelectorAll('.mobile-menu');
 
@@ -146,6 +169,38 @@
                 mobileMenus[index].classList.toggle('hidden');
             });
         });
+
+        // === VALIDACIÓN DEL FORMULARIO DE CONTACTO ===
+        const contactForm = document.getElementById('contact-form');
+        const nombreInput = document.getElementById('nombre');
+        const emailInput = document.getElementById('email');
+        const mensajeInput = document.getElementById('mensaje');
+        const warningMessage = document.getElementById('warning-message');
+        const successMessage = document.getElementById('success-message');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Limpiar estados previos
+                warningMessage.classList.add('hidden');
+                successMessage.classList.add('hidden');
+
+                const nombre = nombreInput.value.trim();
+                const email = emailInput.value.trim();
+                const mensaje = mensajeInput.value.trim();
+
+                // Si alguno de los campos está vacío
+                if (!nombre || !email || !mensaje) {
+                    warningMessage.classList.remove('hidden');
+                    return;
+                }
+
+                // Si todos los campos están completos
+                successMessage.classList.remove('hidden');
+                contactForm.reset();
+            });
+        }
     </script>
 </body>
 </html>
