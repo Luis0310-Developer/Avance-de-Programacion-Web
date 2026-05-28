@@ -45,7 +45,7 @@
 
 <section class="bg-slate-50 px-4 py-24 flex-grow flex items-center justify-center">
     <div class="w-full mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 max-w-5xl">
-       
+  
         <div class="flex flex-col max-w-md w-full">
             <p class="text-sm max-md:text-center font-bold text-indigo-600 uppercase mb-2 tracking-wider">Llamala store</p>
             <h1 class="text-5xl/14 max-md:text-center font-bold text-slate-800 mb-4">Contáctanos</h1>
@@ -82,7 +82,7 @@
                     <textarea id="mensaje" placeholder="¿En qué podemos ayudarte? Escribe tu mensaje aquí..." rows="4" class="bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-indigo-500 focus:bg-white transition-all resize-none shadow-inner"></textarea>
                 </div>
 
-                <!-- Mensaje de advertencia simple -->
+
                 <div id="warning-message" class="hidden flex items-center gap-2 p-3 bg-amber-50 border border-amber-200 text-amber-800 rounded-lg text-sm transition-all duration-300">
                     <svg class="w-5 h-5 shrink-0 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -90,7 +90,7 @@
                     <span>Por favor, rellena todos los campos.</span>
                 </div>
 
-                <!-- Mensaje de éxito (opcional, para una mejor experiencia de usuario) -->
+
                 <div id="success-message" class="hidden flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-lg text-sm transition-all duration-300">
                     <svg class="w-5 h-5 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -155,12 +155,7 @@
     </div>
     <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
     <script>
-        // === INDICACIONES PARA LA PRESENTACIÓN ===
-        // Este script controla la interactividad del menú móvil (pantallas pequeñas).
-        // 1. Selecciona todos los botones con clase '.menu-btn' (hamburguesa).
-        // 2. Selecciona todos los contenedores del menú móvil con clase '.mobile-menu'.
-        // 3. Itera sobre cada botón y le añade un escuchador de eventos 'click'.
-        // 4. Al hacer clic, alterna (toggle) la clase CSS 'hidden' para mostrar u ocultar el menú móvil.
+
         const menuButtons = document.querySelectorAll('.menu-btn');
         const mobileMenus = document.querySelectorAll('.mobile-menu');
 
@@ -170,7 +165,6 @@
             });
         });
 
-        // === VALIDACIÓN DEL FORMULARIO DE CONTACTO ===
         const contactForm = document.getElementById('contact-form');
         const nombreInput = document.getElementById('nombre');
         const emailInput = document.getElementById('email');
@@ -182,7 +176,6 @@
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
 
-                // Limpiar estados previos
                 warningMessage.classList.add('hidden');
                 successMessage.classList.add('hidden');
 
@@ -190,13 +183,13 @@
                 const email = emailInput.value.trim();
                 const mensaje = mensajeInput.value.trim();
 
-                // Si alguno de los campos está vacío
+
                 if (!nombre || !email || !mensaje) {
                     warningMessage.classList.remove('hidden');
                     return;
                 }
 
-                // Si todos los campos están completos
+                
                 successMessage.classList.remove('hidden');
                 contactForm.reset();
             });
