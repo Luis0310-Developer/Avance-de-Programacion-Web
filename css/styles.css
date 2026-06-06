@@ -193,3 +193,433 @@ footer * {
     background-color: #f8fafc !important; /* Tailwind bg-slate-50 equivalent */
 }
 
+/* ==========================================
+   Modo Oscuro (Dark Mode overrides)
+   ========================================== */
+
+/* Transición suave para todos los elementos */
+* {
+    transition-property: background-color, border-color, text-decoration-color, fill, stroke, color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+html.dark body {
+    background-color: #000000;
+    color: #f1f5f9;
+}
+
+/* Modificadores de fondo para contenedores principales */
+html.dark main {
+    background-color: #000000 !important;
+}
+
+html.dark section.bg-white {
+    background-color: #000000 !important;
+}
+
+html.dark .bg-slate-50 {
+    background-color: #000000 !important;
+}
+
+html.dark .bg-slate-100 {
+    background-color: #111111 !important;
+}
+
+html.dark .bg-gray-50\/50 {
+    background-color: #111111 !important;
+}
+
+/* =============================================
+   TEXTOS GENERALES EN MODO OSCURO
+   ============================================= */
+
+/* Títulos de sección — EXCLUIR los que están dentro de tarjetas blancas */
+html.dark h1,
+html.dark h2,
+html.dark h3:not(.featured-card h3):not(.catalogue-page h3):not([id^="service-"] h3),
+html.dark h4:not(.featured-card h4):not(.catalogue-page h4):not([id^="service-"] h4),
+html.dark h5,
+html.dark h6 {
+    color: #f1f5f9 !important;
+}
+
+/* Textos oscuros que necesitan volverse claros — EXCLUIR dentro de tarjetas */
+html.dark .text-black:not(.featured-card .text-black):not(.catalogue-page .text-black):not([id^="service-"] .text-black),
+html.dark .text-slate-800:not(.featured-card .text-slate-800):not(.catalogue-page .text-slate-800):not([id^="service-"] .text-slate-800),
+html.dark .text-slate-900,
+html.dark .text-gray-950,
+html.dark .text-gray-900:not(.featured-card .text-gray-900):not(.catalogue-page .text-gray-900):not([id^="service-"] .text-gray-900),
+html.dark .text-gray-800,
+html.dark .text-neutral-800:not(.featured-card .text-neutral-800):not(.catalogue-page .text-neutral-800):not([id^="service-"] .text-neutral-800),
+html.dark .text-neutral-900 {
+    color: #f1f5f9 !important;
+}
+
+/* Textos de tono medio */
+html.dark .text-gray-700,
+html.dark .text-slate-700,
+html.dark .text-neutral-700 {
+    color: #e2e8f0 !important;
+}
+
+html.dark .text-gray-600:not([id^="service-"] .text-gray-600),
+html.dark .text-slate-600:not([id^="service-"] .text-slate-600),
+html.dark .text-neutral-600 {
+    color: #cbd5e1 !important;
+}
+
+html.dark .text-gray-500:not(.featured-card .text-gray-500):not(.catalogue-page .text-gray-500):not([id^="service-"] .text-gray-500),
+html.dark .text-slate-500,
+html.dark .text-neutral-500:not(.catalogue-page .text-neutral-500):not([id^="service-"] .text-neutral-500) {
+    color: #94a3b8 !important;
+}
+
+html.dark .text-gray-400:not(.featured-card .text-gray-400),
+html.dark .text-slate-400:not([id^="service-"] .text-slate-400),
+html.dark .text-neutral-400 {
+    color: #94a3b8 !important;
+}
+
+html.dark .text-gray-800\/70 {
+    color: #94a3b8 !important;
+}
+
+html.dark .text-gray-500\/90 {
+    color: #94a3b8 !important;
+}
+
+/* Copyright y texto del footer */
+html.dark footer p {
+    color: #94a3b8 !important;
+}
+
+/* Labels de formularios (fuera de tarjetas) */
+html.dark label:not(.featured-card label):not(.catalogue-page label):not([id^="service-"] label) {
+    color: #cbd5e1 !important;
+}
+
+/* =============================================
+   "POR QUÉ ELEGIRNOS" - bg-[#fafafa] con textos oscuros
+   Mantener texto oscuro porque el fondo se queda claro
+   ============================================= */
+html.dark .bg-\[\#fafafa\] {
+    background-color: #111111 !important;
+}
+
+html.dark .bg-\[\#fafafa\] h3,
+html.dark .bg-\[\#fafafa\] h4 {
+    color: #f1f5f9 !important;
+}
+
+html.dark .bg-\[\#fafafa\] .text-black {
+    color: #f1f5f9 !important;
+}
+
+html.dark .bg-\[\#fafafa\] .text-gray-500 {
+    color: #94a3b8 !important;
+}
+
+html.dark .bg-\[\#fafafa\] .bg-white {
+    background-color: #1a1a1a !important;
+}
+
+html.dark .bg-\[\#fafafa\] svg.text-black {
+    color: #f1f5f9 !important;
+}
+
+/* =============================================
+   TARJETAS DE PRODUCTOS Y SERVICIOS: SIEMPRE BLANCAS
+   ============================================= */
+
+/* Tarjetas de catálogo (catalogo.html) - fondo blanco forzado */
+html.dark .catalogue-page > div {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* Texto dentro de tarjetas de catálogo: mantener oscuro */
+html.dark .catalogue-page > div p,
+html.dark .catalogue-page > div span,
+html.dark .catalogue-page > div h3,
+html.dark .catalogue-page > div h4 {
+    color: #1e293b !important;
+}
+
+html.dark .catalogue-page > div .text-neutral-800 {
+    color: #1e293b !important;
+}
+
+html.dark .catalogue-page > div .text-neutral-500 {
+    color: #64748b !important;
+}
+
+html.dark .catalogue-page > div .text-sm.font-semibold.text-neutral-800 {
+    color: #1e293b !important;
+}
+
+/* Tarjetas de servicios (servicios.html) - fondo blanco forzado */
+html.dark [id^="service-"] {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+html.dark [id^="service-"] h3,
+html.dark [id^="service-"] p,
+html.dark [id^="service-"] span {
+    color: #1e293b !important;
+}
+
+html.dark [id^="service-"] .text-slate-800,
+html.dark [id^="service-"] .text-lg.font-bold {
+    color: #1e293b !important;
+}
+
+html.dark [id^="service-"] .text-slate-600,
+html.dark [id^="service-"] .text-sm.text-slate-600 {
+    color: #475569 !important;
+}
+
+html.dark [id^="service-"] .text-slate-400 {
+    color: #94a3b8 !important;
+}
+
+html.dark [id^="service-"] .border-slate-100 {
+    border-color: #e2e8f0 !important;
+}
+
+/* Tarjetas destacadas de la página principal (index.html) - fondo blanco forzado */
+html.dark .featured-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+html.dark .featured-card:hover {
+    background-color: #ffffff !important;
+    border-color: #818cf8 !important;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+}
+
+/* Texto dentro de featured cards: mantener oscuro sobre fondo blanco */
+html.dark .featured-card h3 {
+    color: #000000 !important;
+}
+
+html.dark .featured-card p {
+    color: #6b7280 !important;
+}
+
+html.dark .featured-card span {
+    color: #9ca3af !important;
+}
+
+html.dark .featured-card .text-black {
+    color: #000000 !important;
+}
+
+html.dark .featured-card .text-neutral-800 {
+    color: #1e293b !important;
+}
+
+html.dark .featured-card .text-neutral-500 {
+    color: #64748b !important;
+}
+
+html.dark .featured-card .text-gray-400 {
+    color: #9ca3af !important;
+}
+
+html.dark .featured-card .text-gray-500 {
+    color: #6b7280 !important;
+}
+
+/* =============================================
+   CONTENEDORES ESTRUCTURALES QUE SÍ SE OSCURECEN
+   ============================================= */
+
+/* Nav search bar y su dropdown */
+html.dark nav .bg-white {
+    background-color: #111111 !important;
+}
+
+html.dark nav input {
+    background-color: #111111 !important;
+    color: #f1f5f9 !important;
+}
+
+/* Footer */
+html.dark footer {
+    background-color: #000000 !important;
+}
+
+html.dark footer a {
+    color: #94a3b8 !important;
+}
+
+html.dark footer a:hover {
+    color: #f1f5f9 !important;
+}
+
+/* Ubicanos - panel de información */
+html.dark .max-w-6xl.bg-white {
+    background-color: #111111 !important;
+    border-color: #222222 !important;
+}
+
+html.dark .max-w-6xl .text-slate-800 {
+    color: #f1f5f9 !important;
+}
+
+html.dark .max-w-6xl .text-slate-600 {
+    color: #cbd5e1 !important;
+}
+
+/* Contacto - formulario */
+html.dark form.bg-white,
+html.dark .bg-white.rounded-2xl.shadow-sm {
+    background-color: #111111 !important;
+    border-color: #222222 !important;
+}
+
+/* Modificadores de borde generales */
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80 {
+    border-color: #222222 !important;
+}
+
+/* Formularios e Inputs */
+html.dark input,
+html.dark textarea,
+html.dark select {
+    background-color: #111111 !important;
+    color: #f1f5f9 !important;
+    border-color: #333333 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+    color: #6b7280 !important;
+}
+
+/* Restaurar inputs DENTRO de tarjetas de producto (para que no se oscurezcan) */
+html.dark .catalogue-page input,
+html.dark [id^="service-"] input {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* =============================================
+   MODALES Y DROPDOWNS
+   ============================================= */
+
+html.dark #product-detail-modal {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+html.dark #product-detail-modal > div {
+    background-color: #ffffff !important;
+}
+
+html.dark #product-detail-modal > div p,
+html.dark #product-detail-modal > div span,
+html.dark #product-detail-modal > div h3 {
+    color: #1e293b !important;
+}
+
+html.dark #cart-dropdown,
+html.dark #cart-dropdown-mobile,
+html.dark #search-dropdown,
+html.dark #search-dropdown-mobile {
+    background-color: #111111 !important;
+    border-color: #222222 !important;
+    color: #f1f5f9 !important;
+}
+
+html.dark #login-modal > div {
+    background-color: #111111 !important;
+    border-color: #222222 !important;
+    color: #f1f5f9 !important;
+}
+
+html.dark #login-modal h2 {
+    color: #f1f5f9 !important;
+}
+
+html.dark #login-modal p,
+html.dark #login-modal label {
+    color: #cbd5e1 !important;
+}
+
+html.dark #cart-footer,
+html.dark #cart-footer-mobile {
+    background-color: #0a0a0a !important;
+    border-color: #222222 !important;
+}
+
+/* Textos dentro del carrito */
+html.dark #cart-dropdown h3,
+html.dark #cart-dropdown-mobile h3 {
+    color: #f1f5f9 !important;
+}
+
+html.dark #cart-dropdown .text-gray-900,
+html.dark #cart-dropdown-mobile .text-gray-900 {
+    color: #f1f5f9 !important;
+}
+
+/* Paginación del catálogo */
+html.dark .page-btn-1,
+html.dark .page-btn-2,
+html.dark .page-btn-3 {
+    color: #f1f5f9 !important;
+}
+
+/* Hover e interacciones en modo oscuro */
+html.dark footer .hover\:text-black:hover {
+    color: #f1f5f9 !important;
+}
+
+/* =============================================
+   MAPA LEAFLET EN MODO OSCURO
+   ============================================= */
+
+html.dark .leaflet-container {
+    background: #000000 !important;
+}
+html.dark .leaflet-tile {
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%) !important;
+}
+html.dark .leaflet-bar a {
+    background-color: #111111 !important;
+    color: #f1f5f9 !important;
+    border-bottom: 1px solid #222222 !important;
+}
+html.dark .leaflet-bar a:hover {
+    background-color: #222222 !important;
+}
+html.dark .leaflet-popup-content-wrapper {
+    background-color: #111111 !important;
+    color: #f1f5f9 !important;
+    border: 1px solid #222222 !important;
+}
+html.dark .leaflet-popup-tip {
+    background-color: #111111 !important;
+}
+
+/* Botones con animaciones heartbeat en modo oscuro */
+html.dark .btn-heartbeat-white {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.03);
+}
+html.dark .btn-heartbeat-white:hover {
+    background-color: #111111 !important;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
+}
+
+/* Botón del tema flotante - ajuste para fondo negro */
+html.dark #theme-toggle-btn {
+    background-color: #111111 !important;
+    border-color: #333333 !important;
+}
