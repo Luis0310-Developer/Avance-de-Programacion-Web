@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - LLamala Store</title>
+    <!-- Google Fonts: Outfit y Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
     <style>
@@ -58,7 +63,7 @@
     </style>
 </head>
 
-<body class="font-geist">
+<body class="font-outfit">
 
     <nav
         class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
@@ -71,7 +76,7 @@
             <span class="text-white font-bold text-xl tracking-wide">LLamala Store</span>
         </a>
 
-        <ul class="text-white md:flex hidden items-center gap-8">
+        <ul class="text-white lg:flex hidden items-center gap-8">
             <li><a class="hover:text-white/70 transition" href="index.html">Inicio</a></li>
             <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4"
                     href="catalogo.html">Catálogo</a></li>
@@ -93,15 +98,113 @@
             </div>
         </div>
 
-        <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
-                <path
-                    d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z" />
-            </svg>
-        </button>
+        <!-- Carrito Desktop -->
+        <div class="relative hidden lg:block ml-4 z-40">
+            <button id="cart-btn" class="relative p-2.5 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Carrito de compras">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-badge" class="absolute -top-1 -right-1 bg-lime-400 text-neutral-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
+            </button>
+            
+            <!-- Dropdown del Carrito -->
+            <div id="cart-dropdown" class="absolute top-[56px] right-0 w-[360px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden z-50">
+                <div class="p-4 border-b border-gray-100 flex items-center justify-between">
+                    <h3 class="font-bold text-gray-950 text-base">Tu Carrito</h3>
+                    <span id="cart-count-txt" class="text-xs text-gray-500 font-medium">0 productos</span>
+                </div>
+                <!-- Items list -->
+                <div id="cart-items" class="max-h-[300px] overflow-y-auto flex flex-col p-4 gap-4">
+                    <div id="cart-empty-state" class="py-8 flex flex-col items-center justify-center text-center text-gray-400 gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <p class="text-sm font-medium">Tu carrito está vacío</p>
+                    </div>
+                </div>
+                <!-- Footer of cart -->
+                <div id="cart-footer" class="p-4 border-t border-gray-100 bg-gray-50/50 hidden flex-col gap-4">
+                    <div class="flex items-center justify-between font-bold text-gray-900 text-sm">
+                        <span>Total:</span>
+                        <span id="cart-total-price">S/0.00</span>
+                    </div>
+                    <button id="checkout-btn" class="w-full py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-lg shadow-indigo-600/20">
+                        Proceder al Pago
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón de Login (Desktop) -->
+        <div class="relative hidden lg:block ml-2 z-40">
+            <button id="login-btn" class="p-2.5 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Iniciar sesión">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M17 8l4 4m0-4l-4 4"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Contenedor móvil para Carrito + Menú -->
+        <div class="flex items-center gap-4 lg:hidden">
+            <!-- Carrito Móvil -->
+            <div class="relative z-40">
+                <button id="cart-btn-mobile" class="relative p-2 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Carrito de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-lime-400 text-neutral-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
+                </button>
+                
+                <!-- Dropdown del Carrito (Móvil) -->
+                <div id="cart-dropdown-mobile" class="absolute top-[56px] right-0 w-[300px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden z-50">
+                    <div class="p-4 border-b border-gray-100 flex items-center justify-between">
+                        <h3 class="font-bold text-gray-950 text-base">Tu Carrito</h3>
+                        <span id="cart-count-txt-mobile" class="text-xs text-gray-500 font-medium">0 prod</span>
+                    </div>
+                    <div id="cart-items-mobile" class="max-h-[250px] overflow-y-auto flex flex-col p-4 gap-4">
+                        <div id="cart-empty-state-mobile" class="py-8 flex flex-col items-center justify-center text-center text-gray-400 gap-2">
+                            <p class="text-sm font-medium">Tu carrito está vacío</p>
+                        </div>
+                    </div>
+                    <div id="cart-footer-mobile" class="p-4 border-t border-gray-100 bg-gray-50/50 hidden flex-col gap-4">
+                        <div class="flex items-center justify-between font-bold text-gray-900 text-sm">
+                            <span>Total:</span>
+                            <span id="cart-total-price-mobile">S/0.00</span>
+                        </div>
+                        <button id="checkout-btn-mobile" class="w-full py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 active:scale-[0.98] transition-all">
+                            Proceder al Pago
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Móvil -->
+            <button id="login-btn-mobile" class="p-2 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Iniciar sesión">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M17 8l4 4m0-4l-4 4"></path>
+                </svg>
+            </button>
+
+            <!-- Botón Menú Mobile -->
+            <button aria-label="menu-btn" type="button" class="menu-btn inline-block active:scale-90 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
+                    <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z" />
+                </svg>
+            </button>
+        </div>
 
         <div
-            class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden md:hidden shadow-lg border-t border-white/10">
+            class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden lg:hidden shadow-lg border-t border-white/10">
             <!-- Barra de búsqueda global (Mobile) -->
             <div class="relative w-full mb-6">
                 <div class="flex items-center border pl-4 gap-2 border-gray-500/30 h-[46px] rounded-full overflow-hidden w-full bg-white shadow-sm">
@@ -163,15 +266,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/110.00</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">15%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -191,7 +292,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/25.00 - S/75</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -199,7 +300,7 @@
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
                     <div class="flex items-center justify-between mb-2">
                         <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">40%</span> off</span>
+                                class="font-bold">25%</span> off</span>
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -220,15 +321,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/50</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">25%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -249,7 +348,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/25</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -278,15 +377,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/175</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">35%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -306,7 +403,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/85</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -314,7 +411,7 @@
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
                     <div class="flex items-center justify-between mb-2">
                         <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">45%</span> off</span>
+                                class="font-bold">20%</span> off</span>
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -334,15 +431,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/125</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">50%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -363,7 +458,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/225</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
             </div>
@@ -394,15 +489,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/1349.90</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">15%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -423,7 +516,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/161.50</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -431,7 +524,7 @@
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
                     <div class="flex items-center justify-between mb-2">
                         <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">30%</span> off</span>
+                                class="font-bold">25%</span> off</span>
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -453,15 +546,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/171.00</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">20%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -482,7 +573,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/340.00</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -490,7 +581,7 @@
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
                     <div class="flex items-center justify-between mb-2">
                         <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">25%</span> off</span>
+                                class="font-bold">40%</span> off</span>
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -510,15 +601,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/750.00</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">25%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -539,7 +628,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/2099.00</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -569,15 +658,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/4999.90</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">40%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -599,7 +686,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/344</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
             </div>
@@ -610,7 +697,7 @@
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
                     <div class="flex items-center justify-between mb-2">
                         <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">10%</span> off</span>
+                                class="font-bold">20%</span> off</span>
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -632,15 +719,13 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/55</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
                 <div
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">30%</span> off</span>
+                    <div class="flex items-center justify-end mb-2">
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -661,7 +746,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/280.00</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
 
@@ -669,7 +754,7 @@
                     class="border border-zinc-200 hover:border-indigo-400 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl p-2 flex flex-col w-56 bg-white">
                     <div class="flex items-center justify-between mb-2">
                         <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span
-                                class="font-bold">15%</span> off</span>
+                                class="font-bold">10%</span> off</span>
                         <div
                             class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
                             <svg width="9" height="11" viewBox="0 0 9 11" fill="none"
@@ -691,7 +776,7 @@
                         <span class="text-sm font-semibold text-neutral-800">Precio: S/179.90</span>
                     </div>
                     <button type="button" class="btn btn-indigo w-full mt-auto">
-                        <p>Comprar</p>
+                        <p>Añadir al carro</p>
                     </button>
                 </div>
             </div>
@@ -875,9 +960,10 @@
                     </div>
                     
                     <!-- Precio -->
-                    <div class="flex items-center gap-4 border-y border-gray-100 py-4">
+                    <div class="flex items-center flex-wrap gap-4 border-y border-gray-100 py-4">
                         <span id="modal-price" class="text-3xl md:text-4xl font-black text-black">Precio</span>
-                        <span class="bg-lime-300 text-neutral-800 text-xs px-3 py-1 rounded-full font-bold">Envío Gratis</span>
+                        <span id="modal-discount" class="bg-lime-300 text-neutral-800 text-sm px-3 py-1 rounded-full font-bold hidden"></span>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-bold text-nowrap">Envío Gratis</span>
                     </div>
                     
                     <!-- Descripción -->
@@ -904,7 +990,7 @@
                         </div>
                         
                         <!-- Botón Añadir -->
-                        <button class="flex-1 min-w-[200px] h-[52px] bg-black text-white hover:bg-gray-800 font-bold rounded-full transition-all duration-300 active:scale-95 shadow-xl shadow-black/10 flex items-center justify-center gap-2">
+                        <button id="modal-add-to-cart" class="flex-1 min-w-[200px] h-[52px] bg-black text-white hover:bg-gray-800 font-bold rounded-full transition-all duration-300 active:scale-95 shadow-xl shadow-black/10 flex items-center justify-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="9" cy="21" r="1"></circle>
                                 <circle cx="20" cy="21" r="1"></circle>
@@ -936,6 +1022,39 @@
             </div>
             <p class="mt-8 text-center text-xs md:text-sm">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
         </footer>
+    </div>
+
+    <!-- Modal de Login (Sign In) -->
+    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 md:p-10 relative transform translate-y-4 transition-transform duration-300">
+            <button id="close-login-btn" class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95" aria-label="Cerrar modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="flex flex-col items-start w-full">
+                <div class="mb-6">
+                    <svg class="w-10 h-11 text-indigo-600" width="30" height="33" viewBox="0 0 30 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m8 4.55 6.75 3.884 6.75-3.885M8 27.83v-7.755L1.25 16.19m27 0-6.75 3.885v7.754M1.655 8.658l13.095 7.546 13.095-7.546M14.75 31.25V16.189m13.5 5.976V10.212a2.98 2.98 0 0 0-1.5-2.585L16.25 1.65a3.01 3.01 0 0 0-3 0L2.75 7.627a3 3 0 0 0-1.5 2.585v11.953a2.98 2.98 0 0 0 1.5 2.585l10.5 5.977a3.01 3.01 0 0 0 3 0l10.5-5.977a3 3 0 0 0 1.5-2.585" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Iniciar sesión</h2>
+                <p class="mt-2 text-sm text-gray-500/90">Para más seguridad y un mejor servicio, por favor inicie sesión.</p>
+                <form id="login-form" class="mt-8 w-full flex flex-col text-left">
+                    <div class="flex flex-col">
+                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Usuario</label>
+                        <input placeholder="Por favor ingrese su usuario" class="mt-2 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3.5 w-full transition text-sm" required type="text" name="username">
+                    </div>
+                    <div class="mt-5 flex flex-col">
+                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Contraseña</label>
+                        <input placeholder="Por favor ingrese su contraseña" class="mt-2 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3.5 w-full transition text-sm" required type="password" name="password">
+                    </div>
+                    <button type="submit" class="mt-8 py-3.5 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20">Iniciar sesión</button>
+                    <p class="text-center text-sm text-gray-500 mt-6 w-full">¿No tienes una cuenta? <a href="#" class="text-indigo-600 font-semibold hover:underline">Registrarse</a></p>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -970,37 +1089,62 @@
                         return;
                     }
                     
-                    const results = Object.values(productDataset).filter(p => 
+                    const productResults = Object.values(productDataset).filter(p => 
                         p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
                     );
                     
+                    const serviceResults = Object.values(servicesDataset).filter(s => 
+                        s.name.toLowerCase().includes(query) || s.brand.toLowerCase().includes(query) || s.category.toLowerCase().includes(query)
+                    );
+                    
+                    const results = [...productResults, ...serviceResults];
+                    
                     if (results.length > 0) {
                         searchDropdown.classList.remove('hidden');
-                        results.forEach(product => {
+                        results.forEach(itemData => {
                             const item = document.createElement('div');
                             item.className = 'flex items-center gap-3 p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0 transition-colors text-left';
+                            
+                            const typeTag = itemData.isService 
+                                ? `<span class="bg-indigo-100 text-indigo-800 text-[10px] px-1.5 py-0.5 rounded font-bold">Servicio</span>`
+                                : `<span class="bg-lime-100 text-lime-800 text-[10px] px-1.5 py-0.5 rounded font-bold">Producto</span>`;
+                            
                             item.innerHTML = `
-                                <img src="${product.img}" alt="${product.name}" class="w-12 h-12 object-contain bg-[#fafafa] rounded-lg p-1">
+                                <img src="${itemData.img}" alt="${itemData.name}" class="w-12 h-12 object-contain bg-[#fafafa] rounded-lg p-1">
                                 <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-bold text-gray-900 truncate">${product.name}</p>
-                                    <p class="text-xs text-gray-500">${product.brand}</p>
+                                    <div class="flex items-center gap-1.5 mb-0.5">
+                                        <p class="text-sm font-bold text-gray-900 truncate">${itemData.name}</p>
+                                        ${typeTag}
+                                    </div>
+                                    <p class="text-xs text-gray-500">${itemData.brand}</p>
                                 </div>
-                                <div class="text-sm font-bold text-indigo-600">${product.price}</div>
+                                <div class="text-sm font-bold text-indigo-600">${itemData.price}</div>
                             `;
                             item.addEventListener('click', () => {
                                 searchDropdown.classList.add('hidden');
                                 searchInput.value = '';
-                                openProductDetail(product.id);
+                                if (itemData.isService) {
+                                    if (typeof scrollToService === 'function') {
+                                        scrollToService(itemData.id);
+                                    } else {
+                                        window.location.href = `servicios.html?service=${itemData.id}`;
+                                    }
+                                } else {
+                                    if (typeof openProductDetail === 'function') {
+                                        openProductDetail(itemData.id);
+                                    } else {
+                                        window.location.href = `catalogo.html?product=${itemData.id}`;
+                                    }
+                                }
                             });
                             searchDropdown.appendChild(item);
                         });
                     } else {
                         searchDropdown.classList.remove('hidden');
-                        searchDropdown.innerHTML = '<div class="p-4 text-sm text-gray-500 text-center">No se encontraron productos.</div>';
+                        searchDropdown.innerHTML = '<div class="p-4 text-sm text-gray-500 text-center">No se encontraron resultados.</div>';
                     }
                 });
 
-                // Cerrar dropdown al hacer click fuera
                 document.addEventListener('click', (e) => {
                     if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
                         searchDropdown.classList.add('hidden');
@@ -1027,7 +1171,6 @@
                     brand: "TEUCER",
                     category: "Disipación",
                     price: "S/25.00 - S/75.00",
-                    discount: "15% off",
                     img: "img/Thermal Pad.png",
                     description: "Thermal Pad de alta conductividad térmica marca TEUCER, ideal para sustituir pastas térmicas en componentes con holguras como memorias VRAM de tarjetas de video, VRMs y SSDs M.2.",
                     specs: ["Conductividad de alto nivel", "Espesor y dimensiones adaptables", "No conductor eléctrico", "Fácil corte e instalación"]
@@ -1038,7 +1181,7 @@
                     brand: "Artic",
                     category: "Disipación",
                     price: "S/50.00",
-                    discount: "40% off",
+                    discount: "25% off",
                     img: "img/ThermalPadTP3.avif",
                     description: "Thermal Pad premium fabricado por Artic con una alta transferencia de calor para garantizar que tus componentes se mantengan fríos bajo cargas de trabajo pesadas. Perfecto para refrigeración pasiva.",
                     specs: ["Conductividad térmica superior", "Alta elasticidad y compresibilidad", "Larga vida útil", "Seguro y fácil de usar"]
@@ -1049,7 +1192,6 @@
                     brand: "Artic",
                     category: "Disipación",
                     price: "S/25.00",
-                    discount: "25% off",
                     img: "img/Pasta Termica MX4 4G.avif",
                     description: "La clásica pasta térmica MX-4 en su presentación de 4 gramos. Compuesto térmico líder en la industria para disipadores de CPU y chips de GPU con micropartículas de carbono para transferencia térmica excepcional.",
                     specs: ["Jeringa de 4 gramos", "Alta conductividad térmica", "No capacitiva ni conductora", "Durabilidad garantizada de hasta 8 años"]
@@ -1071,7 +1213,6 @@
                     brand: "Razer",
                     category: "Mouses",
                     price: "S/85.00",
-                    discount: "35% off",
                     img: "img/Mause Razer.avif",
                     description: "Mouse de alta precisión para gaming competitivo con sensor óptico avanzado y un chasis ergonómico ultraligero que permite desplazamientos ultra-rápidos y máxima precisión.",
                     specs: ["Sensor óptico de alta precisión", "Switches mecánicos duraderos", "Diseño ergonómico ligero", "Pies de ratón de PTFE de grado superior"]
@@ -1082,9 +1223,9 @@
                     brand: "Gamesir",
                     category: "Mandos",
                     price: "S/125.00",
-                    discount: "45% off",
+                    discount: "20% off",
                     img: "img/Gamesir T7.avif",
-                    description: "Mando ergonómico de alta precisión con excelente ergonomía y compatibilidad multiplataforma. Ofrece sticks ultra responsivos y respuesta háptica mediante vibración dual asimétrica.",
+                    description: "Mando ergonómico de alta precisión con excelente ergonomía and compatibilidad multiplataforma. Ofrece sticks ultra responsivos y respuesta háptica mediante vibración dual asimétrica.",
                     specs: ["Vibración dual asimétrica", "Compatibilidad multiplataforma", "Sticks analógicos con agarre texturizado", "Gatillos precisos"]
                 },
                 8: {
@@ -1093,7 +1234,6 @@
                     brand: "Gamesir",
                     category: "Mandos",
                     price: "S/225.00",
-                    discount: "50% off",
                     img: "img/Gamesir Supernova.avif",
                     description: "Mando inalámbrico de competición pro-gaming con sticks magnéticos de efecto Hall, switches micro-mecánicos para botones principales y gatillos rápidos ajustables.",
                     specs: ["Conexión inalámbrica de baja latencia", "Sticks Hall Effect antidesgaste", "Switches táctiles mecánicos", "Batería recargable de larga duración"]
@@ -1115,7 +1255,6 @@
                     brand: "Logitec",
                     category: "Teclados",
                     price: "S/161.50",
-                    discount: "30% off",
                     img: "img/Logitec.jpg",
                     description: "Teclado inalámbrico Bluetooth redondo y portátil con teclas redondas y silenciosas. Permite conectar hasta 3 dispositivos simultáneamente y alternar entre ellos con un solo botón.",
                     specs: ["Conexión Bluetooth multidispositivo", "Perfil ultra delgado y portátil", "Teclas silenciosas de perfil bajo", "Autonomía de batería excepcional"]
@@ -1126,7 +1265,7 @@
                     brand: "Antryx",
                     category: "Audio",
                     price: "S/171.00",
-                    discount: "20% off",
+                    discount: "25% off",
                     img: "img/AntryxAudífono.jpg",
                     description: "Audífonos gamer blancos con sonido estéreo envolvente, micrófono plegable integrado y cómodas almohadillas suaves. Luces LED incorporadas para complementar tu setup.",
                     specs: ["Sonido estéreo inmersivo", "Micrófono con reducción de ruido", "Iluminación LED blanca estética", "Almohadillas acolchadas premium"]
@@ -1137,7 +1276,6 @@
                     brand: "Logitech",
                     category: "Periféricos",
                     price: "S/340.00",
-                    discount: "25% off",
                     img: "img/CamaraWebLogitech.jpg",
                     description: "Cámara web Full HD profesional para streaming y videoconferencias. Graba a 1080p a 30fps o a 720p a 60fps con audio estéreo nítido y enfoque automático inteligente.",
                     specs: ["Resolución Full HD 1080p a 30fps", "Enfoque automático y corrección de luz", "Dos micrófonos para audio estéreo", "Trípode ajustable de mesa incluido"]
@@ -1159,7 +1297,6 @@
                     brand: "ADATA",
                     category: "Componentes",
                     price: "S/2099.00",
-                    discount: "10% off",
                     img: "img/ADATA.jpg",
                     description: "Módulo de memoria RAM DDR5 de nueva generación que ofrece velocidades de hasta 6400MHz. Cuenta con disipador de aluminio grueso para enfriamiento eficiente y efectos RGB deslumbrantes.",
                     specs: ["Capacidad de 32GB DDR5", "Frecuencia de 6400MHz", "Iluminación RGB personalizable", "Estabilidad extrema para Overclocking"]
@@ -1170,7 +1307,7 @@
                     brand: "Kingston",
                     category: "Componentes",
                     price: "S/4999.90",
-                    discount: "30% off",
+                    discount: "15% off",
                     img: "img/FuryRenegade.jpg",
                     description: "Memoria RAM DDR5 extrema con velocidades ultra elevadas y latencia ultra baja. La disipación térmica optimizada y el perfil XMP 3.0 garantizan el mejor overclocking con total estabilidad.",
                     specs: ["Capacidad de 32GB DDR5", "Frecuencia extrema de 6400MHz", "Disipador de aluminio negro de perfil alto", "Certificación Intel XMP 3.0"]
@@ -1181,7 +1318,6 @@
                     brand: "Logitech",
                     category: "Mouses",
                     price: "S/344.00",
-                    discount: "15% off",
                     img: "img/mouseLogitech.jpg",
                     description: "Mouse de productividad premium con sensor de precisión de 8k DPI que funciona en cualquier superficie. Disfruta de la rueda MagSpeed y de la comodidad de sus accesos rápidos personalizables.",
                     specs: ["Sensor óptico de 8000 DPI", "Rueda MagSpeed electromagnética silenciosa", "Conexión inalámbrica Easy-Switch", "Diseño ergonómico avanzado"]
@@ -1203,7 +1339,6 @@
                     brand: "Logitech",
                     category: "Audio",
                     price: "S/280.00",
-                    discount: "35% off",
                     img: "img/AudifonoLogitechGaming.jpg",
                     description: "Audífonos de juego envolventes con transductores de 50 mm y micrófono plegable para silenciar. Disfruta de una claridad estéreo total para sumergirte en todos tus videojuegos preferidos.",
                     specs: ["Transductores de audio de 50 mm", "Sonido envolvente DTS Headphone:X 2.0", "Micrófono de 6 mm con cancelación de ruido", "Compatibilidad multiplataforma"]
@@ -1221,13 +1356,279 @@
                 }
             };
 
+            // === DATASET DE SERVICIOS DE SOPORTE Y MANTENIMIENTO ===
+            const servicesDataset = {
+                "s1": {
+                    id: "s1",
+                    name: "Mantenimiento preventivo de Laptop",
+                    brand: "Mantenimiento",
+                    category: "Soporte",
+                    price: "S/80.00",
+                    img: "img/mantenimiento_laptop.png",
+                    url: "servicios.html?service=s1",
+                    isService: true
+                },
+                "s2": {
+                    id: "s2",
+                    name: "Mantenimiento de PC de escritorio",
+                    brand: "Mantenimiento",
+                    category: "Soporte",
+                    price: "S/100.00",
+                    img: "img/mantenimiento_pc.png",
+                    url: "servicios.html?service=s2",
+                    isService: true
+                },
+                "s3": {
+                    id: "s3",
+                    name: "Actualización de drivers",
+                    brand: "Software",
+                    category: "Soporte",
+                    price: "S/40.00",
+                    img: "img/actualizacion_drivers.png",
+                    url: "servicios.html?service=s3",
+                    isService: true
+                },
+                "s4": {
+                    id: "s4",
+                    name: "Formateo e Instalación de SO",
+                    brand: "Sistema",
+                    category: "Soporte",
+                    price: "S/60.00",
+                    img: "img/instalacion_so.png",
+                    url: "servicios.html?service=s4",
+                    isService: true
+                },
+                "s5": {
+                    id: "s5",
+                    name: "Upgrade de RAM y SSD",
+                    brand: "Hardware",
+                    category: "Soporte",
+                    price: "S/20.00",
+                    img: "img/upgrade_ram_ssd.png",
+                    url: "servicios.html?service=s5",
+                    isService: true
+                },
+                "s6": {
+                    id: "s6",
+                    name: "Cambio de Pasta Térmica Premium",
+                    brand: "Mantenimiento",
+                    category: "Soporte",
+                    price: "S/40.00",
+                    img: "img/pasta_termica.png",
+                    url: "servicios.html?service=s6",
+                    isService: true
+                },
+                "s7": {
+                    id: "s7",
+                    name: "Ensamblaje de PC Gamer",
+                    brand: "Hardware",
+                    category: "Soporte",
+                    price: "S/150.00",
+                    img: "img/ensamblaje_pc.png",
+                    url: "servicios.html?service=s7",
+                    isService: true
+                }
+            };
+
             // === CONTROLADORES DE MODAL DETALLE DE PRODUCTO ===
             let currentQty = 1;
+            let activeProductId = null;
             const qtyDisplay = document.getElementById('qty-display');
+
+            // === GESTIÓN DEL CARRITO DE COMPRAS ===
+            let cart = JSON.parse(localStorage.getItem('llamala_cart')) || [];
+
+            function saveCart() {
+                localStorage.setItem('llamala_cart', JSON.stringify(cart));
+                updateCartUI();
+            }
+
+            function addToCart(productId, quantity = 1) {
+                const product = productDataset[productId];
+                if (!product) return;
+
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    cart.push({
+                        id: productId,
+                        name: product.name,
+                        price: product.price,
+                        img: product.img,
+                        brand: product.brand,
+                        quantity: quantity
+                    });
+                }
+                saveCart();
+                
+                // Animación / feedback visual del botón de agregar en el modal
+                const addBtn = document.getElementById('modal-add-to-cart');
+                if (addBtn) {
+                    const originalText = addBtn.innerHTML;
+                    addBtn.innerHTML = '¡Añadido al carro!';
+                    addBtn.classList.add('bg-lime-400', 'text-neutral-900');
+                    addBtn.classList.remove('bg-black', 'text-white');
+                    setTimeout(() => {
+                        addBtn.innerHTML = originalText;
+                        addBtn.classList.remove('bg-lime-400', 'text-neutral-900');
+                        addBtn.classList.add('bg-black', 'text-white');
+                    }, 1500);
+                }
+            }
+
+            function removeFromCart(productId) {
+                cart = cart.filter(item => item.id !== productId);
+                saveCart();
+            }
+
+            function updateQuantity(productId, delta) {
+                const item = cart.find(item => item.id === productId);
+                if (item) {
+                    item.quantity += delta;
+                    if (item.quantity <= 0) {
+                        removeFromCart(productId);
+                    } else {
+                        saveCart();
+                    }
+                }
+            }
+
+            function parsePrice(priceStr) {
+                const singlePriceStr = priceStr.split('-')[0].trim();
+                const number = parseFloat(singlePriceStr.replace(/[^\d.]/g, ''));
+                return isNaN(number) ? 0 : number;
+            }
+
+            function updateCartUI() {
+                const cartBadge = document.getElementById('cart-badge');
+                const cartBadgeMobile = document.getElementById('cart-badge-mobile');
+                
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                
+                // Badge Desktop
+                if (cartBadge) {
+                    cartBadge.textContent = totalItems;
+                    if (totalItems > 0) {
+                        cartBadge.classList.remove('scale-0');
+                        cartBadge.classList.add('scale-100');
+                    } else {
+                        cartBadge.classList.remove('scale-100');
+                        cartBadge.classList.add('scale-0');
+                    }
+                }
+                
+                // Badge Mobile
+                if (cartBadgeMobile) {
+                    cartBadgeMobile.textContent = totalItems;
+                    if (totalItems > 0) {
+                        cartBadgeMobile.classList.remove('scale-0');
+                        cartBadgeMobile.classList.add('scale-100');
+                    } else {
+                        cartBadgeMobile.classList.remove('scale-100');
+                        cartBadgeMobile.classList.add('scale-0');
+                    }
+                }
+
+                const cartCountTxt = document.getElementById('cart-count-txt');
+                const cartCountTxtMobile = document.getElementById('cart-count-txt-mobile');
+                if (cartCountTxt) cartCountTxt.textContent = `${totalItems} ${totalItems === 1 ? 'producto' : 'productos'}`;
+                if (cartCountTxtMobile) cartCountTxtMobile.textContent = `${totalItems} prod`;
+
+                let totalVal = 0;
+                
+                // Render items desktop
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartFooter = document.getElementById('cart-footer');
+                const emptyState = document.getElementById('cart-empty-state');
+                
+                if (cartItemsContainer) {
+                    cartItemsContainer.innerHTML = '';
+                    if (cart.length === 0) {
+                        if (emptyState) cartItemsContainer.appendChild(emptyState);
+                        if (cartFooter) cartFooter.classList.add('hidden');
+                    } else {
+                        if (cartFooter) cartFooter.classList.remove('hidden');
+                        cart.forEach(item => {
+                            const itemPrice = parsePrice(item.price);
+                            totalVal += itemPrice * item.quantity;
+                            
+                            const div = document.createElement('div');
+                            div.className = 'flex items-center gap-3 border-b border-gray-50 pb-3 last:border-0 last:pb-0 text-left';
+                            div.innerHTML = `
+                                <img src="${item.img}" alt="${item.name}" class="w-12 h-12 object-contain bg-[#fafafa] rounded-lg p-1 border border-gray-100">
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-bold text-gray-900 truncate">${item.name}</p>
+                                    <p class="text-[10px] text-gray-500">${item.brand}</p>
+                                    <p class="text-xs font-bold text-indigo-600 mt-0.5">${item.price}</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-2">
+                                    <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden h-6 bg-white">
+                                        <button onclick="updateQuantity(${item.id}, -1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
+                                        <span class="px-2 text-xs text-gray-900 font-semibold">${item.quantity}</span>
+                                        <button onclick="updateQuantity(${item.id}, 1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
+                                    </div>
+                                </div>
+                            `;
+                            cartItemsContainer.appendChild(div);
+                        });
+                    }
+                }
+
+                // Render items mobile
+                const cartItemsContainerMobile = document.getElementById('cart-items-mobile');
+                const cartFooterMobile = document.getElementById('cart-footer-mobile');
+                const emptyStateMobile = document.getElementById('cart-empty-state-mobile');
+                
+                if (cartItemsContainerMobile) {
+                    cartItemsContainerMobile.innerHTML = '';
+                    if (cart.length === 0) {
+                        if (emptyStateMobile) cartItemsContainerMobile.appendChild(emptyStateMobile);
+                        if (cartFooterMobile) cartFooterMobile.classList.add('hidden');
+                    } else {
+                        if (cartFooterMobile) cartFooterMobile.classList.remove('hidden');
+                        cart.forEach(item => {
+                            const div = document.createElement('div');
+                            div.className = 'flex items-center gap-3 border-b border-gray-50 pb-3 last:border-0 last:pb-0 text-left';
+                            div.innerHTML = `
+                                <img src="${item.img}" alt="${item.name}" class="w-10 h-10 object-contain bg-[#fafafa] rounded-lg p-1 border border-gray-100">
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-bold text-gray-900 truncate">${item.name}</p>
+                                    <p class="text-[10px] text-indigo-600 font-bold">${item.price}</p>
+                                </div>
+                                <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden h-6 bg-white">
+                                    <button onclick="updateQuantity(${item.id}, -1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
+                                    <span class="px-1.5 text-xs text-gray-900 font-semibold">${item.quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, 1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
+                                </div>
+                            `;
+                            cartItemsContainerMobile.appendChild(div);
+                        });
+                    }
+                }
+
+                const totalStr = `S/${totalVal.toFixed(2)}`;
+                const cartTotal = document.getElementById('cart-total-price');
+                const cartTotalMobile = document.getElementById('cart-total-price-mobile');
+                if (cartTotal) cartTotal.textContent = totalStr;
+                if (cartTotalMobile) cartTotalMobile.textContent = totalStr;
+            }
+
+            // Exponer al scope global para onclick en elementos dinámicos
+            window.removeFromCart = removeFromCart;
+            window.updateQuantity = updateQuantity;
 
             function openProductDetail(id) {
                 const product = productDataset[id];
                 if (!product) return;
+
+                activeProductId = id;
 
                 // Cargar datos en el Modal
                 document.getElementById('modal-breadcrumb-category').textContent = product.category;
@@ -1235,6 +1636,15 @@
                 document.getElementById('modal-brand').textContent = product.brand;
                 document.getElementById('modal-title').textContent = product.name;
                 document.getElementById('modal-price').textContent = product.price;
+                
+                const discountEl = document.getElementById('modal-discount');
+                if (product.discount) {
+                    discountEl.textContent = product.discount;
+                    discountEl.classList.remove('hidden');
+                } else {
+                    discountEl.classList.add('hidden');
+                }
+
                 document.getElementById('modal-description').textContent = product.description;
                 
                 const mainImg = document.getElementById('modal-main-image');
@@ -1257,7 +1667,6 @@
                 // Cargar miniaturas (Dribbble style)
                 const thumbnailsContainer = document.getElementById('modal-thumbnails');
                 thumbnailsContainer.innerHTML = '';
-                // Simular 3 vistas del mismo producto (frontal, detalle y caja)
                 const galleryImages = [product.img, product.img, product.img];
                 galleryImages.forEach((imgSrc, idx) => {
                     const thumbDiv = document.createElement('div');
@@ -1269,28 +1678,25 @@
                     thumbDiv.appendChild(thumbImg);
                     
                     thumbDiv.addEventListener('click', () => {
-                        // Actualizar bordes de miniaturas
                         Array.from(thumbnailsContainer.children).forEach(child => {
                             child.classList.remove('border-indigo-600');
                             child.classList.add('border-gray-100');
                         });
                         thumbDiv.classList.add('border-indigo-600');
                         thumbDiv.classList.remove('border-gray-100');
-                        // Cambiar imagen principal
                         mainImg.src = imgSrc;
                     });
                     
                     thumbnailsContainer.appendChild(thumbDiv);
                 });
 
-                // Cargar productos relacionados (mismo tipo o alternativos)
+                // Cargar productos relacionados
                 const relatedGrid = document.getElementById('modal-related-grid');
                 relatedGrid.innerHTML = '';
                 const related = Object.values(productDataset)
                     .filter(p => p.id !== product.id && p.category === product.category)
                     .slice(0, 4);
 
-                // Si no hay suficientes productos relacionados de la misma categoría, buscar extras
                 if (related.length < 4) {
                     const extras = Object.values(productDataset)
                         .filter(p => p.id !== product.id && p.category !== product.category && !related.find(r => r.id === p.id))
@@ -1326,7 +1732,7 @@
                 const modal = document.getElementById('product-detail-modal');
                 modal.classList.remove('hidden');
                 modal.scrollTop = 0;
-                document.body.style.overflow = 'hidden'; // Bloquear scroll del fondo
+                document.body.style.overflow = 'hidden';
                 
                 setTimeout(() => {
                     modal.classList.remove('opacity-0');
@@ -1338,7 +1744,7 @@
                 const modal = document.getElementById('product-detail-modal');
                 modal.classList.remove('opacity-100');
                 modal.classList.add('opacity-0');
-                document.body.style.overflow = ''; // Restaurar scroll del fondo
+                document.body.style.overflow = '';
                 
                 setTimeout(() => {
                     modal.classList.add('hidden');
@@ -1353,10 +1759,12 @@
                 card.classList.add('cursor-pointer');
                 
                 card.addEventListener('click', (e) => {
-                    // Si hacen clic en el botón de comprar, prevenimos cualquier redirección para abrir el modal
-                    if (e.target.closest('button')) {
+                    const btn = e.target.closest('button');
+                    if (btn) {
                         e.preventDefault();
                         e.stopPropagation();
+                        addToCart(productId, 1);
+                        return;
                     }
                     openProductDetail(productId);
                 });
@@ -1382,9 +1790,122 @@
                 }
             });
 
-            // Inicializar barras de búsqueda
+            // Botón de Añadir al Carrito en el Modal
+            document.getElementById('modal-add-to-cart').addEventListener('click', () => {
+                if (activeProductId !== null) {
+                    addToCart(activeProductId, currentQty);
+                }
+            });
+
+            // Toggle Dropdowns del Carrito
+            function setupCartDropdown(btnId, dropdownId) {
+                const btn = document.getElementById(btnId);
+                const dropdown = document.getElementById(dropdownId);
+                if (!btn || !dropdown) return;
+                
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const searchDropdown = document.getElementById('search-dropdown');
+                    const searchDropdownMobile = document.getElementById('search-dropdown-mobile');
+                    if (searchDropdown) searchDropdown.classList.add('hidden');
+                    if (searchDropdownMobile) searchDropdownMobile.classList.add('hidden');
+                    
+                    dropdown.classList.toggle('hidden');
+                });
+                
+                document.addEventListener('click', (e) => {
+                    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.add('hidden');
+                    }
+                });
+            }
+
+            setupCartDropdown('cart-btn', 'cart-dropdown');
+            setupCartDropdown('cart-btn-mobile', 'cart-dropdown-mobile');
+
+            // Inicializar barras de búsqueda y carrito
             setupGlobalSearch('global-search-input', 'search-dropdown');
             setupGlobalSearch('global-search-input-mobile', 'search-dropdown-mobile');
+            updateCartUI();
+
+            // --- Lógica del Modal de Login ---
+            const loginModal = document.getElementById('login-modal');
+            const openLoginBtns = document.querySelectorAll('#login-btn, #login-btn-mobile');
+            const closeLoginBtn = document.getElementById('close-login-btn');
+
+            if (loginModal) {
+                const card = loginModal.querySelector('div');
+                
+                function openLogin() {
+                    loginModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        loginModal.classList.remove('opacity-0');
+                        loginModal.classList.add('opacity-100');
+                        if (card) {
+                            card.classList.remove('translate-y-4');
+                            card.classList.add('translate-y-0');
+                        }
+                    }, 10);
+                }
+                
+                function closeLogin() {
+                    loginModal.classList.remove('opacity-100');
+                    loginModal.classList.add('opacity-0');
+                    if (card) {
+                        card.classList.remove('translate-y-0');
+                        card.classList.add('translate-y-4');
+                    }
+                    document.body.style.overflow = '';
+                    setTimeout(() => {
+                        loginModal.classList.add('hidden');
+                    }, 300);
+                }
+
+                openLoginBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openLogin();
+                    });
+                });
+
+                if (closeLoginBtn) {
+                    closeLoginBtn.addEventListener('click', closeLogin);
+                }
+
+                loginModal.addEventListener('click', (e) => {
+                    if (e.target === loginModal) {
+                        closeLogin();
+                    }
+                });
+
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !loginModal.classList.contains('hidden')) {
+                        closeLogin();
+                    }
+                });
+
+                const loginForm = document.getElementById('login-form');
+                if (loginForm) {
+                    loginForm.addEventListener('submit', (e) => {
+                        e.preventDefault();
+                        const username = loginForm.username.value;
+                        alert(`Inicio de sesión simulado para el usuario: ${username}`);
+                        closeLogin();
+                    });
+                }
+            }
+
+            // Detector de parámetros URL al cargar la página
+            window.addEventListener('DOMContentLoaded', () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const productId = urlParams.get('product') || urlParams.get('id');
+                if (productId) {
+                    setTimeout(() => {
+                        openProductDetail(parseInt(productId));
+                    }, 300);
+                }
+            });
         </script>
 </body>
 
