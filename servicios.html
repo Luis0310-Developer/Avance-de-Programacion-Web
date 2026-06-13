@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script src="js/theme.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-outfit">
 
-    <nav class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
+    <nav
+        class="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-gradient-to-r from-indigo-700 to-violet-500 transition-all shadow-md">
         <a href="index.html" class="flex items-center gap-3">
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="m8.75 11.3 6.75 3.884 6.75-3.885M8.75 34.58v-7.755L2 22.939m27 0-6.75 3.885v7.754M2.405 15.408 15.5 22.954l13.095-7.546M15.5 38V22.939M29 28.915V16.962a2.98 2.98 0 0 0-1.5-2.585L17 8.4a3.01 3.01 0 0 0-3 0L3.5 14.377A3 3 0 0 0 2 16.962v11.953A2.98 2.98 0 0 0 3.5 31.5L14 37.477a3.01 3.01 0 0 0 3 0L27.5 31.5a3 3 0 0 0 1.5-2.585" stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="m8.75 11.3 6.75 3.884 6.75-3.885M8.75 34.58v-7.755L2 22.939m27 0-6.75 3.885v7.754M2.405 15.408 15.5 22.954l13.095-7.546M15.5 38V22.939M29 28.915V16.962a2.98 2.98 0 0 0-1.5-2.585L17 8.4a3.01 3.01 0 0 0-3 0L3.5 14.377A3 3 0 0 0 2 16.962v11.953A2.98 2.98 0 0 0 3.5 31.5L14 37.477a3.01 3.01 0 0 0 3 0L27.5 31.5a3 3 0 0 0 1.5-2.585"
+                    stroke="#F5F5F5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             <span class="text-white font-bold text-xl tracking-wide">LLamala Store</span>
         </a>
@@ -26,45 +32,59 @@
         <ul class="text-white lg:flex hidden items-center gap-8">
             <li><a class="hover:text-white/70 transition" href="index.html">Inicio</a></li>
             <li><a class="hover:text-white/70 transition" href="catalogo.html">Catálogo</a></li>
-            <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4" href="servicios.html">Servicios</a></li>
+            <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4"
+                    href="servicios.html">Servicios</a></li>
             <li><a class="hover:text-white/70 transition" href="contacto.html">Contacto</a></li>
             <li><a class="hover:text-white/70 transition" href="ubicanos_demo.html">Ubícanos</a></li>
+            <li id="nav-mi-cuenta" class="hidden"><a class="hover:text-white/70 transition" href="mi-cuenta.html">Mi
+                    Cuenta</a></li>
         </ul>
 
         <!-- Barra de búsqueda global (Desktop) -->
         <div class="relative w-full max-w-sm hidden lg:block ml-8">
-            <div class="flex items-center border pl-4 gap-2 border-gray-500/30 h-[46px] rounded-full overflow-hidden w-full bg-white shadow-sm">
+            <div
+                class="flex items-center border pl-4 gap-2 border-gray-500/30 h-[46px] rounded-full overflow-hidden w-full bg-white shadow-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 30 30" fill="#6B7280">
-                    <path d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8"/>
+                    <path
+                        d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8" />
                 </svg>
-                <input type="text" id="global-search-input" placeholder="Search" class="w-full h-full outline-none text-gray-600 bg-transparent placeholder-gray-500 text-sm">
+                <input type="text" id="global-search-input" placeholder="Search"
+                    class="w-full h-full outline-none text-gray-600 bg-transparent placeholder-gray-500 text-sm">
             </div>
             <!-- Dropdown -->
-            <div id="search-dropdown" class="absolute top-[56px] right-0 w-full md:w-[400px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden max-h-[400px] overflow-y-auto z-50">
+            <div id="search-dropdown"
+                class="absolute top-[56px] right-0 w-full md:w-[400px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden max-h-[400px] overflow-y-auto z-50">
             </div>
         </div>
 
         <!-- Carrito Desktop -->
         <div class="relative hidden lg:block ml-4 z-40">
-            <button id="cart-btn" class="relative p-2.5 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Carrito de compras">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button id="cart-btn"
+                class="relative p-2.5 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center"
+                aria-label="Carrito de compras">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="9" cy="21" r="1"></circle>
                     <circle cx="20" cy="21" r="1"></circle>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
-                <span id="cart-badge" class="absolute -top-1 -right-1 bg-lime-400 text-neutral-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
+                <span id="cart-badge"
+                    class="absolute -top-1 -right-1 bg-lime-400 text-neutral-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
             </button>
-            
+
             <!-- Dropdown del Carrito -->
-            <div id="cart-dropdown" class="absolute top-[56px] right-0 w-[360px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden z-50">
+            <div id="cart-dropdown"
+                class="absolute top-[56px] right-0 w-[360px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden z-50">
                 <div class="p-4 border-b border-gray-100 flex items-center justify-between">
                     <h3 class="font-bold text-gray-950 text-base">Tu Carrito</h3>
                     <span id="cart-count-txt" class="text-xs text-gray-500 font-medium">0 productos</span>
                 </div>
                 <!-- Items list -->
                 <div id="cart-items" class="max-h-[300px] overflow-y-auto flex flex-col p-4 gap-4">
-                    <div id="cart-empty-state" class="py-8 flex flex-col items-center justify-center text-center text-gray-400 gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <div id="cart-empty-state"
+                        class="py-8 flex flex-col items-center justify-center text-center text-gray-400 gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
@@ -78,7 +98,8 @@
                         <span>Total:</span>
                         <span id="cart-total-price">S/0.00</span>
                     </div>
-                    <button id="checkout-btn" class="w-full py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-lg shadow-indigo-600/20">
+                    <button id="checkout-btn"
+                        class="w-full py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 active:scale-[0.98] transition-all shadow-lg shadow-indigo-600/20">
                         Proceder al Pago
                     </button>
                 </div>
@@ -87,8 +108,11 @@
 
         <!-- Botón de Login (Desktop) -->
         <div class="relative hidden lg:block ml-2 z-40">
-            <button id="login-btn" class="p-2.5 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Iniciar sesión">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button id="login-btn"
+                class="p-2.5 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center"
+                aria-label="Iniciar sesión">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
                     <path d="M17 8l4 4m0-4l-4 4"></path>
@@ -100,32 +124,40 @@
         <div class="flex items-center gap-4 lg:hidden">
             <!-- Carrito Móvil -->
             <div class="relative z-40">
-                <button id="cart-btn-mobile" class="relative p-2 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Carrito de compras">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button id="cart-btn-mobile"
+                    class="relative p-2 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center"
+                    aria-label="Carrito de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-lime-400 text-neutral-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
+                    <span id="cart-badge-mobile"
+                        class="absolute -top-1 -right-1 bg-lime-400 text-neutral-900 text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
                 </button>
-                
+
                 <!-- Dropdown del Carrito (Móvil) -->
-                <div id="cart-dropdown-mobile" class="absolute top-[56px] right-0 w-[300px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden z-50">
+                <div id="cart-dropdown-mobile"
+                    class="absolute top-[56px] right-0 w-[300px] bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden z-50">
                     <div class="p-4 border-b border-gray-100 flex items-center justify-between">
                         <h3 class="font-bold text-gray-950 text-base">Tu Carrito</h3>
                         <span id="cart-count-txt-mobile" class="text-xs text-gray-500 font-medium">0 prod</span>
                     </div>
                     <div id="cart-items-mobile" class="max-h-[250px] overflow-y-auto flex flex-col p-4 gap-4">
-                        <div id="cart-empty-state-mobile" class="py-8 flex flex-col items-center justify-center text-center text-gray-400 gap-2">
+                        <div id="cart-empty-state-mobile"
+                            class="py-8 flex flex-col items-center justify-center text-center text-gray-400 gap-2">
                             <p class="text-sm font-medium">Tu carrito está vacío</p>
                         </div>
                     </div>
-                    <div id="cart-footer-mobile" class="p-4 border-t border-gray-100 bg-gray-50/50 hidden flex-col gap-4">
+                    <div id="cart-footer-mobile"
+                        class="p-4 border-t border-gray-100 bg-gray-50/50 hidden flex-col gap-4">
                         <div class="flex items-center justify-between font-bold text-gray-900 text-sm">
                             <span>Total:</span>
                             <span id="cart-total-price-mobile">S/0.00</span>
                         </div>
-                        <button id="checkout-btn-mobile" class="w-full py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 active:scale-[0.98] transition-all">
+                        <button id="checkout-btn-mobile"
+                            class="w-full py-3 bg-indigo-600 text-white rounded-xl text-sm font-bold hover:bg-indigo-700 active:scale-[0.98] transition-all">
                             Proceder al Pago
                         </button>
                     </div>
@@ -133,8 +165,11 @@
             </div>
 
             <!-- Login Móvil -->
-            <button id="login-btn-mobile" class="p-2 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center" aria-label="Iniciar sesión">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <button id="login-btn-mobile"
+                class="p-2 text-white hover:bg-white/10 rounded-full transition active:scale-95 flex items-center justify-center"
+                aria-label="Iniciar sesión">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
                     <path d="M17 8l4 4m0-4l-4 4"></path>
@@ -144,355 +179,544 @@
             <!-- Botón Menú Mobile -->
             <button aria-label="menu-btn" type="button" class="menu-btn inline-block active:scale-90 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="#fff">
-                    <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z" />
+                    <path
+                        d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z" />
                 </svg>
             </button>
         </div>
 
-        <div class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden lg:hidden shadow-lg border-t border-white/10">
+        <div
+            class="mobile-menu absolute top-[70px] left-0 w-full bg-gradient-to-r from-indigo-700 to-violet-500 p-6 hidden lg:hidden shadow-lg border-t border-white/10">
             <!-- Barra de búsqueda global (Mobile) -->
             <div class="relative w-full mb-6">
-                <div class="flex items-center border pl-4 gap-2 border-gray-500/30 h-[46px] rounded-full overflow-hidden w-full bg-white shadow-sm">
+                <div
+                    class="flex items-center border pl-4 gap-2 border-gray-500/30 h-[46px] rounded-full overflow-hidden w-full bg-white shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 30 30" fill="#6B7280">
-                        <path d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8"/>
+                        <path
+                            d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8" />
                     </svg>
-                    <input type="text" id="global-search-input-mobile" placeholder="Search" class="w-full h-full outline-none text-gray-600 bg-transparent placeholder-gray-500 text-sm">
+                    <input type="text" id="global-search-input-mobile" placeholder="Search"
+                        class="w-full h-full outline-none text-gray-600 bg-transparent placeholder-gray-500 text-sm">
                 </div>
                 <!-- Dropdown Mobile -->
-                <div id="search-dropdown-mobile" class="absolute top-[56px] left-0 w-full bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden max-h-[300px] overflow-y-auto z-50">
+                <div id="search-dropdown-mobile"
+                    class="absolute top-[56px] left-0 w-full bg-white rounded-2xl shadow-2xl border border-gray-100 hidden flex-col overflow-hidden max-h-[300px] overflow-y-auto z-50">
                 </div>
             </div>
 
             <ul class="flex flex-col space-y-4 text-white text-lg">
                 <li><a href="index.html" class="text-base hover:text-white/70 transition">Inicio</a></li>
                 <li><a href="catalogo.html" class="text-base hover:text-white/70 transition">Catálogo</a></li>
-                <li><a href="servicios.html" class="text-base hover:text-white/70 transition font-semibold underline underline-offset-4">Servicios</a></li>
+                <li><a href="servicios.html"
+                        class="text-base hover:text-white/70 transition font-semibold underline underline-offset-4">Servicios</a>
+                </li>
                 <li><a href="contacto.html" class="text-base hover:text-white/70 transition">Contacto</a></li>
                 <li><a href="ubicanos_demo.html" class="text-base hover:text-white/70 transition">Ubícanos</a></li>
+                <li id="nav-mi-cuenta-mobile" class="hidden"><a href="mi-cuenta.html"
+                        class="text-base hover:text-white/70 transition">Mi Cuenta</a></li>
             </ul>
         </div>
     </nav>
 
-<main class="flex-grow py-16 px-4 md:px-8 max-w-7xl mx-auto w-full">
-    <section class="flex flex-col items-center justify-center">
-        <span class="text-indigo-600 font-bold uppercase tracking-wider text-sm mb-2">Soporte Profesional</span>
-        <h2 class="text-4xl font-extrabold mb-4 text-slate-800 text-center">Nuestros Servicios</h2>
-        <p class="text-slate-600 mb-12 text-center max-w-2xl leading-relaxed">
-            Ofrecemos soporte técnico de alta calidad y mantenimiento profesional para optimizar tus equipos al máximo. ¡Déjalo en manos de expertos!
-        </p>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
-            
-            <!-- Card 1: Mantenimiento Preventivo Laptop -->
-            <div id="service-s1" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/mantenimiento_laptop.png" alt="Mantenimiento preventivo de Laptop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Mantenimiento preventivo de Laptop</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Servicio integral para optimizar y asegurar el buen funcionamiento de tu equipo portátil.</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 80.00</span>
+    <main class="flex-grow py-16 px-4 md:px-8 max-w-7xl mx-auto w-full">
+        <section class="flex flex-col items-center justify-center">
+            <span class="text-indigo-600 font-bold uppercase tracking-wider text-sm mb-2">Soporte Profesional</span>
+            <h2 class="text-4xl font-extrabold mb-4 text-slate-800 text-center">Nuestros Servicios</h2>
+            <p class="text-slate-600 mb-12 text-center max-w-2xl leading-relaxed">
+                Ofrecemos soporte técnico de alta calidad y mantenimiento profesional para optimizar tus equipos al
+                máximo. ¡Déjalo en manos de expertos!
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+
+                <!-- Card 1: Mantenimiento Preventivo Laptop -->
+                <div id="service-s1"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/mantenimiento_laptop.png" alt="Mantenimiento preventivo de Laptop"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Mantenimiento preventivo de Laptop</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Servicio integral para
+                            optimizar y asegurar el buen funcionamiento de tu equipo portátil.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 80.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 2: Mantenimiento PC Escritorio -->
-            <div id="service-s2" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/mantenimiento_pc.png" alt="Mantenimiento de PC de escritorio" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Mantenimiento de PC de escritorio</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Limpieza y mantenimiento general de componentes internos para computadoras de escritorio.</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 100.00</span>
+                <!-- Card 2: Mantenimiento PC Escritorio -->
+                <div id="service-s2"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/mantenimiento_pc.png" alt="Mantenimiento de PC de escritorio"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Mantenimiento de PC de escritorio</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Limpieza y mantenimiento
+                            general de componentes internos para computadoras de escritorio.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 100.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 3: Actualización de Drivers -->
-            <div id="service-s3" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/actualizacion_drivers.png" alt="Actualización de drivers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Software</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Actualización de drivers</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación y actualización de los últimos controladores de software para mayor estabilidad.</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 40.00</span>
+                <!-- Card 3: Actualización de Drivers -->
+                <div id="service-s3"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/actualizacion_drivers.png" alt="Actualización de drivers"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Software</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Actualización de drivers</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación y actualización de
+                            los últimos controladores de software para mayor estabilidad.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 40.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 4: Formateo e Instalación de SO -->
-            <div id="service-s4" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/instalacion_so.png" alt="Formateo e Instalación de SO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Sistema</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Formateo e Instalación de SO</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación limpia de Windows o distribuciones Linux. Incluye configuración inicial y utilidades básicas.</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 60.00</span>
+                <!-- Card 4: Formateo e Instalación de SO -->
+                <div id="service-s4"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/instalacion_so.png" alt="Formateo e Instalación de SO"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Sistema</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Formateo e Instalación de SO</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación limpia de Windows o
+                            distribuciones Linux. Incluye configuración inicial y utilidades básicas.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 60.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 5: Upgrade de RAM y SSD -->
-            <div id="service-s5" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/upgrade_ram_ssd.png" alt="Upgrade de RAM y SSD" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Hardware</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Upgrade de RAM y SSD</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación de nuevos componentes para acelerar tu equipo. (El precio no incluye el costo del componente).</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 20.00</span>
+                <!-- Card 5: Upgrade de RAM y SSD -->
+                <div id="service-s5"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/upgrade_ram_ssd.png" alt="Upgrade de RAM y SSD"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Hardware</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Upgrade de RAM y SSD</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Instalación de nuevos
+                            componentes para acelerar tu equipo. (El precio no incluye el costo del componente).</p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 20.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 6: Cambio de Pasta Térmica Premium -->
-            <div id="service-s6" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/pasta_termica.png" alt="Cambio de Pasta Térmica Premium" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Cambio de Pasta Térmica Premium</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Limpieza del procesador y aplicación de pasta térmica de alto rendimiento para reducir drásticamente las temperaturas.</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 40.00</span>
+                <!-- Card 6: Cambio de Pasta Térmica Premium -->
+                <div id="service-s6"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/pasta_termica.png" alt="Cambio de Pasta Térmica Premium"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-indigo-100 text-indigo-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Mantenimiento</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Cambio de Pasta Térmica Premium</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Limpieza del procesador y
+                            aplicación de pasta térmica de alto rendimiento para reducir drásticamente las temperaturas.
+                        </p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 40.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Card 7: Ensamblaje de PC Gamer -->
-            <div id="service-s7" class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
-                <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
-                    <img src="img/ensamblaje_pc.png" alt="Ensamblaje de PC Gamer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <span class="absolute top-3 left-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Hardware</span>
-                </div>
-                <div class="p-5 flex flex-col flex-grow">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">Ensamblaje de PC Gamer</h3>
-                    <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Armado completo de tu computadora desde cero con excelente gestión de cables (cable management) y pruebas de estrés.</p>
-                    <div class="mt-auto">
-                        <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
-                            <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
-                            <span class="text-xl font-extrabold text-indigo-600">S/. 150.00</span>
+                <!-- Card 7: Ensamblaje de PC Gamer -->
+                <div id="service-s7"
+                    class="bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col group">
+                    <div class="aspect-video w-full overflow-hidden bg-slate-100 relative">
+                        <img src="img/ensamblaje_pc.png" alt="Ensamblaje de PC Gamer"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <span
+                            class="absolute top-3 left-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Hardware</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
+                            Ensamblaje de PC Gamer</h3>
+                        <p class="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">Armado completo de tu
+                            computadora desde cero con excelente gestión de cables (cable management) y pruebas de
+                            estrés.</p>
+                        <div class="mt-auto">
+                            <div class="flex items-baseline justify-between mb-4 border-t border-slate-100 pt-4">
+                                <span
+                                    class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Precio</span>
+                                <span class="text-xl font-extrabold text-indigo-600">S/. 150.00</span>
+                            </div>
+                            <button type="button"
+                                class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center">
+                                <p>Solicitar</p>
+                            </button>
                         </div>
-                        <button type="button" class="w-full bg-slate-800 hover:bg-indigo-600 active:scale-[0.98] text-white text-sm font-semibold py-3 rounded-xl transition-all duration-300 cursor-pointer shadow-sm text-center flex items-center justify-center"><p>Solicitar</p></button>
                     </div>
                 </div>
-            </div>
 
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer class="flex flex-col bg-slate-50 items-center justify-around w-full py-16 text-sm text-gray-800/70">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+            <a href="index.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Inicio
+            </a>
+            <a href="catalogo.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Catálogo
+            </a>
+            <a href="servicios.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Servicios
+            </a>
+            <a href="contacto.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Contacto
+            </a>
+            <a href="ubicanos_demo.html" class="font-medium text-gray-500 hover:text-black transition-all">
+                Ubícanos
+            </a>
         </div>
-    </section>
-</main>
-
-
-
-<footer class="flex flex-col bg-slate-50 items-center justify-around w-full py-16 text-sm text-gray-800/70">
-    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-        <a href="index.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Inicio
-        </a>
-        <a href="catalogo.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Catálogo
-        </a>
-        <a href="servicios.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Servicios
-        </a>
-        <a href="contacto.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Contacto
-        </a>
-        <a href="ubicanos_demo.html" class="font-medium text-gray-500 hover:text-black transition-all">
-            Ubícanos
-        </a>
-    </div>
-    <div class="flex items-center gap-4 mt-8 text-indigo-500">
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-        <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37m1.5-4.87h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </a>
-    </div>
-    <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
-    <!-- Modal de Login (Sign In) -->
-    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 md:p-10 relative transform translate-y-4 transition-transform duration-300">
-            <button id="close-login-btn" class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95" aria-label="Cerrar modal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+        <div class="flex items-center gap-4 mt-8 text-indigo-500">
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-            </button>
-            <div class="flex flex-col items-start w-full">
-                <div class="mb-6">
-                    <svg class="w-10 h-11 text-indigo-600" width="30" height="33" viewBox="0 0 30 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m8 4.55 6.75 3.884 6.75-3.885M8 27.83v-7.755L1.25 16.19m27 0-6.75 3.885v7.754M1.655 8.658l13.095 7.546 13.095-7.546M14.75 31.25V16.189m13.5 5.976V10.212a2.98 2.98 0 0 0-1.5-2.585L16.25 1.65a3.01 3.01 0 0 0-3 0L2.75 7.627a3 3 0 0 0-1.5 2.585v11.953a2.98 2.98 0 0 0 1.5 2.585l10.5 5.977a3.01 3.01 0 0 0 3 0l10.5-5.977a3 3 0 0 0 1.5-2.585" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </a>
+            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 11.37a4 4 0 1 1-7.914 1.173A4 4 0 0 1 16 11.37m1.5-4.87h.01" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+        </div>
+        <p class="mt-8 text-center">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
+        <!-- Modal de Login/Registro -->
+        <div id="login-modal"
+            class="fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+            <div
+                class="bg-white rounded-3xl shadow-2xl max-w-md md:max-w-2xl w-full p-6 md:p-8 relative transform translate-y-4 transition-transform duration-300 max-h-[90vh] flex flex-col">
+                <button id="close-login-btn"
+                    class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 z-10"
+                    aria-label="Cerrar modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
+                </button>
+                <div class="overflow-y-auto pr-1 flex-1 flex flex-col items-center w-full text-center">
+                    <div class="mb-4 flex justify-center w-full">
+                        <svg class="w-10 h-11 text-indigo-600" width="30" height="33" viewBox="0 0 30 33" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="m8 4.55 6.75 3.884 6.75-3.885M8 27.83v-7.755L1.25 16.19m27 0-6.75 3.885v7.754M1.655 8.658l13.095 7.546 13.095-7.546M14.75 31.25V16.189m13.5 5.976V10.212a2.98 2.98 0 0 0-1.5-2.585L16.25 1.65a3.01 3.01 0 0 0-3 0L2.75 7.627a3 3 0 0 0-1.5 2.585v11.953a2.98 2.98 0 0 0 1.5 2.585l10.5 5.977a3.01 3.01 0 0 0 3 0l10.5-5.977a3 3 0 0 0 1.5-2.585"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h2 id="auth-title" class="text-2xl font-bold text-gray-900 tracking-tight text-center w-full">
+                        Iniciar sesión</h2>
+                    <p id="auth-subtitle" class="mt-1 text-sm text-gray-500/90 text-center w-full">Para más seguridad y
+                        un mejor servicio, por favor inicie sesión.</p>
+
+                    <!-- Formulario de Login -->
+                    <form id="login-form" class="mt-6 w-full max-w-md mx-auto flex flex-col text-left">
+                        <div class="flex flex-col">
+                            <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Correo
+                                Electrónico</label>
+                            <input id="log-email" placeholder="Ingresa tu correo"
+                                class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm"
+                                required type="email" name="email">
+                        </div>
+                        <div class="mt-4 flex flex-col">
+                            <label
+                                class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Contraseña</label>
+                            <input id="log-password" placeholder="Ingresa tu contraseña"
+                                class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm"
+                                required type="password" name="password">
+                        </div>
+                        <button type="submit"
+                            class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20 text-sm">Iniciar
+                            sesión</button>
+                        <p class="text-center text-xs text-gray-500 mt-4 w-full">¿No tienes una cuenta? <button
+                                type="button" id="show-register"
+                                class="text-indigo-600 font-semibold hover:underline">Registrarse</button></p>
+                    </form>
+
+                    <!-- Formulario de Registro (Extendido a 9 campos) -->
+                    <form id="register-form" class="mt-6 w-full max-w-xl mx-auto flex flex-col text-left hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Columna Izquierda -->
+                            <div class="flex flex-col gap-3.5">
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Usuario</label>
+                                    <input id="reg-username" placeholder="Nombre de usuario"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="text" name="username">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Correo
+                                        Electrónico</label>
+                                    <input id="reg-email" placeholder="correo@ejemplo.com"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="email" name="email">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Contraseña</label>
+                                    <input id="reg-password" placeholder="Crea una contraseña"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="password" name="password">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">DNI</label>
+                                    <input id="reg-dni" placeholder="Documento de Identidad"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="text" name="dni" pattern="\d{8,10}"
+                                        title="DNI debe tener entre 8 y 10 dígitos">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Teléfono</label>
+                                    <input id="reg-phone" placeholder="Ej: 987654321"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="tel" name="phone">
+                                </div>
+                            </div>
+
+                            <!-- Columna Derecha -->
+                            <div class="flex flex-col gap-3.5">
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Dirección
+                                        de Envío</label>
+                                    <input id="reg-address" placeholder="Av. Principal 123"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="text" name="address">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Provincia</label>
+                                    <input id="reg-province" placeholder="Ej: Lima"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="text" name="province">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Ciudad</label>
+                                    <input id="reg-city" placeholder="Ej: San Juan de Lurigancho"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="text" name="city">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label
+                                        class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Código
+                                        Postal</label>
+                                    <input id="reg-zip" placeholder="Ej: 15401"
+                                        class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                        required type="text" name="zip">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-lime-500 text-neutral-900 font-bold transition hover:bg-lime-400 active:scale-[0.98] shadow-lg shadow-lime-500/20 text-sm">Crear
+                            Cuenta</button>
+                        <p class="text-center text-xs text-gray-500 mt-4 w-full">¿Ya tienes cuenta? <button
+                                type="button" id="show-login"
+                                class="text-indigo-600 font-semibold hover:underline">Inicia sesión</button></p>
+                    </form>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Iniciar sesión</h2>
-                <p class="mt-2 text-sm text-gray-500/90">Para más seguridad y un mejor servicio, por favor inicie sesión.</p>
-                <form id="login-form" class="mt-8 w-full flex flex-col text-left">
-                    <div class="flex flex-col">
-                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Usuario</label>
-                        <input placeholder="Por favor ingrese su usuario" class="mt-2 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3.5 w-full transition text-sm" required type="text" name="username">
-                    </div>
-                    <div class="mt-5 flex flex-col">
-                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Contraseña</label>
-                        <input placeholder="Por favor ingrese su contraseña" class="mt-2 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3.5 w-full transition text-sm" required type="password" name="password">
-                    </div>
-                    <button type="submit" class="mt-8 py-3.5 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20">Iniciar sesión</button>
-                    <p class="text-center text-sm text-gray-500 mt-6 w-full">¿No tienes una cuenta? <a href="#" class="text-indigo-600 font-semibold hover:underline">Registrarse</a></p>
-                </form>
             </div>
         </div>
-    </div>
 
-    <script>
-        // === INDICACIONES PARA LA PRESENTACIÓN ===
-        // Este script controla la interactividad del menú móvil (pantallas pequeñas).
-        // 1. Selecciona todos los botones con clase '.menu-btn' (hamburguesa).
-        // 2. Selecciona todos los contenedores del menú móvil con clase '.mobile-menu'.
-        // 3. Itera sobre cada botón y le añade un escuchador de eventos 'click'.
-        // 4. Al hacer clic, alterna (toggle) la clase CSS 'hidden' para mostrar u ocultar el menú móvil.
-        const menuButtons = document.querySelectorAll('.menu-btn');
-        const mobileMenus = document.querySelectorAll('.mobile-menu');
+        <script>
+            // === INDICACIONES PARA LA PRESENTACIÓN ===
+            // Este script controla la interactividad del menú móvil (pantallas pequeñas).
+            // 1. Selecciona todos los botones con clase '.menu-btn' (hamburguesa).
+            // 2. Selecciona todos los contenedores del menú móvil con clase '.mobile-menu'.
+            // 3. Itera sobre cada botón y le añade un escuchador de eventos 'click'.
+            // 4. Al hacer clic, alterna (toggle) la clase CSS 'hidden' para mostrar u ocultar el menú móvil.
+            const menuButtons = document.querySelectorAll('.menu-btn');
+            const mobileMenus = document.querySelectorAll('.mobile-menu');
 
-        menuButtons.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                mobileMenus[index].classList.toggle('hidden');
+            menuButtons.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    mobileMenus[index].classList.toggle('hidden');
+                });
             });
-        });
 
-        // --- LÓGICA DEL CARRITO (SINCRONIZACIÓN) ---
-        let cart = [];
-        try {
-            cart = JSON.parse(localStorage.getItem('llamala_cart')) || [];
-        } catch(e) {
-            cart = [];
-        }
-
-        function saveCart() {
-            localStorage.setItem('llamala_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            saveCart();
-        }
-
-        function updateQuantity(productId, delta) {
-            const item = cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity += delta;
-                if (item.quantity <= 0) {
-                    removeFromCart(productId);
-                } else {
-                    saveCart();
-                }
+            // --- LÓGICA DEL CARRITO (SINCRONIZACIÓN) ---
+            let cart = [];
+            try {
+                cart = JSON.parse(localStorage.getItem('llamala_cart')) || [];
+            } catch (e) {
+                cart = [];
             }
-        }
 
-        function parsePrice(priceStr) {
-            const singlePriceStr = priceStr.split('-')[0].trim();
-            const number = parseFloat(singlePriceStr.replace(/[^\d.]/g, ''));
-            return isNaN(number) ? 0 : number;
-        }
-
-        function updateCartUI() {
-            const cartBadge = document.getElementById('cart-badge');
-            const cartBadgeMobile = document.getElementById('cart-badge-mobile');
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            
-            if (cartBadge) {
-                cartBadge.textContent = totalItems;
-                if (totalItems > 0) {
-                    cartBadge.classList.remove('scale-0');
-                    cartBadge.classList.add('scale-100');
-                } else {
-                    cartBadge.classList.remove('scale-100');
-                    cartBadge.classList.add('scale-0');
-                }
+            function saveCart() {
+                localStorage.setItem('llamala_cart', JSON.stringify(cart));
+                updateCartUI();
             }
-            
-            if (cartBadgeMobile) {
-                cartBadgeMobile.textContent = totalItems;
-                if (totalItems > 0) {
-                    cartBadgeMobile.classList.remove('scale-0');
-                    cartBadgeMobile.classList.add('scale-100');
-                } else {
-                    cartBadgeMobile.classList.remove('scale-100');
-                    cartBadgeMobile.classList.add('scale-0');
+
+            function removeFromCart(productId) {
+                cart = cart.filter(item => item.id !== productId);
+                saveCart();
+            }
+
+            function updateQuantity(productId, delta) {
+                const item = cart.find(item => item.id === productId);
+                if (item) {
+                    item.quantity += delta;
+                    if (item.quantity <= 0) {
+                        removeFromCart(productId);
+                    } else {
+                        saveCart();
+                    }
                 }
             }
 
-            const cartCountTxt = document.getElementById('cart-count-txt');
-            const cartCountTxtMobile = document.getElementById('cart-count-txt-mobile');
-            if (cartCountTxt) cartCountTxt.textContent = `${totalItems} ${totalItems === 1 ? 'producto' : 'productos'}`;
-            if (cartCountTxtMobile) cartCountTxtMobile.textContent = `${totalItems} prod`;
+            function parsePrice(priceStr) {
+                const singlePriceStr = priceStr.split('-')[0].trim();
+                const number = parseFloat(singlePriceStr.replace(/[^\d.]/g, ''));
+                return isNaN(number) ? 0 : number;
+            }
 
-            let totalVal = 0;
-            
-            // Render items desktop
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartFooter = document.getElementById('cart-footer');
-            const emptyState = document.getElementById('cart-empty-state');
-            
-            if (cartItemsContainer) {
-                cartItemsContainer.innerHTML = '';
-                if (cart.length === 0) {
-                    if (emptyState) cartItemsContainer.appendChild(emptyState);
-                    if (cartFooter) cartFooter.classList.add('hidden');
-                } else {
-                    if (cartFooter) cartFooter.classList.remove('hidden');
-                    cart.forEach(item => {
-                        const itemPrice = parsePrice(item.price);
-                        totalVal += itemPrice * item.quantity;
-                        
-                        const div = document.createElement('div');
-                        div.className = 'flex items-center gap-3 border-b border-gray-50 pb-3 last:border-0 last:pb-0 text-left';
-                        div.innerHTML = `
+            function updateCartUI() {
+                const cartBadge = document.getElementById('cart-badge');
+                const cartBadgeMobile = document.getElementById('cart-badge-mobile');
+
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+                if (cartBadge) {
+                    cartBadge.textContent = totalItems;
+                    if (totalItems > 0) {
+                        cartBadge.classList.remove('scale-0');
+                        cartBadge.classList.add('scale-100');
+                    } else {
+                        cartBadge.classList.remove('scale-100');
+                        cartBadge.classList.add('scale-0');
+                    }
+                }
+
+                if (cartBadgeMobile) {
+                    cartBadgeMobile.textContent = totalItems;
+                    if (totalItems > 0) {
+                        cartBadgeMobile.classList.remove('scale-0');
+                        cartBadgeMobile.classList.add('scale-100');
+                    } else {
+                        cartBadgeMobile.classList.remove('scale-100');
+                        cartBadgeMobile.classList.add('scale-0');
+                    }
+                }
+
+                const cartCountTxt = document.getElementById('cart-count-txt');
+                const cartCountTxtMobile = document.getElementById('cart-count-txt-mobile');
+                if (cartCountTxt) cartCountTxt.textContent = `${totalItems} ${totalItems === 1 ? 'producto' : 'productos'}`;
+                if (cartCountTxtMobile) cartCountTxtMobile.textContent = `${totalItems} prod`;
+
+                let totalVal = 0;
+
+                // Render items desktop
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartFooter = document.getElementById('cart-footer');
+                const emptyState = document.getElementById('cart-empty-state');
+
+                if (cartItemsContainer) {
+                    cartItemsContainer.innerHTML = '';
+                    if (cart.length === 0) {
+                        if (emptyState) cartItemsContainer.appendChild(emptyState);
+                        if (cartFooter) cartFooter.classList.add('hidden');
+                    } else {
+                        if (cartFooter) cartFooter.classList.remove('hidden');
+                        cart.forEach(item => {
+                            const itemPrice = parsePrice(item.price);
+                            totalVal += itemPrice * item.quantity;
+
+                            const div = document.createElement('div');
+                            div.className = 'flex items-center gap-3 border-b border-gray-50 pb-3 last:border-0 last:pb-0 text-left';
+                            div.innerHTML = `
                             <img src="${item.img}" alt="${item.name}" class="w-12 h-12 object-contain bg-[#fafafa] rounded-lg p-1 border border-gray-100">
                             <div class="flex-1 min-w-0">
                                 <p class="text-xs font-bold text-gray-900 truncate">${item.name}</p>
@@ -513,27 +737,27 @@
                                 </div>
                             </div>
                         `;
-                        cartItemsContainer.appendChild(div);
-                    });
+                            cartItemsContainer.appendChild(div);
+                        });
+                    }
                 }
-            }
 
-            // Render items mobile
-            const cartItemsContainerMobile = document.getElementById('cart-items-mobile');
-            const cartFooterMobile = document.getElementById('cart-footer-mobile');
-            const emptyStateMobile = document.getElementById('cart-empty-state-mobile');
-            
-            if (cartItemsContainerMobile) {
-                cartItemsContainerMobile.innerHTML = '';
-                if (cart.length === 0) {
-                    if (emptyStateMobile) cartItemsContainerMobile.appendChild(emptyStateMobile);
-                    if (cartFooterMobile) cartFooterMobile.classList.add('hidden');
-                } else {
-                    if (cartFooterMobile) cartFooterMobile.classList.remove('hidden');
-                    cart.forEach(item => {
-                        const div = document.createElement('div');
-                        div.className = 'flex items-center gap-3 border-b border-gray-50 pb-3 last:border-0 last:pb-0 text-left';
-                        div.innerHTML = `
+                // Render items mobile
+                const cartItemsContainerMobile = document.getElementById('cart-items-mobile');
+                const cartFooterMobile = document.getElementById('cart-footer-mobile');
+                const emptyStateMobile = document.getElementById('cart-empty-state-mobile');
+
+                if (cartItemsContainerMobile) {
+                    cartItemsContainerMobile.innerHTML = '';
+                    if (cart.length === 0) {
+                        if (emptyStateMobile) cartItemsContainerMobile.appendChild(emptyStateMobile);
+                        if (cartFooterMobile) cartFooterMobile.classList.add('hidden');
+                    } else {
+                        if (cartFooterMobile) cartFooterMobile.classList.remove('hidden');
+                        cart.forEach(item => {
+                            const div = document.createElement('div');
+                            div.className = 'flex items-center gap-3 border-b border-gray-50 pb-3 last:border-0 last:pb-0 text-left';
+                            div.innerHTML = `
                             <img src="${item.img}" alt="${item.name}" class="w-10 h-10 object-contain bg-[#fafafa] rounded-lg p-1 border border-gray-100">
                             <div class="flex-1 min-w-0">
                                 <p class="text-xs font-bold text-gray-900 truncate">${item.name}</p>
@@ -545,395 +769,333 @@
                                 <button onclick="updateQuantity(${item.id}, 1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
                             </div>
                         `;
-                        cartItemsContainerMobile.appendChild(div);
-                    });
-                }
-            }
-
-            const totalStr = `S/${totalVal.toFixed(2)}`;
-            const cartTotal = document.getElementById('cart-total-price');
-            const cartTotalMobile = document.getElementById('cart-total-price-mobile');
-            if (cartTotal) cartTotal.textContent = totalStr;
-            if (cartTotalMobile) cartTotalMobile.textContent = totalStr;
-        }
-
-        window.removeFromCart = removeFromCart;
-        window.updateQuantity = updateQuantity;
-
-        function setupCartDropdown(btnId, dropdownId) {
-            const btn = document.getElementById(btnId);
-            const dropdown = document.getElementById(dropdownId);
-            if (!btn || !dropdown) return;
-            
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                dropdown.classList.toggle('hidden');
-            });
-            
-            document.addEventListener('click', (e) => {
-                if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.classList.add('hidden');
-                }
-            });
-        }
-
-        // --- LÓGICA DEL MODAL DE LOGIN ---
-        const loginModal = document.getElementById('login-modal');
-        const openLoginBtns = document.querySelectorAll('#login-btn, #login-btn-mobile');
-        const closeLoginBtn = document.getElementById('close-login-btn');
-
-        if (loginModal) {
-            const card = loginModal.querySelector('div');
-            
-            function openLogin() {
-                loginModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                setTimeout(() => {
-                    loginModal.classList.remove('opacity-0');
-                    loginModal.classList.add('opacity-100');
-                    if (card) {
-                        card.classList.remove('translate-y-4');
-                        card.classList.add('translate-y-0');
+                            cartItemsContainerMobile.appendChild(div);
+                        });
                     }
-                }, 10);
-            }
-            
-            function closeLogin() {
-                loginModal.classList.remove('opacity-100');
-                loginModal.classList.add('opacity-0');
-                if (card) {
-                    card.classList.remove('translate-y-0');
-                    card.classList.add('translate-y-4');
                 }
-                document.body.style.overflow = '';
-                setTimeout(() => {
-                    loginModal.classList.add('hidden');
-                }, 300);
+
+                const totalStr = `S/${totalVal.toFixed(2)}`;
+                const cartTotal = document.getElementById('cart-total-price');
+                const cartTotalMobile = document.getElementById('cart-total-price-mobile');
+                if (cartTotal) cartTotal.textContent = totalStr;
+                if (cartTotalMobile) cartTotalMobile.textContent = totalStr;
             }
 
-            openLoginBtns.forEach(btn => {
+            window.removeFromCart = removeFromCart;
+            window.updateQuantity = updateQuantity;
+
+            function setupCartDropdown(btnId, dropdownId) {
+                const btn = document.getElementById(btnId);
+                const dropdown = document.getElementById(dropdownId);
+                if (!btn || !dropdown) return;
+
                 btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openLogin();
+                    e.stopPropagation();
+                    dropdown.classList.toggle('hidden');
                 });
-            });
 
-            if (closeLoginBtn) {
-                closeLoginBtn.addEventListener('click', closeLogin);
-            }
+                dropdown.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
 
-            loginModal.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    closeLogin();
-                }
-            });
-
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !loginModal.classList.contains('hidden')) {
-                    closeLogin();
-                }
-            });
-
-            const loginForm = document.getElementById('login-form');
-            if (loginForm) {
-                loginForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const username = loginForm.username.value;
-                    alert(`Inicio de sesión simulado para el usuario: ${username}`);
-                    closeLogin();
+                document.addEventListener('click', (e) => {
+                    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.add('hidden');
+                    }
                 });
             }
-        }
 
-        // --- INICIALIZACIÓN ---
-        setupCartDropdown('cart-btn', 'cart-dropdown');
-        setupCartDropdown('cart-btn-mobile', 'cart-dropdown-mobile');
-        setupGlobalSearch('global-search-input', 'search-dropdown');
-        setupGlobalSearch('global-search-input-mobile', 'search-dropdown-mobile');
-        updateCartUI();
+            // La lógica del login es manejada completamente por js/auth.js (cargado como módulo)
 
-        // === SCROLL A SERVICIO ===
-        function scrollToService(serviceId) {
-            const targetEl = document.getElementById(`service-${serviceId}`);
-            if (targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // Resaltar temporalmente
-                targetEl.classList.remove('border-slate-200/80', 'shadow-sm');
-                targetEl.classList.add('border-indigo-600', 'ring-4', 'ring-indigo-100', 'scale-[1.02]', 'shadow-lg');
-                setTimeout(() => {
-                    targetEl.classList.remove('border-indigo-600', 'ring-4', 'ring-indigo-100', 'scale-[1.02]', 'shadow-lg');
-                    targetEl.classList.add('border-slate-200/80', 'shadow-sm');
-                }, 3000);
-            }
-        }
+            // --- INICIALIZACIÓN ---
+            setupCartDropdown('cart-btn', 'cart-dropdown');
+            setupCartDropdown('cart-btn-mobile', 'cart-dropdown-mobile');
+            setupGlobalSearch('global-search-input', 'search-dropdown');
+            setupGlobalSearch('global-search-input-mobile', 'search-dropdown-mobile');
+            updateCartUI();
 
-        // === DATASET DE PRODUCTOS DETALLADOS ===
-        const productDataset = {
-            1: {
-                id: 1,
-                name: "Teclado Mecánico AF81",
-                brand: "AJAZZ",
-                category: "Teclados",
-                price: "S/110.00",
-                img: "img/TecladoAF81.png"
-            },
-            2: {
-                id: 2,
-                name: "Thermal Pad",
-                brand: "TEUCER",
-                category: "Disipación",
-                price: "S/25.00 - S/75.00",
-                img: "img/Thermal Pad.png"
-            },
-            3: {
-                id: 3,
-                name: "Thermal Pad Artic",
-                brand: "Artic",
-                category: "Disipación",
-                price: "S/50.00",
-                img: "img/ThermalPadTP3.avif"
-            },
-            4: {
-                id: 4,
-                name: "Pasta Térmica MX4 4G",
-                brand: "Artic",
-                category: "Disipación",
-                price: "S/25.00",
-                img: "img/Pasta Termica MX4 4G.avif"
-            },
-            5: {
-                id: 5,
-                name: "Gamesir Kaleid",
-                brand: "Gamesir",
-                category: "Mandos",
-                price: "S/175.00",
-                img: "img/Gamesir Kaleid.avif"
-            },
-            6: {
-                id: 6,
-                name: "Mouse Razer",
-                brand: "Razer",
-                category: "Mouses",
-                price: "S/85.00",
-                img: "img/Mause Razer.avif"
-            },
-            7: {
-                id: 7,
-                name: "Gamesir T7",
-                brand: "Gamesir",
-                category: "Mandos",
-                price: "S/125.00",
-                img: "img/Gamesir T7.avif"
-            },
-            8: {
-                id: 8,
-                name: "Gamesir Supernova",
-                brand: "Gamesir",
-                category: "Mandos",
-                price: "S/225.00",
-                img: "img/Gamesir Supernova.avif"
-            },
-            9: {
-                id: 9,
-                name: "Monitor ASUS TUF Gaming VG27AQ",
-                brand: "Asus",
-                category: "Monitores",
-                price: "S/1349.90",
-                img: "img/Asus.jpg"
-            },
-            10: {
-                id: 10,
-                name: "Teclado Pebble Keys 2 K380s",
-                brand: "Logitec",
-                category: "Teclados",
-                price: "S/161.50",
-                img: "img/Logitec.jpg"
-            },
-            11: {
-                id: 11,
-                name: "Audífonos Gamer Antryx Enigma SE White",
-                brand: "Antryx",
-                category: "Audio",
-                price: "S/171.00",
-                img: "img/AntryxAudífono.jpg"
-            },
-            12: {
-                id: 12,
-                name: "Cámara Web Logitech C922",
-                brand: "Logitech",
-                category: "Periféricos",
-                price: "S/340.00",
-                img: "img/CamaraWebLogitech.jpg"
-            },
-            13: {
-                id: 13,
-                name: "Monitor Acer Predator",
-                brand: "Acer",
-                category: "Monitores",
-                price: "S/750.00",
-                img: "img/MonitorAcer.jpg"
-            },
-            14: {
-                id: 14,
-                name: "ADATA XPG Lancer RGB 32Gb DDR5",
-                brand: "ADATA",
-                category: "Componentes",
-                price: "S/2099.00",
-                img: "img/ADATA.jpg"
-            },
-            15: {
-                id: 15,
-                name: "Kingston Fury Renegade 32GB DDR5",
-                brand: "Kingston",
-                category: "Componentes",
-                price: "S/4999.90",
-                img: "img/FuryRenegade.jpg"
-            },
-            16: {
-                id: 16,
-                name: "Logitech MX Master 3S",
-                brand: "Logitech",
-                category: "Mouses",
-                price: "S/344.00",
-                img: "img/mouseLogitech.jpg"
-            },
-            17: {
-                id: 17,
-                name: "Mouse Inalámbrico Gamer TWOLF Blanco",
-                brand: "TWOLF",
-                category: "Mouses",
-                price: "S/55.00",
-                img: "img/MouseInalambrico.jpg"
-            },
-            18: {
-                id: 18,
-                name: "Audífono Gamer Logitech G G432",
-                brand: "Logitech",
-                category: "Audio",
-                price: "S/280.00",
-                img: "img/AudifonoLogitechGaming.jpg"
-            },
-            19: {
-                id: 19,
-                name: "Audífonos Gamer Razer Blackshark V2 X",
-                brand: "Razer",
-                category: "Audio",
-                price: "S/179.90",
-                img: "img/AudifonosRazer.jpg"
-            }
-        };
-
-        // === DATASET DE SERVICIOS DE SOPORTE Y MANTENIMIENTO ===
-        const servicesDataset = {
-            "s1": {
-                id: "s1",
-                name: "Mantenimiento preventivo de Laptop",
-                brand: "Mantenimiento",
-                category: "Soporte",
-                price: "S/80.00",
-                img: "img/mantenimiento_laptop.png",
-                url: "servicios.html?service=s1",
-                isService: true
-            },
-            "s2": {
-                id: "s2",
-                name: "Mantenimiento de PC de escritorio",
-                brand: "Mantenimiento",
-                category: "Soporte",
-                price: "S/100.00",
-                img: "img/mantenimiento_pc.png",
-                url: "servicios.html?service=s2",
-                isService: true
-            },
-            "s3": {
-                id: "s3",
-                name: "Actualización de drivers",
-                brand: "Software",
-                category: "Soporte",
-                price: "S/40.00",
-                img: "img/actualizacion_drivers.png",
-                url: "servicios.html?service=s3",
-                isService: true
-            },
-            "s4": {
-                id: "s4",
-                name: "Formateo e Instalación de SO",
-                brand: "Sistema",
-                category: "Soporte",
-                price: "S/60.00",
-                img: "img/instalacion_so.png",
-                url: "servicios.html?service=s4",
-                isService: true
-            },
-            "s5": {
-                id: "s5",
-                name: "Upgrade de RAM y SSD",
-                brand: "Hardware",
-                category: "Soporte",
-                price: "S/20.00",
-                img: "img/upgrade_ram_ssd.png",
-                url: "servicios.html?service=s5",
-                isService: true
-            },
-            "s6": {
-                id: "s6",
-                name: "Cambio de Pasta Térmica Premium",
-                brand: "Mantenimiento",
-                category: "Soporte",
-                price: "S/40.00",
-                img: "img/pasta_termica.png",
-                url: "servicios.html?service=s6",
-                isService: true
-            },
-            "s7": {
-                id: "s7",
-                name: "Ensamblaje de PC Gamer",
-                brand: "Hardware",
-                category: "Soporte",
-                price: "S/150.00",
-                img: "img/ensamblaje_pc.png",
-                url: "servicios.html?service=s7",
-                isService: true
-            }
-        };
-
-        // === FUNCIONALIDAD DE BÚSQUEDA GLOBAL (DROPDOWN) ===
-        function setupGlobalSearch(inputId, dropdownId) {
-            const searchInput = document.getElementById(inputId);
-            const searchDropdown = document.getElementById(dropdownId);
-            
-            if(!searchInput || !searchDropdown) return;
-
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase().trim();
-                searchDropdown.innerHTML = '';
-                
-                if (query === '') {
-                    searchDropdown.classList.add('hidden');
-                    return;
+            // === SCROLL A SERVICIO ===
+            function scrollToService(serviceId) {
+                const targetEl = document.getElementById(`service-${serviceId}`);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Resaltar temporalmente
+                    targetEl.classList.remove('border-slate-200/80', 'shadow-sm');
+                    targetEl.classList.add('border-indigo-600', 'ring-4', 'ring-indigo-100', 'scale-[1.02]', 'shadow-lg');
+                    setTimeout(() => {
+                        targetEl.classList.remove('border-indigo-600', 'ring-4', 'ring-indigo-100', 'scale-[1.02]', 'shadow-lg');
+                        targetEl.classList.add('border-slate-200/80', 'shadow-sm');
+                    }, 3000);
                 }
-                
-                const productResults = Object.values(productDataset).filter(p => 
-                    p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
-                );
-                
-                const serviceResults = Object.values(servicesDataset).filter(s => 
-                    s.name.toLowerCase().includes(query) || s.brand.toLowerCase().includes(query) || s.category.toLowerCase().includes(query)
-                );
-                
-                const results = [...productResults, ...serviceResults];
-                
-                if (results.length > 0) {
-                    searchDropdown.classList.remove('hidden');
-                    results.forEach(itemData => {
-                        const item = document.createElement('div');
-                        item.className = 'flex items-center gap-3 p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0 transition-colors text-left';
-                        
-                        const typeTag = itemData.isService 
-                            ? `<span class="bg-indigo-100 text-indigo-800 text-[10px] px-1.5 py-0.5 rounded font-bold">Servicio</span>`
-                            : `<span class="bg-lime-100 text-lime-800 text-[10px] px-1.5 py-0.5 rounded font-bold">Producto</span>`;
-                        
-                        item.innerHTML = `
+            }
+
+            // === DATASET DE PRODUCTOS DETALLADOS ===
+            const productDataset = {
+                1: {
+                    id: 1,
+                    name: "Teclado Mecánico AF81",
+                    brand: "AJAZZ",
+                    category: "Teclados",
+                    price: "S/110.00",
+                    img: "img/TecladoAF81.png"
+                },
+                2: {
+                    id: 2,
+                    name: "Thermal Pad",
+                    brand: "TEUCER",
+                    category: "Disipación",
+                    price: "S/25.00 - S/75.00",
+                    img: "img/Thermal Pad.png"
+                },
+                3: {
+                    id: 3,
+                    name: "Thermal Pad Artic",
+                    brand: "Artic",
+                    category: "Disipación",
+                    price: "S/50.00",
+                    img: "img/ThermalPadTP3.avif"
+                },
+                4: {
+                    id: 4,
+                    name: "Pasta Térmica MX4 4G",
+                    brand: "Artic",
+                    category: "Disipación",
+                    price: "S/25.00",
+                    img: "img/Pasta Termica MX4 4G.avif"
+                },
+                5: {
+                    id: 5,
+                    name: "Gamesir Kaleid",
+                    brand: "Gamesir",
+                    category: "Mandos",
+                    price: "S/175.00",
+                    img: "img/Gamesir Kaleid.avif"
+                },
+                6: {
+                    id: 6,
+                    name: "Mouse Razer",
+                    brand: "Razer",
+                    category: "Mouses",
+                    price: "S/85.00",
+                    img: "img/Mause Razer.avif"
+                },
+                7: {
+                    id: 7,
+                    name: "Gamesir T7",
+                    brand: "Gamesir",
+                    category: "Mandos",
+                    price: "S/125.00",
+                    img: "img/Gamesir T7.avif"
+                },
+                8: {
+                    id: 8,
+                    name: "Gamesir Supernova",
+                    brand: "Gamesir",
+                    category: "Mandos",
+                    price: "S/225.00",
+                    img: "img/Gamesir Supernova.avif"
+                },
+                9: {
+                    id: 9,
+                    name: "Monitor ASUS TUF Gaming VG27AQ",
+                    brand: "Asus",
+                    category: "Monitores",
+                    price: "S/1349.90",
+                    img: "img/Asus.jpg"
+                },
+                10: {
+                    id: 10,
+                    name: "Teclado Pebble Keys 2 K380s",
+                    brand: "Logitec",
+                    category: "Teclados",
+                    price: "S/161.50",
+                    img: "img/Logitec.jpg"
+                },
+                11: {
+                    id: 11,
+                    name: "Audífonos Gamer Antryx Enigma SE White",
+                    brand: "Antryx",
+                    category: "Audio",
+                    price: "S/171.00",
+                    img: "img/AntryxAudífono.jpg"
+                },
+                12: {
+                    id: 12,
+                    name: "Cámara Web Logitech C922",
+                    brand: "Logitech",
+                    category: "Periféricos",
+                    price: "S/340.00",
+                    img: "img/CamaraWebLogitech.jpg"
+                },
+                13: {
+                    id: 13,
+                    name: "Monitor Acer Predator",
+                    brand: "Acer",
+                    category: "Monitores",
+                    price: "S/750.00",
+                    img: "img/MonitorAcer.jpg"
+                },
+                14: {
+                    id: 14,
+                    name: "ADATA XPG Lancer RGB 32Gb DDR5",
+                    brand: "ADATA",
+                    category: "Componentes",
+                    price: "S/2099.00",
+                    img: "img/ADATA.jpg"
+                },
+                15: {
+                    id: 15,
+                    name: "Kingston Fury Renegade 32GB DDR5",
+                    brand: "Kingston",
+                    category: "Componentes",
+                    price: "S/4999.90",
+                    img: "img/FuryRenegade.jpg"
+                },
+                16: {
+                    id: 16,
+                    name: "Logitech MX Master 3S",
+                    brand: "Logitech",
+                    category: "Mouses",
+                    price: "S/344.00",
+                    img: "img/mouseLogitech.jpg"
+                },
+                17: {
+                    id: 17,
+                    name: "Mouse Inalámbrico Gamer TWOLF Blanco",
+                    brand: "TWOLF",
+                    category: "Mouses",
+                    price: "S/55.00",
+                    img: "img/MouseInalambrico.jpg"
+                },
+                18: {
+                    id: 18,
+                    name: "Audífono Gamer Logitech G G432",
+                    brand: "Logitech",
+                    category: "Audio",
+                    price: "S/280.00",
+                    img: "img/AudifonoLogitechGaming.jpg"
+                },
+                19: {
+                    id: 19,
+                    name: "Audífonos Gamer Razer Blackshark V2 X",
+                    brand: "Razer",
+                    category: "Audio",
+                    price: "S/179.90",
+                    img: "img/AudifonosRazer.jpg"
+                }
+            };
+
+            // === DATASET DE SERVICIOS DE SOPORTE Y MANTENIMIENTO ===
+            const servicesDataset = {
+                "s1": {
+                    id: "s1",
+                    name: "Mantenimiento preventivo de Laptop",
+                    brand: "Mantenimiento",
+                    category: "Soporte",
+                    price: "S/80.00",
+                    img: "img/mantenimiento_laptop.png",
+                    url: "servicios.html?service=s1",
+                    isService: true
+                },
+                "s2": {
+                    id: "s2",
+                    name: "Mantenimiento de PC de escritorio",
+                    brand: "Mantenimiento",
+                    category: "Soporte",
+                    price: "S/100.00",
+                    img: "img/mantenimiento_pc.png",
+                    url: "servicios.html?service=s2",
+                    isService: true
+                },
+                "s3": {
+                    id: "s3",
+                    name: "Actualización de drivers",
+                    brand: "Software",
+                    category: "Soporte",
+                    price: "S/40.00",
+                    img: "img/actualizacion_drivers.png",
+                    url: "servicios.html?service=s3",
+                    isService: true
+                },
+                "s4": {
+                    id: "s4",
+                    name: "Formateo e Instalación de SO",
+                    brand: "Sistema",
+                    category: "Soporte",
+                    price: "S/60.00",
+                    img: "img/instalacion_so.png",
+                    url: "servicios.html?service=s4",
+                    isService: true
+                },
+                "s5": {
+                    id: "s5",
+                    name: "Upgrade de RAM y SSD",
+                    brand: "Hardware",
+                    category: "Soporte",
+                    price: "S/20.00",
+                    img: "img/upgrade_ram_ssd.png",
+                    url: "servicios.html?service=s5",
+                    isService: true
+                },
+                "s6": {
+                    id: "s6",
+                    name: "Cambio de Pasta Térmica Premium",
+                    brand: "Mantenimiento",
+                    category: "Soporte",
+                    price: "S/40.00",
+                    img: "img/pasta_termica.png",
+                    url: "servicios.html?service=s6",
+                    isService: true
+                },
+                "s7": {
+                    id: "s7",
+                    name: "Ensamblaje de PC Gamer",
+                    brand: "Hardware",
+                    category: "Soporte",
+                    price: "S/150.00",
+                    img: "img/ensamblaje_pc.png",
+                    url: "servicios.html?service=s7",
+                    isService: true
+                }
+            };
+
+            // === FUNCIONALIDAD DE BÚSQUEDA GLOBAL (DROPDOWN) ===
+            function setupGlobalSearch(inputId, dropdownId) {
+                const searchInput = document.getElementById(inputId);
+                const searchDropdown = document.getElementById(dropdownId);
+
+                if (!searchInput || !searchDropdown) return;
+
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    searchDropdown.innerHTML = '';
+
+                    if (query === '') {
+                        searchDropdown.classList.add('hidden');
+                        return;
+                    }
+
+                    const productResults = Object.values(productDataset).filter(p =>
+                        p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)
+                    );
+
+                    const serviceResults = Object.values(servicesDataset).filter(s =>
+                        s.name.toLowerCase().includes(query) || s.brand.toLowerCase().includes(query) || s.category.toLowerCase().includes(query)
+                    );
+
+                    const results = [...productResults, ...serviceResults];
+
+                    if (results.length > 0) {
+                        searchDropdown.classList.remove('hidden');
+                        results.forEach(itemData => {
+                            const item = document.createElement('div');
+                            item.className = 'flex items-center gap-3 p-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-0 transition-colors text-left';
+
+                            const typeTag = itemData.isService
+                                ? `<span class="bg-indigo-100 text-indigo-800 text-[10px] px-1.5 py-0.5 rounded font-bold">Servicio</span>`
+                                : `<span class="bg-lime-100 text-lime-800 text-[10px] px-1.5 py-0.5 rounded font-bold">Producto</span>`;
+
+                            item.innerHTML = `
                             <img src="${itemData.img}" alt="${itemData.name}" class="w-12 h-12 object-contain bg-[#fafafa] rounded-lg p-1">
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center gap-1.5 mb-0.5">
@@ -944,48 +1106,51 @@
                             </div>
                             <div class="text-sm font-bold text-indigo-600">${itemData.price}</div>
                         `;
-                        item.addEventListener('click', () => {
-                            searchDropdown.classList.add('hidden');
-                            searchInput.value = '';
-                            if (itemData.isService) {
-                                if (typeof scrollToService === 'function') {
-                                    scrollToService(itemData.id);
+                            item.addEventListener('click', () => {
+                                searchDropdown.classList.add('hidden');
+                                searchInput.value = '';
+                                if (itemData.isService) {
+                                    if (typeof scrollToService === 'function') {
+                                        scrollToService(itemData.id);
+                                    } else {
+                                        window.location.href = `servicios.html?service=${itemData.id}`;
+                                    }
                                 } else {
-                                    window.location.href = `servicios.html?service=${itemData.id}`;
+                                    if (typeof openProductDetail === 'function') {
+                                        openProductDetail(itemData.id);
+                                    } else {
+                                        window.location.href = `catalogo.html?product=${itemData.id}`;
+                                    }
                                 }
-                            } else {
-                                if (typeof openProductDetail === 'function') {
-                                    openProductDetail(itemData.id);
-                                } else {
-                                    window.location.href = `catalogo.html?product=${itemData.id}`;
-                                }
-                            }
+                            });
+                            searchDropdown.appendChild(item);
                         });
-                        searchDropdown.appendChild(item);
-                    });
-                } else {
-                    searchDropdown.classList.remove('hidden');
-                    searchDropdown.innerHTML = '<div class="p-4 text-sm text-gray-500 text-center">No se encontraron resultados.</div>';
-                }
-            });
+                    } else {
+                        searchDropdown.classList.remove('hidden');
+                        searchDropdown.innerHTML = '<div class="p-4 text-sm text-gray-500 text-center">No se encontraron resultados.</div>';
+                    }
+                });
 
-            document.addEventListener('click', (e) => {
-                if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
-                    searchDropdown.classList.add('hidden');
-                }
-            });
-        }
-
-        // Detector de parámetros URL al cargar la página
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const serviceId = urlParams.get('service');
-            if (serviceId) {
-                setTimeout(() => {
-                    scrollToService(serviceId);
-                }, 400);
+                document.addEventListener('click', (e) => {
+                    if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+                        searchDropdown.classList.add('hidden');
+                    }
+                });
             }
-        });
-    </script>
+
+            // Detector de parámetros URL al cargar la página
+            window.addEventListener('DOMContentLoaded', () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const serviceId = urlParams.get('service');
+                if (serviceId) {
+                    setTimeout(() => {
+                        scrollToService(serviceId);
+                    }, 400);
+                }
+            });
+        </script>
+        <!-- Inyectar Auth de Firebase/Local -->
+        <script type="module" src="js/auth.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de Configuración e Inicialización de Firebase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex items-center justify-center p-4 md:p-8">
+
+    <div class="max-w-4xl w-full bg-slate-900/60 backdrop-blur-md rounded-3xl border border-slate-800/80 p-6 md:p-10 shadow-2xl">
+        <!-- Encabezado -->
+        <div class="flex items-center gap-4 border-b border-slate-800 pb-6 mb-8">
+            <div class="bg-indigo-600/20 text-indigo-400 p-3.5 rounded-2xl border border-indigo-500/30">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-white">Asistente de Inicialización de Firebase</h1>
+                <p class="text-sm text-slate-400 mt-1">Sube tus productos de manera automatizada a Firestore</p>
+            </div>
+        </div>
+
+        <!-- Pasos a seguir -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-slate-950/40 border border-slate-800/60 rounded-2xl p-5 relative overflow-hidden group">
+                <div class="absolute top-2 right-2 text-6xl font-black text-slate-800/20 select-none">1</div>
+                <h3 class="font-bold text-white text-base mb-2">1. Crear Firestore</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Ve a la consola de Firebase, ingresa a <strong>Firestore Database</strong> y haz clic en <strong>Crear Base de Datos</strong>.
+                </p>
+                <div class="mt-4 p-2 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-[10px] text-yellow-400">
+                    ⚠️ Selecciona <strong>"Modo de Prueba"</strong> para habilitar lecturas y escrituras temporalmente.
+                </div>
+            </div>
+
+            <div class="bg-slate-950/40 border border-slate-800/60 rounded-2xl p-5 relative overflow-hidden group">
+                <div class="absolute top-2 right-2 text-6xl font-black text-slate-800/20 select-none">2</div>
+                <h3 class="font-bold text-white text-base mb-2">2. Configurar Config</h3>
+                <p class="text-xs text-slate-400 leading-relaxed font-sans">
+                    Copia las credenciales Web App de Firebase e introdúcelas en el archivo local:
+                </p>
+                <div class="mt-2 text-[11px] font-mono bg-slate-950 p-2 rounded-lg text-indigo-400 border border-slate-800 select-all truncate">
+                    js/firebase-config.js
+                </div>
+            </div>
+
+            <div class="bg-slate-950/40 border border-slate-800/60 rounded-2xl p-5 relative overflow-hidden group">
+                <div class="absolute top-2 right-2 text-6xl font-black text-slate-800/20 select-none">3</div>
+                <h3 class="font-bold text-white text-base mb-2">3. Subir Productos</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Cuando el archivo config tenga tus credenciales válidas, presiona el botón de abajo para migrar todos tus productos.
+                </p>
+            </div>
+        </div>
+
+        <!-- Estado de Credenciales -->
+        <div id="credentials-status" class="mb-8 p-4 rounded-2xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span id="status-icon" class="flex h-3 w-3 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3"></span>
+                </span>
+                <div>
+                    <h4 class="font-bold text-sm text-white" id="status-title">Verificando configuración...</h4>
+                    <p class="text-xs text-slate-400" id="status-desc">Cargando módulos de Firebase.</p>
+                </div>
+            </div>
+            <div id="status-action">
+                <!-- Se poblará por JS -->
+            </div>
+        </div>
+
+        <!-- Control de Migración -->
+        <div class="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-6 mb-8 text-center flex flex-col items-center">
+            <p class="text-sm text-slate-300 mb-4 max-w-lg">
+                Este proceso subirá <strong>19 productos</strong> detallados a tu base de datos Firestore, incluyendo nombres, categorías, marcas, imágenes locales, descripciones, especificaciones y stock inicial de 10 a 30 unidades.
+            </p>
+            <button id="start-migration-btn" disabled class="px-8 py-3.5 bg-indigo-600 text-white font-bold rounded-xl shadow-lg transition duration-200 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-indigo-500">
+                Iniciar Subida a Firestore
+            </button>
+        </div>
+
+        <!-- Consola de salida de Logs -->
+        <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+                <span>Consola de Progreso</span>
+                <span id="progress-percent" class="text-indigo-400">0%</span>
+            </h3>
+            
+            <!-- Barra de Progreso -->
+            <div class="w-full bg-slate-950 rounded-full h-2.5 mb-4 border border-slate-800 overflow-hidden">
+                <div id="progress-bar" class="bg-indigo-500 h-2.5 w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Terminal box -->
+            <div id="logs-container" class="h-44 bg-slate-950 border border-slate-800/80 rounded-2xl p-4 font-mono text-xs overflow-y-auto space-y-1.5 scrollbar-thin scrollbar-thumb-slate-800 text-slate-300">
+                <div class="text-slate-500">> Asistente inicializado. Esperando credenciales de Firebase...</div>
+            </div>
+        </div>
+
+        <!-- Enlace para volver a la tienda -->
+        <div class="mt-8 text-center border-t border-slate-800/80 pt-6">
+            <a href="catalogo.html" class="text-sm font-semibold text-slate-400 hover:text-indigo-400 transition">
+                ← Volver al Catálogo de Productos
+            </a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db } from './js/firebase-config.js';
+        import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        const startBtn = document.getElementById('start-migration-btn');
+        const logsContainer = document.getElementById('logs-container');
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        const credStatus = document.getElementById('credentials-status');
+        const statusIcon = document.getElementById('status-icon');
+        const statusTitle = document.getElementById('status-title');
+        const statusDesc = document.getElementById('status-desc');
+
+        // Dataset a migrar
+        const productDataset = {
+            1: {
+                id: 1,
+                name: "Teclado Mecánico AF81",
+                brand: "AJAZZ",
+                category: "Teclados",
+                price: "S/110.00",
+                discount: "30% off",
+                img: "img/TecladoAF81.png",
+                description: "Teclado mecánico premium ultra-compacto formato 75% con iluminación RGB y switches intercambiables en caliente (hot-swappable). Su diseño y materiales garantizan una acústica impecable y una respuesta táctil excepcional.",
+                specs: ["Formato Compacto 75%", "Switches Hot-swappable", "Iluminación RGB personalizable", "Conexión estable USB tipo C"],
+                stock: 15
+            },
+            2: {
+                id: 2,
+                name: "Thermal Pad",
+                brand: "TEUCER",
+                category: "Disipación",
+                price: "S/25.00 - S/75.00",
+                img: "img/Thermal Pad.png",
+                description: "Thermal Pad de alta conductividad térmica marca TEUCER, ideal para sustituir pastas térmicas en componentes con holguras como memorias VRAM de tarjetas de video, VRMs y SSDs M.2.",
+                specs: ["Conductividad de alto nivel", "Espesor y dimensiones adaptables", "No conductor eléctrico", "Fácil corte e instalación"],
+                stock: 20
+            },
+            3: {
+                id: 3,
+                name: "Thermal Pad Artic",
+                brand: "Artic",
+                category: "Disipación",
+                price: "S/50.00",
+                discount: "25% off",
+                img: "img/ThermalPadTP3.avif",
+                description: "Thermal Pad premium fabricado por Artic con una alta transferencia de calor para garantizar que tus componentes se mantengan fríos bajo cargas de trabajo pesadas. Perfecto para refrigeración pasiva.",
+                specs: ["Conductividad térmica superior", "Alta elasticidad y compresibilidad", "Larga vida útil", "Seguro y fácil de usar"],
+                stock: 12
+            },
+            4: {
+                id: 4,
+                name: "Pasta Térmica MX4 4G",
+                brand: "Artic",
+                category: "Disipación",
+                price: "S/25.00",
+                img: "img/Pasta Termica MX4 4G.avif",
+                description: "La clásica pasta térmica MX-4 en su presentación de 4 gramos. Compuesto térmico líder en la industria para disipadores de CPU y chips de GPU con micropartículas de carbono para transferencia térmica excepcional.",
+                specs: ["Jeringa de 4 gramos", "Alta conductividad térmica", "No capacitiva ni conductora", "Durabilidad garantizada de hasta 8 años"],
+                stock: 30
+            },
+            5: {
+                id: 5,
+                name: "Gamesir Kaleid",
+                brand: "Gamesir",
+                category: "Mandos",
+                price: "S/175.00",
+                discount: "10% off",
+                img: "img/Gamesir Kaleid.avif",
+                description: "Mando con cable para PC y Xbox con sticks analógicos magnéticos de efecto Hall que eliminan el drift, gatillos ajustables, carcasa transparente y tiras RGB dinámicas totalmente personalizables.",
+                specs: ["Sticks y gatillos Hall Effect", "Diseño ergonómico translúcido", "Botones traseros mapeables", "Software dedicado Kaleid Control"],
+                stock: 8
+            },
+            6: {
+                id: 6,
+                name: "Mouse Razer",
+                brand: "Razer",
+                category: "Mouses",
+                price: "S/85.00",
+                img: "img/Mause Razer.avif",
+                description: "Mouse de alta precisión para gaming competitivo con sensor óptico avanzado y un chasis ergonómico ultraligero que permite desplazamientos ultra-rápidos y máxima precisión.",
+                specs: ["Sensor óptico de alta precisión", "Switches mecánicos duraderos", "Diseño ergonómico ligero", "Pies de ratón de PTFE de grado superior"],
+                stock: 15
+            },
+            7: {
+                id: 7,
+                name: "Gamesir T7",
+                brand: "Gamesir",
+                category: "Mandos",
+                price: "S/125.00",
+                discount: "20% off",
+                img: "img/Gamesir T7.avif",
+                description: "Mando ergonómico de alta precisión con excelente ergonomía y compatibilidad multiplataforma. Ofrece sticks ultra responsivos y respuesta háptica mediante vibración dual asimétrica.",
+                specs: ["Vibración dual asimétrica", "Compatibilidad multiplataforma", "Sticks analógicos con agarre texturizado", "Gatillos precisos"],
+                stock: 10
+            },
+            8: {
+                id: 8,
+                name: "Gamesir Supernova",
+                brand: "Gamesir",
+                category: "Mandos",
+                price: "S/225.00",
+                img: "img/Gamesir Supernova.avif",
+                description: "Mando inalámbrico de competición pro-gaming con sticks magnéticos de efecto Hall, switches micro-mecánicos para botones principales y gatillos rápidos ajustables.",
+                specs: ["Conexión inalámbrica de baja latencia", "Sticks Hall Effect antidesgaste", "Switches táctiles mecánicos", "Batería recargable de larga duración"],
+                stock: 5
+            },
+            9: {
+                id: 9,
+                name: "Monitor ASUS TUF Gaming VG27AQ",
+                brand: "Asus",
+                category: "Monitores",
+                price: "S/1349.90",
+                discount: "15% off",
+                img: "img/Asus.jpg",
+                description: "Monitor Gaming IPS de 27 pulgadas WQHD (2560x1440) diseñado para jugadores profesionales. Cuenta con frecuencia de actualización ultra-rápida de 165Hz e introduce la tecnología ASUS ELMB Sync para una fluidez de imagen inigualable.",
+                specs: ["27 pulgadas WQHD (2560 x 1440) IPS", "165Hz de tasa de refresco", "1ms de tiempo de respuesta (MPRT)", "ASUS Extreme Low Motion Blur Sync"],
+                stock: 6
+            },
+            10: {
+                id: 10,
+                name: "Teclado Pebble Keys 2 K380s",
+                brand: "Logitec",
+                category: "Teclados",
+                price: "S/161.50",
+                img: "img/Logitec.jpg",
+                description: "Teclado inalámbrico Bluetooth redondo y portátil con teclas redondas y silenciosas. Permite conectar hasta 3 dispositivos simultáneamente y alternar entre ellos con un solo botón.",
+                specs: ["Conexión Bluetooth multidispositivo", "Perfil ultra delgado y portátil", "Teclas silenciosas de perfil bajo", "Autonomía de batería excepcional"],
+                stock: 25
+            },
+            11: {
+                id: 11,
+                name: "Audífonos Gamer Antryx Enigma SE White",
+                brand: "Antryx",
+                category: "Audio",
+                price: "S/171.00",
+                discount: "25% off",
+                img: "img/AntryxAudífono.jpg",
+                description: "Audífonos gamer blancos con sonido estéreo envolvente, micrófono plegable integrado y cómodas almohadillas suaves. Luces LED incorporadas para complementar tu setup.",
+                specs: ["Sonido estéreo inmersivo", "Micrófono con reducción de ruido", "Iluminación LED blanca estética", "Almohadillas acolchadas premium"],
+                stock: 14
+            },
+            12: {
+                id: 12,
+                name: "Cámara Web Logitech C922",
+                brand: "Logitech",
+                category: "Periféricos",
+                price: "S/340.00",
+                img: "img/CamaraWebLogitech.jpg",
+                description: "Cámara web Full HD profesional para streaming y videoconferencias. Graba a 1080p a 30fps o a 720p a 60fps con audio estéreo nítido y enfoque automático inteligente.",
+                specs: ["Resolución Full HD 1080p a 30fps", "Enfoque automático y corrección de luz", "Dos micrófonos para audio estéreo", "Trípode ajustable de mesa incluido"],
+                stock: 12
+            },
+            13: {
+                id: 13,
+                name: "Monitor Acer Predator",
+                brand: "Acer",
+                category: "Monitores",
+                price: "S/750.00",
+                discount: "40% off",
+                img: "img/MonitorAcer.jpg",
+                description: "Monitor de alto rendimiento Predator de Acer optimizado para eSports. Su excelente contraste y fluidez mejorada previenen la fatiga visual en sesiones prolongadas.",
+                specs: ["Alta tasa de refresco", "Diseño ergonómico Predator", "Filtro de luz azul integrado", "Puertos HDMI y DisplayPort"],
+                stock: 4
+            },
+            14: {
+                id: 14,
+                name: "ADATA XPG Lancer RGB 32Gb DDR5",
+                brand: "ADATA",
+                category: "Componentes",
+                price: "S/2099.00",
+                img: "img/ADATA.jpg",
+                description: "Módulo de memoria RAM DDR5 de nueva generación que ofrece velocidades de hasta 6400MHz. Cuenta con disipador de aluminio grueso para enfriamiento eficiente y efectos RGB deslumbrantes.",
+                specs: ["Capacidad de 32GB DDR5", "Frecuencia de 6400MHz", "Iluminación RGB personalizable", "Estabilidad extrema para Overclocking"],
+                stock: 8
+            },
+            15: {
+                id: 15,
+                name: "Kingston Fury Renegade 32GB DDR5",
+                brand: "Kingston",
+                category: "Componentes",
+                price: "S/4999.90",
+                discount: "15% off",
+                img: "img/FuryRenegade.jpg",
+                description: "Memoria RAM DDR5 extrema con velocidades ultra elevadas y latencia ultra baja. La disipación térmica optimizada y el perfil XMP 3.0 garantizan el mejor overclocking con total estabilidad.",
+                specs: ["Capacidad de 32GB DDR5", "Frecuencia extrema de 6400MHz", "Disipador de aluminio negro de perfil alto", "Certificación Intel XMP 3.0"],
+                stock: 10
+            },
+            16: {
+                id: 16,
+                name: "Logitech MX Master 3S",
+                brand: "Logitech",
+                category: "Mouses",
+                price: "S/344.00",
+                img: "img/mouseLogitech.jpg",
+                description: "Mouse de productividad premium con sensor de precisión de 8k DPI que funciona en cualquier superficie. Disfruta de la rueda MagSpeed y de la comodidad de sus accesos rápidos personalizables.",
+                specs: ["Sensor óptico de 8000 DPI", "Rueda MagSpeed electromagnética silenciosa", "Conexión inalámbrica Easy-Switch", "Diseño ergonómico avanzado"],
+                stock: 15
+            },
+            17: {
+                id: 17,
+                name: "Mouse Inalámbrico Gamer TWOLF Blanco",
+                brand: "TWOLF",
+                category: "Mouses",
+                price: "S/55.00",
+                discount: "20% off",
+                img: "img/MouseInalambrico.jpg",
+                description: "Mouse inalámbrico de diseño gaming moderno con luces RGB transicionables. Cuenta con batería recargable de larga duración y switches silenciosos ideales para oficina y hogar.",
+                specs: ["Conexión inalámbrica estable de 2.4G", "Luces RGB con múltiples modos", "Batería de litio recargable integrada", "DPI ajustable en 3 niveles"],
+                stock: 22
+            },
+            18: {
+                id: 18,
+                name: "Audífono Gamer Logitech G G432",
+                brand: "Logitech",
+                category: "Audio",
+                price: "S/280.00",
+                img: "img/AudifonoLogitechGaming.jpg",
+                description: "Audífonos de juego envolventes con transductores de 50 mm y micrófono plegable para silenciar. Disfruta de una claridad estéreo total para sumergirte en todos tus videojuegos preferidos.",
+                specs: ["Transductores de audio de 50 mm", "Sonido envolvente DTS Headphone:X 2.0", "Micrófono de 6 mm con cancelación de ruido", "Compatibilidad multiplataforma"],
+                stock: 11
+            },
+            19: {
+                id: 19,
+                name: "Audífonos Gamer Razer Blackshark V2 X",
+                brand: "Razer",
+                category: "Audio",
+                price: "S/179.90",
+                discount: "10% off",
+                img: "img/AudifonosRazer.jpg",
+                description: "Audífonos de eSports ultraligeros con cancelación de ruido pasiva avanzada y diafragmas de 50 mm Razer TriForce. Conexión de audio de 3.5mm compatible con múltiples plataformas.",
+                specs: ["Diafragmas Razer TriForce de 50 mm", "Micrófono cardioide HyperClear Razer", "Diseño ultra liviano de 240g", "Compatibilidad multiplataforma"],
+                stock: 18
+            }
+        };
+
+        function addLog(message, type = 'info') {
+            const div = document.createElement('div');
+            if (type === 'error') {
+                div.className = 'text-red-400 font-bold';
+                div.textContent = `[ERROR] ${message}`;
+            } else if (type === 'success') {
+                div.className = 'text-lime-400 font-bold';
+                div.textContent = `[ÉXITO] ${message}`;
+            } else {
+                div.className = 'text-slate-300';
+                div.textContent = `[INFO] ${message}`;
+            }
+            logsContainer.appendChild(div);
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+        }
+
+        // Validar credenciales
+        const isFirebaseReady = db !== undefined;
+
+        if (isFirebaseReady) {
+            credStatus.classList.add('bg-lime-950/20', 'border-lime-500/30');
+            statusIcon.children[0].classList.add('bg-lime-400');
+            statusIcon.children[1].classList.add('bg-lime-500');
+            statusTitle.textContent = "Firebase Conectado Correctamente";
+            statusTitle.classList.add('text-lime-400');
+            statusDesc.textContent = "La base de datos está lista para recibir los productos.";
+            
+            startBtn.removeAttribute('disabled');
+            addLog("Firebase cargado y listo. Presiona 'Iniciar Subida a Firestore' para comenzar.", 'success');
+        } else {
+            credStatus.classList.add('bg-rose-950/20', 'border-rose-500/30');
+            statusIcon.children[0].classList.add('bg-rose-400');
+            statusIcon.children[1].classList.add('bg-rose-500');
+            statusTitle.textContent = "Faltan Credenciales de Firebase";
+            statusTitle.classList.add('text-rose-400');
+            statusDesc.textContent = "Configura el archivo js/firebase-config.js con los datos de tu proyecto.";
+            
+            addLog("Error: No se pudo conectar a Firebase. Revisa las instrucciones en el Paso 2.", 'error');
+        }
+
+        // Ejecutar migración
+        startBtn.addEventListener('click', async () => {
+            startBtn.setAttribute('disabled', 'true');
+            addLog("Iniciando migración de productos a Firestore...");
+            
+            const productsList = Object.values(productDataset);
+            const total = productsList.length;
+            let successCount = 0;
+            let failCount = 0;
+
+            for (let i = 0; i < total; i++) {
+                const product = productsList[i];
+                const percent = Math.round(((i + 1) / total) * 100);
+                
+                addLog(`Subiendo producto ${i + 1}/${total}: ${product.name}...`);
+                
+                try {
+                    // Documento en Firestore con ID de texto
+                    const productRef = doc(db, "products", product.id.toString());
+                    await setDoc(productRef, {
+                        id: product.id,
+                        name: product.name,
+                        brand: product.brand,
+                        category: product.category,
+                        price: product.price,
+                        img: product.img,
+                        description: product.description,
+                        specs: product.specs,
+                        stock: product.stock
+                    });
+                    
+                    successCount++;
+                    addLog(`¡Completado! ${product.name} subido exitosamente.`, 'success');
+                } catch (error) {
+                    failCount++;
+                    addLog(`Error al subir ${product.name}: ${error.message}`, 'error');
+                    console.error(error);
+                }
+
+                // Actualizar barra de progreso
+                progressBar.style.width = `${percent}%`;
+                progressPercent.textContent = `${percent}%`;
+
+                // Pequeña pausa para no sobrecargar y hacer visible la animación
+                await new Promise(resolve => setTimeout(resolve, 150));
+            }
+
+            addLog("=== PROCESO FINALIZADO ===", 'info');
+            addLog(`Productos migrados con éxito: ${successCount}`, 'success');
+            if (failCount > 0) {
+                addLog(`Productos fallidos: ${failCount}. Revisa los logs.`, 'error');
+            } else {
+                addLog("Todos tus productos se encuentran ahora en Firestore Database.", 'success');
+                addLog("Ahora puedes ir a tu catálogo o ver el stock en la consola de Firebase.", 'success');
+            }
+        });
+    </script>
+</body>
+</html>

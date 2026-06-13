@@ -32,6 +32,7 @@
             <li><a class="hover:text-white/70 transition" href="servicios.html">Servicios</a></li>
             <li><a class="hover:text-white/70 transition" href="contacto.html">Contacto</a></li>
             <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4" href="ubicanos_demo.html">Ubícanos</a></li>
+            <li id="nav-mi-cuenta" class="hidden"><a class="hover:text-white/70 transition" href="mi-cuenta.html">Mi Cuenta</a></li>
         </ul>
 
         <!-- Barra de búsqueda global (Desktop) -->
@@ -172,6 +173,7 @@
                 <li><a href="servicios.html" class="text-base hover:text-white/70 transition">Servicios</a></li>
                 <li><a href="contacto.html" class="text-base hover:text-white/70 transition">Contacto</a></li>
                 <li><a href="ubicanos_demo.html" class="text-base hover:text-white/70 transition font-semibold underline underline-offset-4">Ubícanos</a></li>
+                <li id="nav-mi-cuenta-mobile" class="hidden"><a href="mi-cuenta.html" class="text-base hover:text-white/70 transition">Mi Cuenta</a></li>
             </ul>
         </div>
     </nav>
@@ -248,34 +250,88 @@
         </div>
     </main>
 
-    <!-- Modal de Login (Sign In) -->
-    <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 md:p-10 relative transform translate-y-4 transition-transform duration-300">
-            <button id="close-login-btn" class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95" aria-label="Cerrar modal">
+    <!-- Modal de Login/Registro -->
+    <div id="login-modal" class="fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md md:max-w-2xl w-full p-6 md:p-8 relative transform translate-y-4 transition-transform duration-300 max-h-[90vh] flex flex-col">
+            <button id="close-login-btn" class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 z-10" aria-label="Cerrar modal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            <div class="flex flex-col items-start w-full">
-                <div class="mb-6">
+            <div class="overflow-y-auto pr-1 flex-1 flex flex-col items-center w-full text-center">
+                <div class="mb-4 flex justify-center w-full">
                     <svg class="w-10 h-11 text-indigo-600" width="30" height="33" viewBox="0 0 30 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="m8 4.55 6.75 3.884 6.75-3.885M8 27.83v-7.755L1.25 16.19m27 0-6.75 3.885v7.754M1.655 8.658l13.095 7.546 13.095-7.546M14.75 31.25V16.189m13.5 5.976V10.212a2.98 2.98 0 0 0-1.5-2.585L16.25 1.65a3.01 3.01 0 0 0-3 0L2.75 7.627a3 3 0 0 0-1.5 2.585v11.953a2.98 2.98 0 0 0 1.5 2.585l10.5 5.977a3.01 3.01 0 0 0 3 0l10.5-5.977a3 3 0 0 0 1.5-2.585" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-900 tracking-tight">Iniciar sesión</h2>
-                <p class="mt-2 text-sm text-gray-500/90">Para más seguridad y un mejor servicio, por favor inicie sesión.</p>
-                <form id="login-form" class="mt-8 w-full flex flex-col text-left">
+                <h2 id="auth-title" class="text-2xl font-bold text-gray-900 tracking-tight text-center w-full">Iniciar sesión</h2>
+                <p id="auth-subtitle" class="mt-1 text-sm text-gray-500/90 text-center w-full">Para más seguridad y un mejor servicio, por favor inicie sesión.</p>
+                
+                <!-- Formulario de Login -->
+                <form id="login-form" class="mt-6 w-full max-w-md mx-auto flex flex-col text-left">
                     <div class="flex flex-col">
-                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Usuario</label>
-                        <input placeholder="Por favor ingrese su usuario" class="mt-2 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3.5 w-full transition text-sm" required type="text" name="username">
+                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Correo Electrónico</label>
+                        <input id="log-email" placeholder="Ingresa tu correo" class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm" required type="email" name="email">
                     </div>
-                    <div class="mt-5 flex flex-col">
+                    <div class="mt-4 flex flex-col">
                         <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Contraseña</label>
-                        <input placeholder="Por favor ingrese su contraseña" class="mt-2 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3.5 w-full transition text-sm" required type="password" name="password">
+                        <input id="log-password" placeholder="Ingresa tu contraseña" class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm" required type="password" name="password">
                     </div>
-                    <button type="submit" class="mt-8 py-3.5 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20">Iniciar sesión</button>
-                    <p class="text-center text-sm text-gray-500 mt-6 w-full">¿No tienes una cuenta? <a href="#" class="text-indigo-600 font-semibold hover:underline">Registrarse</a></p>
+                    <button type="submit" class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20 text-sm">Iniciar sesión</button>
+                    <p class="text-center text-xs text-gray-500 mt-4 w-full">¿No tienes una cuenta? <button type="button" id="show-register" class="text-indigo-600 font-semibold hover:underline">Registrarse</button></p>
+                </form>
+
+                <!-- Formulario de Registro (Extendido a 9 campos) -->
+                <form id="register-form" class="mt-6 w-full max-w-xl mx-auto flex flex-col text-left hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Columna Izquierda -->
+                        <div class="flex flex-col gap-3.5">
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Usuario</label>
+                                <input id="reg-username" placeholder="Nombre de usuario" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="username">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Correo Electrónico</label>
+                                <input id="reg-email" placeholder="correo@ejemplo.com" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="email" name="email">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Contraseña</label>
+                                <input id="reg-password" placeholder="Crea una contraseña" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="password" name="password">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">DNI</label>
+                                <input id="reg-dni" placeholder="Documento de Identidad" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="dni" pattern="\d{8,10}" title="DNI debe tener entre 8 y 10 dígitos">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Teléfono</label>
+                                <input id="reg-phone" placeholder="Ej: 987654321" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="tel" name="phone">
+                            </div>
+                        </div>
+                        
+                        <!-- Columna Derecha -->
+                        <div class="flex flex-col gap-3.5">
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Dirección de Envío</label>
+                                <input id="reg-address" placeholder="Av. Principal 123" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="address">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Provincia</label>
+                                <input id="reg-province" placeholder="Ej: Lima" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="province">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Ciudad</label>
+                                <input id="reg-city" placeholder="Ej: San Juan de Lurigancho" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="city">
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Código Postal</label>
+                                <input id="reg-zip" placeholder="Ej: 15401" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="zip">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-lime-500 text-neutral-900 font-bold transition hover:bg-lime-400 active:scale-[0.98] shadow-lg shadow-lime-500/20 text-sm">Crear Cuenta</button>
+                    <p class="text-center text-xs text-gray-500 mt-4 w-full">¿Ya tienes cuenta? <button type="button" id="show-login" class="text-indigo-600 font-semibold hover:underline">Inicia sesión</button></p>
                 </form>
             </div>
         </div>
@@ -463,6 +519,10 @@
                 e.stopPropagation();
                 dropdown.classList.toggle('hidden');
             });
+
+            dropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
             
             document.addEventListener('click', (e) => {
                 if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
@@ -471,73 +531,7 @@
             });
         }
 
-        // --- LÓGICA DEL MODAL DE LOGIN ---
-        const loginModal = document.getElementById('login-modal');
-        const openLoginBtns = document.querySelectorAll('#login-btn, #login-btn-mobile');
-        const closeLoginBtn = document.getElementById('close-login-btn');
-
-        if (loginModal) {
-            const card = loginModal.querySelector('div');
-            
-            function openLogin() {
-                loginModal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                setTimeout(() => {
-                    loginModal.classList.remove('opacity-0');
-                    loginModal.classList.add('opacity-100');
-                    if (card) {
-                        card.classList.remove('translate-y-4');
-                        card.classList.add('translate-y-0');
-                    }
-                }, 10);
-            }
-            
-            function closeLogin() {
-                loginModal.classList.remove('opacity-100');
-                loginModal.classList.add('opacity-0');
-                if (card) {
-                    card.classList.remove('translate-y-0');
-                    card.classList.add('translate-y-4');
-                }
-                document.body.style.overflow = '';
-                setTimeout(() => {
-                    loginModal.classList.add('hidden');
-                }, 300);
-            }
-
-            openLoginBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openLogin();
-                });
-            });
-
-            if (closeLoginBtn) {
-                closeLoginBtn.addEventListener('click', closeLogin);
-            }
-
-            loginModal.addEventListener('click', (e) => {
-                if (e.target === loginModal) {
-                    closeLogin();
-                }
-            });
-
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !loginModal.classList.contains('hidden')) {
-                    closeLogin();
-                }
-            });
-
-            const loginForm = document.getElementById('login-form');
-            if (loginForm) {
-                loginForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const username = loginForm.username.value;
-                    alert(`Inicio de sesión simulado para el usuario: ${username}`);
-                    closeLogin();
-                });
-            }
-        }
+        // La lógica del login es manejada completamente por js/auth.js (cargado como módulo)
 
         // --- INICIALIZACIÓN ---
         setupCartDropdown('cart-btn', 'cart-dropdown');
@@ -893,5 +887,7 @@
             });
         }
     </script>
+    <!-- Inyectar Auth de Firebase/Local -->
+    <script type="module" src="js/auth.js"></script>
 </body>
 </html>
