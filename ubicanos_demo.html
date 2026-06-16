@@ -32,7 +32,6 @@
             <li><a class="hover:text-white/70 transition" href="servicios.html">Servicios</a></li>
             <li><a class="hover:text-white/70 transition" href="contacto.html">Contacto</a></li>
             <li><a class="hover:text-white/70 transition font-semibold underline underline-offset-4" href="ubicanos_demo.html">Ubícanos</a></li>
-            <li id="nav-mi-cuenta" class="hidden"><a class="hover:text-white/70 transition" href="mi-cuenta.html">Mi Cuenta</a></li>
         </ul>
 
         <!-- Barra de búsqueda global (Desktop) -->
@@ -173,7 +172,6 @@
                 <li><a href="servicios.html" class="text-base hover:text-white/70 transition">Servicios</a></li>
                 <li><a href="contacto.html" class="text-base hover:text-white/70 transition">Contacto</a></li>
                 <li><a href="ubicanos_demo.html" class="text-base hover:text-white/70 transition font-semibold underline underline-offset-4">Ubícanos</a></li>
-                <li id="nav-mi-cuenta-mobile" class="hidden"><a href="mi-cuenta.html" class="text-base hover:text-white/70 transition">Mi Cuenta</a></li>
             </ul>
         </div>
     </nav>
@@ -367,12 +365,12 @@
         }
 
         function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
+            cart = cart.filter(item => item.id != productId);
             saveCart();
         }
 
         function updateQuantity(productId, delta) {
-            const item = cart.find(item => item.id === productId);
+            const item = cart.find(item => item.id == productId);
             if (item) {
                 item.quantity += delta;
                 if (item.quantity <= 0) {
@@ -450,16 +448,16 @@
                                 <p class="text-xs font-bold text-indigo-600 mt-0.5">${item.price}</p>
                             </div>
                             <div class="flex flex-col items-end gap-2">
-                                <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition">
+                                <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <polyline points="3 6 5 6 21 6"></polyline>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                     </svg>
                                 </button>
                                 <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden h-6 bg-white">
-                                    <button onclick="updateQuantity(${item.id}, -1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
+                                    <button onclick="updateQuantity('${item.id}', -1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
                                     <span class="px-2 text-xs text-gray-900 font-semibold">${item.quantity}</span>
-                                    <button onclick="updateQuantity(${item.id}, 1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
+                                    <button onclick="updateQuantity('${item.id}', 1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
                                 </div>
                             </div>
                         `;
@@ -490,9 +488,9 @@
                                 <p class="text-[10px] text-indigo-600 font-bold">${item.price}</p>
                             </div>
                             <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden h-6 bg-white">
-                                <button onclick="updateQuantity(${item.id}, -1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
+                                <button onclick="updateQuantity('${item.id}', -1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
                                 <span class="px-1.5 text-xs text-gray-900 font-semibold">${item.quantity}</span>
-                                <button onclick="updateQuantity(${item.id}, 1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
+                                <button onclick="updateQuantity('${item.id}', 1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
                             </div>
                         `;
                         cartItemsContainerMobile.appendChild(div);

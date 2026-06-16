@@ -36,8 +36,6 @@
                     href="servicios.html">Servicios</a></li>
             <li><a class="hover:text-white/70 transition" href="contacto.html">Contacto</a></li>
             <li><a class="hover:text-white/70 transition" href="ubicanos_demo.html">Ubícanos</a></li>
-            <li id="nav-mi-cuenta" class="hidden"><a class="hover:text-white/70 transition" href="mi-cuenta.html">Mi
-                    Cuenta</a></li>
         </ul>
 
         <!-- Barra de búsqueda global (Desktop) -->
@@ -212,8 +210,6 @@
                 </li>
                 <li><a href="contacto.html" class="text-base hover:text-white/70 transition">Contacto</a></li>
                 <li><a href="ubicanos_demo.html" class="text-base hover:text-white/70 transition">Ubícanos</a></li>
-                <li id="nav-mi-cuenta-mobile" class="hidden"><a href="mi-cuenta.html"
-                        class="text-base hover:text-white/70 transition">Mi Cuenta</a></li>
             </ul>
         </div>
     </nav>
@@ -611,6 +607,107 @@
             </div>
         </div>
 
+        <!-- Modal de Detalle de Servicio (Estilo Dribbble) -->
+        <div id="product-detail-modal" class="fixed inset-0 z-50 overflow-y-auto bg-white hidden opacity-0 transition-opacity duration-300 flex flex-col">
+            <!-- Contenedor del Modal -->
+            <div class="flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 md:px-16 lg:px-24 xl:px-32 py-8">
+                <!-- Header del Modal -->
+                <div class="flex items-center justify-between border-b border-gray-100 pb-6 mb-8">
+                    <!-- Breadcrumbs -->
+                    <nav class="text-sm font-medium text-gray-500 flex items-center gap-2">
+                        <a href="index.html" class="hover:text-black transition">Inicio</a>
+                        <span>/</span>
+                        <a href="servicios.html" class="hover:text-black transition">Servicios</a>
+                        <span>/</span>
+                        <span id="modal-breadcrumb-category" class="text-black capitalize">Categoría</span>
+                        <span>/</span>
+                        <span id="modal-breadcrumb-name" class="text-black font-semibold truncate max-w-[150px] md:max-w-none">Servicio</span>
+                    </nav>
+                    
+                    <!-- Botón de Cerrar -->
+                    <button id="close-modal-btn" class="w-10 h-10 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Grid de Detalle -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    <!-- Columna Izquierda: Imagen Principal -->
+                    <div class="lg:col-span-6 flex flex-col gap-6">
+                        <div class="bg-[#fafafa] rounded-[2.5rem] p-8 md:p-12 aspect-square flex items-center justify-center overflow-hidden border border-gray-100/50 group relative">
+                            <img id="modal-main-image" src="" alt="" class="max-h-full max-w-full object-contain transform group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                        </div>
+                    </div>
+                    
+                    <!-- Columna Derecha: Información y Compra -->
+                    <div class="lg:col-span-6 flex flex-col gap-6 lg:pl-4">
+                        <div class="flex flex-col gap-2">
+                            <!-- Categoría / Tipo -->
+                            <span id="modal-brand" class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Soporte Técnico</span>
+                            <!-- Título del Servicio -->
+                            <h1 id="modal-title" class="text-3xl md:text-5xl font-black text-black tracking-tight leading-tight">Nombre del Servicio</h1>
+                        </div>
+                        
+                        <!-- Puntuación y Reviews -->
+                        <div class="flex items-center gap-3">
+                            <div class="flex text-amber-400">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                            <span class="text-sm text-gray-500 font-medium">(4.9 / 5.0) • 45 opiniones</span>
+                        </div>
+                        
+                        <!-- Precio -->
+                        <div class="flex items-center flex-wrap gap-4 border-y border-gray-100 py-4">
+                            <span id="modal-price" class="text-3xl md:text-4xl font-black text-black">Precio</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-bold text-nowrap">Atención Especializada</span>
+                            <span id="modal-stock" class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-100 px-3 py-1 rounded-full font-outfit">Canjeable en Tienda</span>
+                        </div>
+                        
+                        <!-- Descripción -->
+                        <div class="flex flex-col gap-3">
+                            <h4 class="font-bold text-black text-lg">Descripción del servicio</h4>
+                            <p id="modal-description" class="text-gray-500 leading-relaxed text-sm md:text-base">Descripción...</p>
+                        </div>
+                        
+                        <!-- Especificaciones -->
+                        <div class="flex flex-col gap-3">
+                            <h4 class="font-bold text-black text-lg">Detalles incluidos</h4>
+                            <ul id="modal-specs" class="list-disc pl-5 text-gray-500 text-sm md:text-base space-y-1">
+                                <!-- Generado dinámicamente -->
+                            </ul>
+                        </div>
+                        
+                        <!-- Controles de Compra -->
+                        <div class="flex flex-wrap items-center gap-4 pt-4 mt-auto">
+                            <!-- Cantidad -->
+                            <div class="flex items-center border border-gray-200 rounded-full h-[52px] px-2 bg-[#fafafa]">
+                                <button id="qty-minus-btn" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-200 transition text-lg font-bold">-</button>
+                                <span id="qty-display" class="w-12 text-center text-black font-bold text-sm">1</span>
+                                <button id="qty-plus-btn" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-200 transition text-lg font-bold">+</button>
+                            </div>
+                            
+                            <!-- Botón Añadir -->
+                            <button id="modal-add-to-cart" class="flex-1 min-w-[200px] h-[52px] bg-black text-white hover:bg-gray-800 font-bold rounded-full transition-all duration-300 active:scale-95 shadow-xl shadow-black/10 flex items-center justify-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                Solicitar Servicio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
             // === INDICACIONES PARA LA PRESENTACIÓN ===
             // Este script controla la interactividad del menú móvil (pantallas pequeñas).
@@ -641,12 +738,12 @@
             }
 
             function removeFromCart(productId) {
-                cart = cart.filter(item => item.id !== productId);
+                cart = cart.filter(item => item.id != productId);
                 saveCart();
             }
 
             function updateQuantity(productId, delta) {
-                const item = cart.find(item => item.id === productId);
+                const item = cart.find(item => item.id == productId);
                 if (item) {
                     item.quantity += delta;
                     if (item.quantity <= 0) {
@@ -724,16 +821,16 @@
                                 <p class="text-xs font-bold text-indigo-600 mt-0.5">${item.price}</p>
                             </div>
                             <div class="flex flex-col items-end gap-2">
-                                <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition">
+                                <button onclick="removeFromCart('${item.id}')" class="text-gray-400 hover:text-red-500 transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <polyline points="3 6 5 6 21 6"></polyline>
                                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                     </svg>
                                 </button>
                                 <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden h-6 bg-white">
-                                    <button onclick="updateQuantity(${item.id}, -1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
+                                    <button onclick="updateQuantity('${item.id}', -1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
                                     <span class="px-2 text-xs text-gray-900 font-semibold">${item.quantity}</span>
-                                    <button onclick="updateQuantity(${item.id}, 1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
+                                    <button onclick="updateQuantity('${item.id}', 1)" class="px-1.5 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
                                 </div>
                             </div>
                         `;
@@ -764,9 +861,9 @@
                                 <p class="text-[10px] text-indigo-600 font-bold">${item.price}</p>
                             </div>
                             <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden h-6 bg-white">
-                                <button onclick="updateQuantity(${item.id}, -1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
+                                <button onclick="updateQuantity('${item.id}', -1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">-</button>
                                 <span class="px-1.5 text-xs text-gray-900 font-semibold">${item.quantity}</span>
-                                <button onclick="updateQuantity(${item.id}, 1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
+                                <button onclick="updateQuantity('${item.id}', 1)" class="px-1 text-gray-500 hover:bg-gray-100 text-xs font-bold transition">+</button>
                             </div>
                         `;
                             cartItemsContainerMobile.appendChild(div);
@@ -781,8 +878,45 @@
                 if (cartTotalMobile) cartTotalMobile.textContent = totalStr;
             }
 
+            function addToCart(itemId, quantity = 1) {
+                const service = servicesDataset[itemId];
+                const product = productDataset[itemId];
+                const itemData = service || product;
+                if (!itemData) return;
+
+                const existingItem = cart.find(item => item.id == itemId);
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    cart.push({
+                        id: itemId,
+                        name: itemData.name,
+                        price: itemData.price,
+                        img: itemData.img,
+                        brand: itemData.brand,
+                        quantity: quantity,
+                        isService: !!itemData.isService
+                    });
+                }
+                saveCart();
+
+                const addBtn = document.getElementById('modal-add-to-cart');
+                if (addBtn) {
+                    const originalText = addBtn.innerHTML;
+                    addBtn.innerHTML = '¡Solicitado!';
+                    addBtn.classList.add('bg-lime-400', 'text-neutral-900');
+                    addBtn.classList.remove('bg-black', 'text-white');
+                    setTimeout(() => {
+                        addBtn.innerHTML = originalText;
+                        addBtn.classList.remove('bg-lime-400', 'text-neutral-900');
+                        addBtn.classList.add('bg-black', 'text-white');
+                    }, 1500);
+                }
+            }
+
             window.removeFromCart = removeFromCart;
             window.updateQuantity = updateQuantity;
+            window.addToCart = addToCart;
 
             function setupCartDropdown(btnId, dropdownId) {
                 const btn = document.getElementById(btnId);
@@ -995,7 +1129,9 @@
                     price: "S/80.00",
                     img: "img/mantenimiento_laptop.png",
                     url: "servicios.html?service=s1",
-                    isService: true
+                    isService: true,
+                    description: "Servicio integral de mantenimiento preventivo para laptops. Se realiza una limpieza interna profunda con aire comprimido para remover polvo y suciedad de ventiladores y conductos de ventilación. Además, se limpia la pasta térmica antigua y se aplica pasta térmica premium Arctic MX-4 de alta conductividad en el procesador (CPU) y chip gráfico (GPU) para asegurar temperaturas de funcionamiento estables. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Limpieza interna con aire comprimido", "Aplicación de pasta térmica premium Arctic MX-4 en CPU/GPU", "Limpieza de ventiladores y rejillas disipadoras", "Pruebas de temperatura y estabilidad bajo carga", "Generación de ticket único de canje al pagar"]
                 },
                 "s2": {
                     id: "s2",
@@ -1005,7 +1141,9 @@
                     price: "S/100.00",
                     img: "img/mantenimiento_pc.png",
                     url: "servicios.html?service=s2",
-                    isService: true
+                    isService: true,
+                    description: "Limpieza y mantenimiento preventivo completo de computadoras de escritorio. Incluye soplado a presión de componentes internos, limpieza de contactos de memoria RAM y tarjeta de video, organización del cableado interno (cable management) y aplicación de pasta térmica premium Arctic MX-4 en el procesador. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Soplado a presión del chasis y fuentes", "Pasta térmica Arctic MX-4 en el procesador", "Limpieza química de contactos de RAM y GPU", "Gestión de cables para mejor flujo de aire", "Generación de ticket único de canje al pagar"]
                 },
                 "s3": {
                     id: "s3",
@@ -1015,7 +1153,9 @@
                     price: "S/40.00",
                     img: "img/actualizacion_drivers.png",
                     url: "servicios.html?service=s3",
-                    isService: true
+                    isService: true,
+                    description: "Instalación y actualización a las versiones oficiales más recientes de los controladores de hardware. Soluciona problemas de compatibilidad y corrige errores frecuentes del sistema como pantallazos azules o desconexión de periféricos. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Actualización de driver de video (Nvidia/AMD/Intel)", "Actualización de controladores de chipsets y red", "Optimización del arranque y carga de servicios", "Diagnóstico y corrección de fallas lógicas", "Generación de ticket único de canje al pagar"]
                 },
                 "s4": {
                     id: "s4",
@@ -1025,7 +1165,9 @@
                     price: "S/60.00",
                     img: "img/instalacion_so.png",
                     url: "servicios.html?service=s4",
-                    isService: true
+                    isService: true,
+                    description: "Instalación limpia desde cero del sistema operativo de tu preferencia (Windows 10, Windows 11 o Linux). Incluye formateo seguro de disco, copia de seguridad (hasta 50GB), configuración inicial de privacidad y utilitarios esenciales de productividad. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Instalación de Windows/Linux original", "Respaldo y restauración de archivos (hasta 50GB)", "Instalación de drivers oficiales actualizados", "Paquete básico de herramientas y antivirus", "Generación de ticket único de canje al pagar"]
                 },
                 "s5": {
                     id: "s5",
@@ -1035,7 +1177,9 @@
                     price: "S/20.00",
                     img: "img/upgrade_ram_ssd.png",
                     url: "servicios.html?service=s5",
-                    isService: true
+                    isService: true,
+                    description: "Instalación física de módulos de memoria RAM y unidades de almacenamiento de estado sólido (SSD). Clonación o migración opcional del sistema operativo para mantener tus datos y programas actuales. Nota: No incluye los componentes físicos. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Instalación física de memorias y discos SSD", "Configuración de perfiles XMP en BIOS", "Migración rápida de datos/clonación de disco", "Prueba de velocidad del nuevo almacenamiento", "Generación de ticket único de canje al pagar"]
                 },
                 "s6": {
                     id: "s6",
@@ -1045,7 +1189,9 @@
                     price: "S/40.00",
                     img: "img/pasta_termica.png",
                     url: "servicios.html?service=s6",
-                    isService: true
+                    isService: true,
+                    description: "Desmontaje completo del disipador de calor y aplicación exacta de pasta térmica Arctic MX-4 en chips de procesamiento de PCs, laptops o consolas de videojuegos. Reduce drásticamente las temperaturas operativas de inmediato. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Limpieza química profunda de compuestos secos", "Aplicación exacta de pasta térmica Arctic MX-4", "Limpieza de disipador térmico", "Medición comparativa de temperaturas", "Generación de ticket único de canje al pagar"]
                 },
                 "s7": {
                     id: "s7",
@@ -1055,9 +1201,114 @@
                     price: "S/150.00",
                     img: "img/ensamblaje_pc.png",
                     url: "servicios.html?service=s7",
-                    isService: true
+                    isService: true,
+                    description: "Armado profesional y desde cero de tu computadora gamer o de alto rendimiento. Incluye montaje de placa madre, procesador, refrigeraciones líquidas o por aire, tarjeta de video y fuente de poder. Gestión de cables limpia y pruebas de estabilidad térmica. IMPORTANTE: Al solicitar este servicio y ser cancelado (pagado), se otorga un ticket con una serie de códigos únicos para que al acercarte al local físico se realice el mantenimiento.",
+                    specs: ["Montaje profesional de todos los componentes", "Gestión de cables profesional (Cable Management)", "Configuración de iluminación RGB y ventiladores", "Stress test de estabilidad por 2 horas", "Generación de ticket único de canje al pagar"]
                 }
             };
+
+            // === CONTROLADORES DE MODAL DETALLE DE SERVICIO ===
+            let currentQty = 1;
+            let activeServiceId = null;
+
+            function openServiceDetail(id) {
+                const service = servicesDataset[id];
+                if (!service) return;
+
+                activeServiceId = id;
+
+                // Cargar datos en el Modal
+                document.getElementById('modal-breadcrumb-category').textContent = service.category;
+                document.getElementById('modal-breadcrumb-name').textContent = service.name;
+                document.getElementById('modal-brand').textContent = service.brand;
+                document.getElementById('modal-title').textContent = service.name;
+                document.getElementById('modal-price').textContent = service.price;
+                document.getElementById('modal-description').textContent = service.description;
+                
+                const mainImg = document.getElementById('modal-main-image');
+                mainImg.src = service.img;
+                mainImg.alt = service.name;
+
+                // Reiniciar contador de cantidad
+                currentQty = 1;
+                document.getElementById('qty-display').textContent = currentQty;
+
+                // Cargar especificaciones
+                const specsList = document.getElementById('modal-specs');
+                specsList.innerHTML = '';
+                service.specs.forEach(spec => {
+                    const li = document.createElement('li');
+                    li.textContent = spec;
+                    specsList.appendChild(li);
+                });
+
+                // Mostrar Modal con transiciones
+                const modal = document.getElementById('product-detail-modal');
+                modal.classList.remove('hidden');
+                modal.scrollTop = 0;
+                document.body.style.overflow = 'hidden';
+                
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modal.classList.add('opacity-100');
+                }, 10);
+            }
+
+            function closeServiceDetail() {
+                const modal = document.getElementById('product-detail-modal');
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0');
+                document.body.style.overflow = '';
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+
+            // Inicializar tarjetas de servicios
+            const serviceCards = document.querySelectorAll('[id^="service-s"]');
+            serviceCards.forEach(card => {
+                const serviceId = card.id.replace('service-', '');
+                card.classList.add('cursor-pointer');
+                card.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button');
+                    if (btn) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Agregar al carrito directamente (1 unidad)
+                        addToCart(serviceId, 1);
+                        return;
+                    }
+                    openServiceDetail(serviceId);
+                });
+            });
+
+            // Controles de cantidad del modal
+            document.getElementById('qty-plus-btn').addEventListener('click', () => {
+                currentQty++;
+                document.getElementById('qty-display').textContent = currentQty;
+            });
+            document.getElementById('qty-minus-btn').addEventListener('click', () => {
+                if (currentQty > 1) {
+                    currentQty--;
+                    document.getElementById('qty-display').textContent = currentQty;
+                }
+            });
+
+            // Cerrar modal
+            document.getElementById('close-modal-btn').addEventListener('click', closeServiceDetail);
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeServiceDetail();
+                }
+            });
+
+            // Botón de Añadir al Carrito en el Modal
+            document.getElementById('modal-add-to-cart').addEventListener('click', () => {
+                if (activeServiceId !== null) {
+                    addToCart(activeServiceId, currentQty);
+                }
+            });
 
             // === FUNCIONALIDAD DE BÚSQUEDA GLOBAL (DROPDOWN) ===
             function setupGlobalSearch(inputId, dropdownId) {
@@ -1110,8 +1361,8 @@
                                 searchDropdown.classList.add('hidden');
                                 searchInput.value = '';
                                 if (itemData.isService) {
-                                    if (typeof scrollToService === 'function') {
-                                        scrollToService(itemData.id);
+                                    if (typeof openServiceDetail === 'function') {
+                                        openServiceDetail(itemData.id);
                                     } else {
                                         window.location.href = `servicios.html?service=${itemData.id}`;
                                     }
@@ -1144,7 +1395,7 @@
                 const serviceId = urlParams.get('service');
                 if (serviceId) {
                     setTimeout(() => {
-                        scrollToService(serviceId);
+                        openServiceDetail(serviceId);
                     }, 400);
                 }
             });

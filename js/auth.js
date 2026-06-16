@@ -16,6 +16,90 @@ import {
     getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+const showWelcomeModal = (username) => {
+    let modal = document.getElementById('welcome-modal');
+    if (!modal) {
+        const modalHTML = `
+        <div id="welcome-modal" class="fixed inset-0 z-[250] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-500 ease-out">
+            <div class="bg-white dark:bg-slate-950 rounded-[2.5rem] shadow-2xl max-w-sm w-full p-8 flex flex-col items-center text-center transform scale-90 translate-y-8 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] border border-slate-100 dark:border-slate-800">
+                <!-- Icon / Avatar Area with gradient ring -->
+                <div class="relative mb-6">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-full blur-lg opacity-40 animate-pulse"></div>
+                    <div class="relative w-20 h-20 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-full flex items-center justify-center text-white shadow-xl border border-indigo-200/50 dark:border-indigo-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <!-- Small pulsing badge -->
+                    <span class="absolute top-1 right-1 flex h-4 w-4">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-4 w-4 bg-lime-500 border border-white dark:border-slate-950"></span>
+                    </span>
+                </div>
+                
+                <!-- Welcome Message -->
+                <h3 class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.2em] mb-2">¡Ingreso Exitoso!</h3>
+                <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-3 tracking-tight leading-tight">
+                    ¡Bienvenido, <span id="welcome-username" class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500"></span>!
+                </h2>
+                <p class="text-slate-500 dark:text-gray-400 text-sm leading-relaxed mb-6 font-medium">Nos alegra tenerte de vuelta en <span class="font-bold text-slate-800 dark:text-slate-200">Llamala Store</span>. Disfruta de la mejor tecnología.</p>
+                
+                <!-- Button -->
+                <button id="welcome-accept-btn" class="w-full py-4 bg-gradient-to-r from-indigo-600 to-violet-500 hover:from-indigo-700 hover:to-violet-600 text-white font-bold rounded-2xl transition-all duration-350 active:scale-[0.97] hover:scale-[1.02] shadow-lg shadow-indigo-600/25 text-sm flex items-center justify-center gap-2 cursor-pointer">
+                    Comenzar a explorar
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        `;
+        const div = document.createElement('div');
+        div.innerHTML = modalHTML;
+        document.body.appendChild(div.firstElementChild);
+        modal = document.getElementById('welcome-modal');
+    }
+
+    // Set username
+    document.getElementById('welcome-username').textContent = username;
+
+    const card = modal.querySelector('div');
+    
+    // Show modal
+    modal.classList.remove('pointer-events-none');
+    modal.classList.remove('opacity-0');
+    modal.classList.add('opacity-100');
+    
+    card.classList.remove('scale-90', 'translate-y-8');
+    card.classList.add('scale-100', 'translate-y-0');
+
+    let autoCloseTimer;
+
+    const closeModal = () => {
+        if (autoCloseTimer) clearTimeout(autoCloseTimer);
+        modal.classList.add('pointer-events-none');
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0');
+        card.classList.remove('scale-100', 'translate-y-0');
+        card.classList.add('scale-90', 'translate-y-8');
+        
+        setTimeout(() => {
+            modal.remove();
+        }, 500);
+    };
+
+    document.getElementById('welcome-accept-btn').onclick = (e) => {
+        e.preventDefault();
+        closeModal();
+    };
+
+    autoCloseTimer = setTimeout(() => {
+        closeModal();
+    }, 4500);
+};
+
 const initAuth = () => {
     // Si auth no existe (por falta de credenciales), simulamos el estado
     const isFirebaseSetup = auth !== undefined;
@@ -151,18 +235,6 @@ const initAuth = () => {
             }
         });
 
-        // Mostrar u ocultar enlace "Mi Cuenta" en el navbar
-        const miCuentaNavs = [document.getElementById('nav-mi-cuenta'), document.getElementById('nav-mi-cuenta-mobile')];
-        miCuentaNavs.forEach(nav => {
-            if (nav) {
-                if (user) {
-                    nav.classList.remove('hidden');
-                } else {
-                    nav.classList.add('hidden');
-                }
-            }
-        });
-
         // Despachar evento personalizado para sincronizar estado en la misma pestaña
         window.dispatchEvent(new CustomEvent('auth-state-changed', { detail: user }));
     };
@@ -290,18 +362,18 @@ const initAuth = () => {
                             const userData = docSnap.data();
                             localStorage.setItem('dummy_user', JSON.stringify(userData));
                             updateUIForUser(userData);
-                            alert("Bienvenido " + userData.username);
+                            showWelcomeModal(userData.username);
                         } else {
                             const userData = { email: userCredential.user.email, uid: userCredential.user.uid };
                             localStorage.setItem('dummy_user', JSON.stringify(userData));
                             updateUIForUser(userData);
-                            alert("Bienvenido " + userCredential.user.email);
+                            showWelcomeModal(userCredential.user.email);
                         }
                     } else {
                         const userData = { email: userCredential.user.email, uid: userCredential.user.uid };
                         localStorage.setItem('dummy_user', JSON.stringify(userData));
                         updateUIForUser(userData);
-                        alert("Bienvenido " + userCredential.user.email);
+                        showWelcomeModal(userCredential.user.email);
                     }
 
                     if (typeof window.closeLogin === 'function') {
@@ -324,7 +396,7 @@ const initAuth = () => {
                         const userDoc = querySnapshot.docs[0];
                         const userData = userDoc.data();
                         
-                        alert("Bienvenido " + userData.username);
+                        showWelcomeModal(userData.username);
                         
                         localStorage.setItem('dummy_user', JSON.stringify(userData));
                         updateUIForUser(userData);
@@ -396,7 +468,7 @@ const initAuth = () => {
             if (localUser) {
                 const u = JSON.parse(localUser);
                 if (u.email === email && u.password === password) {
-                    alert("Bienvenido " + u.username);
+                    showWelcomeModal(u.username);
                     updateUIForUser(u);
                     if (typeof window.closeLogin === 'function') {
                         window.closeLogin();
@@ -742,6 +814,9 @@ const initAuth = () => {
 
                     // Descontar stock
                     for (const item of orderData.items) {
+                        if (item.isService || (item.id && item.id.toString().startsWith('s'))) {
+                            continue;
+                        }
                         try {
                             const productRef = doc(db, "products", item.id.toString());
                             const productSnap = await getDoc(productRef);
