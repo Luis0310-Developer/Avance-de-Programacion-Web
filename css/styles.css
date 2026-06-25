@@ -563,3 +563,118 @@ html.dark .featured-card:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
 
+/* ==========================================
+   Método de Despacho (Shipping Method Modal)
+   ========================================== */
+
+/* Tarjetas selectoras de opción de envío */
+.shipping-card-radio {
+    border-width: 2px;
+    border-style: solid;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estados de selección en modo claro */
+.shipping-card-radio.border-gray-200 {
+    border-color: #e2e8f0 !important;
+}
+.shipping-card-radio.border-gray-200:hover {
+    border-color: #cbd5e1 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.shipping-card-radio.border-indigo-600 {
+    border-color: #4f46e5 !important;
+    background-color: rgba(99, 102, 241, 0.04) !important;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.08) !important;
+}
+
+/* Opciones deshabilitadas (Invitación a Login) */
+.shipping-card-disabled {
+    opacity: 0.55;
+    cursor: not-allowed !important;
+    pointer-events: none;
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* Selectores personalizados para Shalom */
+.shipping-select {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-position: right 0.75rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.25em 1.25em !important;
+    padding-right: 2.5rem !important;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.shipping-select:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: #f8fafc !important;
+}
+
+.shipping-select:focus,
+.shipping-input:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+    outline: none !important;
+}
+
+/* Ajustes de Modo Oscuro para Despacho */
+html.dark .shipping-card-radio.border-gray-200 {
+    border-color: #334155 !important;
+    background-color: #1e293b !important;
+}
+
+html.dark .shipping-card-radio.border-gray-200:hover {
+    border-color: #475569 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+html.dark .shipping-card-radio.border-indigo-600 {
+    border-color: #6366f1 !important;
+    background-color: rgba(99, 102, 241, 0.08) !important;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12) !important;
+}
+
+html.dark .shipping-card-disabled {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+    opacity: 0.45;
+}
+
+html.dark .shipping-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+}
+
+html.dark .shipping-select:disabled {
+    background-color: #1e293b/40 !important;
+    border-color: #1e293b !important;
+}
+
+html.dark .shipping-select:focus,
+html.dark .shipping-input:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Transición de Opacidad en Modales */
+#shipping-modal {
+    transition: opacity 0.3s ease-in-out;
+}
+#shipping-modal > div {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-in-out;
+}
+
+
