@@ -18,6 +18,7 @@
         #product-detail-modal {
             transition: opacity 0.3s ease-in-out;
         }
+
         /* Override Tailwind CDN mix-blend-multiply in dark mode */
         html.dark .mix-blend-multiply {
             mix-blend-mode: normal !important;
@@ -467,7 +468,7 @@
             </a>
         </div>
         <div class="flex items-center gap-4 mt-8 text-indigo-500">
-            <a href="#" class="hover:-translate-y-0.5 transition-all duration-300">
+            <a href="https://www.facebook.com/people/Llamala-Store/61591532822868/" target="_blank" class="hover:-translate-y-0.5 transition-all duration-300">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -650,39 +651,59 @@
                 <a href="ubicanos_demo.html"
                     class="font-medium text-gray-500 hover:text-black transition-all">Ubícanos</a>
             </div>
-            <p class="mt-8 text-center text-xs md:text-sm">Copyright © 2026 Llamala Store. Todos los derechos reservados.</p>
+            <p class="mt-8 text-center text-xs md:text-sm">Copyright © 2026 Llamala Store. Todos los derechos
+                reservados.</p>
         </footer>
     </div>
-     <!-- Modal de Login/Registro -->
-    <div id="login-modal" class="fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-md md:max-w-2xl w-full p-6 md:p-8 relative transform translate-y-4 transition-transform duration-300 max-h-[90vh] flex flex-col">
-            <button id="close-login-btn" class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 z-10" aria-label="Cerrar modal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Modal de Login/Registro -->
+    <div id="login-modal"
+        class="fixed inset-0 z-[100] overflow-y-auto bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-3xl shadow-2xl max-w-md md:max-w-2xl w-full p-6 md:p-8 relative transform translate-y-4 transition-transform duration-300 max-h-[90vh] flex flex-col">
+            <button id="close-login-btn"
+                class="absolute top-6 right-6 w-8 h-8 rounded-full border border-gray-200 hover:border-black flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 z-10"
+                aria-label="Cerrar modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
             <div class="overflow-y-auto pr-1 flex-1 flex flex-col items-center w-full text-center">
                 <div class="mb-4 flex justify-center w-full">
-                    <svg class="w-10 h-11 text-indigo-600" width="30" height="33" viewBox="0 0 30 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m8 4.55 6.75 3.884 6.75-3.885M8 27.83v-7.755L1.25 16.19m27 0-6.75 3.885v7.754M1.655 8.658l13.095 7.546 13.095-7.546M14.75 31.25V16.189m13.5 5.976V10.212a2.98 2.98 0 0 0-1.5-2.585L16.25 1.65a3.01 3.01 0 0 0-3 0L2.75 7.627a3 3 0 0 0-1.5 2.585v11.953a2.98 2.98 0 0 0 1.5 2.585l10.5 5.977a3.01 3.01 0 0 0 3 0l10.5-5.977a3 3 0 0 0 1.5-2.585" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <svg class="w-10 h-11 text-indigo-600" width="30" height="33" viewBox="0 0 30 33" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m8 4.55 6.75 3.884 6.75-3.885M8 27.83v-7.755L1.25 16.19m27 0-6.75 3.885v7.754M1.655 8.658l13.095 7.546 13.095-7.546M14.75 31.25V16.189m13.5 5.976V10.212a2.98 2.98 0 0 0-1.5-2.585L16.25 1.65a3.01 3.01 0 0 0-3 0L2.75 7.627a3 3 0 0 0-1.5 2.585v11.953a2.98 2.98 0 0 0 1.5 2.585l10.5 5.977a3.01 3.01 0 0 0 3 0l10.5-5.977a3 3 0 0 0 1.5-2.585"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </div>
-                <h2 id="auth-title" class="text-2xl font-bold text-gray-900 tracking-tight text-center w-full">Iniciar sesión</h2>
-                <p id="auth-subtitle" class="mt-1 text-sm text-gray-500/90 text-center w-full">Para más seguridad y un mejor servicio, por favor inicie sesión.</p>
-                
+                <h2 id="auth-title" class="text-2xl font-bold text-gray-900 tracking-tight text-center w-full">Iniciar
+                    sesión</h2>
+                <p id="auth-subtitle" class="mt-1 text-sm text-gray-500/90 text-center w-full">Para más seguridad y un
+                    mejor servicio, por favor inicie sesión.</p>
+
                 <!-- Formulario de Login -->
                 <form id="login-form" class="mt-6 w-full max-w-md mx-auto flex flex-col text-left">
                     <div class="flex flex-col">
-                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Correo Electrónico</label>
-                        <input id="log-email" placeholder="Ingresa tu correo" class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm" required type="email" name="email">
+                        <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Correo
+                            Electrónico</label>
+                        <input id="log-email" placeholder="Ingresa tu correo"
+                            class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm"
+                            required type="email" name="email">
                     </div>
                     <div class="mt-4 flex flex-col">
                         <label class="font-semibold text-xs text-gray-700 uppercase tracking-wider">Contraseña</label>
-                        <input id="log-password" placeholder="Ingresa tu contraseña" class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm" required type="password" name="password">
+                        <input id="log-password" placeholder="Ingresa tu contraseña"
+                            class="mt-1.5 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-4 py-3 w-full transition text-sm"
+                            required type="password" name="password">
                     </div>
-                    <button type="submit" class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20 text-sm">Iniciar sesión</button>
-                    <p class="text-center text-xs text-gray-500 mt-4 w-full">¿No tienes una cuenta? <button type="button" id="show-register" class="text-indigo-600 font-semibold hover:underline">Registrarse</button></p>
+                    <button type="submit"
+                        class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-indigo-600 text-white font-semibold transition hover:bg-indigo-700 active:scale-[0.98] shadow-lg shadow-indigo-600/20 text-sm">Iniciar
+                        sesión</button>
+                    <p class="text-center text-xs text-gray-500 mt-4 w-full">¿No tienes una cuenta? <button
+                            type="button" id="show-register"
+                            class="text-indigo-600 font-semibold hover:underline">Registrarse</button></p>
                 </form>
 
                 <!-- Formulario de Registro (Extendido a 9 campos) -->
@@ -691,50 +712,83 @@
                         <!-- Columna Izquierda -->
                         <div class="flex flex-col gap-3.5">
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Usuario</label>
-                                <input id="reg-username" placeholder="Nombre de usuario" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="username">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Usuario</label>
+                                <input id="reg-username" placeholder="Nombre de usuario"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="text" name="username">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Correo Electrónico</label>
-                                <input id="reg-email" placeholder="correo@ejemplo.com" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="email" name="email">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Correo
+                                    Electrónico</label>
+                                <input id="reg-email" placeholder="correo@ejemplo.com"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="email" name="email">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Contraseña</label>
-                                <input id="reg-password" placeholder="Crea una contraseña" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="password" name="password">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Contraseña</label>
+                                <input id="reg-password" placeholder="Crea una contraseña"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="password" name="password">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">DNI</label>
-                                <input id="reg-dni" placeholder="Documento de Identidad" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="dni" pattern="\d{8,10}" title="DNI debe tener entre 8 y 10 dígitos">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">DNI</label>
+                                <input id="reg-dni" placeholder="Documento de Identidad"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="text" name="dni" pattern="\d{8,10}"
+                                    title="DNI debe tener entre 8 y 10 dígitos">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Teléfono</label>
-                                <input id="reg-phone" placeholder="Ej: 987654321" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="tel" name="phone">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Teléfono</label>
+                                <input id="reg-phone" placeholder="Ej: 987654321"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="tel" name="phone">
                             </div>
                         </div>
-                        
+
                         <!-- Columna Derecha -->
                         <div class="flex flex-col gap-3.5">
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Dirección de Envío</label>
-                                <input id="reg-address" placeholder="Av. Principal 123" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="address">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Dirección
+                                    de Envío</label>
+                                <input id="reg-address" placeholder="Av. Principal 123"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="text" name="address">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Provincia</label>
-                                <input id="reg-province" placeholder="Ej: Lima" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="province">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Provincia</label>
+                                <input id="reg-province" placeholder="Ej: Lima"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="text" name="province">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Ciudad</label>
-                                <input id="reg-city" placeholder="Ej: San Juan de Lurigancho" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="city">
+                                <label
+                                    class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Ciudad</label>
+                                <input id="reg-city" placeholder="Ej: San Juan de Lurigancho"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="text" name="city">
                             </div>
                             <div class="flex flex-col">
-                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Código Postal</label>
-                                <input id="reg-zip" placeholder="Ej: 15401" class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm" required type="text" name="zip">
+                                <label class="font-semibold text-[10px] text-gray-600 uppercase tracking-wider">Código
+                                    Postal</label>
+                                <input id="reg-zip" placeholder="Ej: 15401"
+                                    class="mt-1 rounded-xl border border-gray-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 outline-none px-3.5 py-2.5 w-full transition text-sm"
+                                    required type="text" name="zip">
                             </div>
                         </div>
                     </div>
-                    
-                    <button type="submit" class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-lime-500 text-neutral-900 font-bold transition hover:bg-lime-400 active:scale-[0.98] shadow-lg shadow-lime-500/20 text-sm">Crear Cuenta</button>
-                    <p class="text-center text-xs text-gray-500 mt-4 w-full">¿Ya tienes cuenta? <button type="button" id="show-login" class="text-indigo-600 font-semibold hover:underline">Inicia sesión</button></p>
+
+                    <button type="submit"
+                        class="mt-6 py-3 w-full cursor-pointer rounded-xl bg-lime-500 text-neutral-900 font-bold transition hover:bg-lime-400 active:scale-[0.98] shadow-lg shadow-lime-500/20 text-sm">Crear
+                        Cuenta</button>
+                    <p class="text-center text-xs text-gray-500 mt-4 w-full">¿Ya tienes cuenta? <button type="button"
+                            id="show-login" class="text-indigo-600 font-semibold hover:underline">Inicia sesión</button>
+                    </p>
                 </form>
             </div>
         </div>

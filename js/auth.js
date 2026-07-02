@@ -2030,37 +2030,8 @@ const initAuth = () => {
                                 <!-- QR Mockup Container -->
                                 <div class="flex flex-col items-center justify-center border border-dashed border-gray-250 dark:border-slate-850 rounded-2xl p-6 bg-slate-50/50 dark:bg-slate-950/20 gap-3.5">
                                     <div class="bg-white p-3.5 rounded-2xl shadow-md border border-gray-100 relative">
-                                        <!-- QR Code Generator Mock using SVG -->
-                                        <svg class="w-40 h-40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <!-- QR Finder Patterns -->
-                                            <rect x="0" y="0" width="30" height="30" fill="black"/>
-                                            <rect x="5" y="5" width="20" height="20" fill="white"/>
-                                            <rect x="10" y="10" width="10" height="10" fill="black"/>
-
-                                            <rect x="70" y="0" width="30" height="30" fill="black"/>
-                                            <rect x="75" y="5" width="20" height="20" fill="white"/>
-                                            <rect x="80" y="10" width="10" height="10" fill="black"/>
-
-                                            <rect x="0" y="70" width="30" height="30" fill="black"/>
-                                            <rect x="5" y="75" width="20" height="20" fill="white"/>
-                                            <rect x="10" y="80" width="10" height="10" fill="black"/>
-                                            
-                                            <!-- QR Random Bits -->
-                                            <rect x="40" y="10" width="10" height="10" fill="black"/>
-                                            <rect x="50" y="20" width="10" height="10" fill="black"/>
-                                            <rect x="80" y="40" width="10" height="10" fill="black"/>
-                                            <rect x="10" y="50" width="10" height="10" fill="black"/>
-                                            <rect x="30" y="30" width="10" height="10" fill="black"/>
-                                            <rect x="60" y="60" width="10" height="10" fill="black"/>
-                                            <rect x="50" y="50" width="10" height="10" fill="black"/>
-                                            <rect x="40" y="60" width="10" height="10" fill="black"/>
-                                            <rect x="70" y="80" width="10" height="10" fill="black"/>
-                                            <rect x="90" y="70" width="10" height="10" fill="black"/>
-                                            <rect x="80" y="80" width="10" height="10" fill="black"/>
-                                            <rect x="40" y="80" width="10" height="10" fill="black"/>
-                                            <rect x="50" y="90" width="10" height="10" fill="black"/>
-                                            <rect x="90" y="90" width="10" height="10" fill="black"/>
-                                        </svg>
+                                        <!-- Real QR Code Image -->
+                                        <img src="img/qr_yape.png" alt="Código QR Yape" class="w-40 h-40 object-contain rounded-lg">
                                     </div>
                                     <div class="flex items-center gap-2.5 font-sans">
                                         <div class="px-3 py-1.5 text-xs font-black tracking-wider rounded-xl bg-purple-600 text-white shadow-md shadow-purple-600/20 select-none">YAPE</div>
@@ -2219,6 +2190,50 @@ const initAuth = () => {
             if (e.target === modal) closePayment();
         };
 
+        // Enviar notificación de pedido a WhatsApp
+        const sendWhatsAppNotification = (method, orderData) => {
+            const phoneNumber = "51977507037"; // Código de país de Perú (+51)
+            
+            // Formatear productos
+            let productsText = "";
+            if (Array.isArray(orderData.items)) {
+                orderData.items.forEach(item => {
+                    productsText += `- ${item.name} (Cant: ${item.quantity}) - ${item.price}\n`;
+                });
+            }
+            
+            // Formatear la ubicación
+            const sa = orderData.shippingAddress || {};
+            let locationParts = [];
+            if (sa.address) locationParts.push(sa.address);
+            if (sa.city) locationParts.push(sa.city);
+            if (sa.province) locationParts.push(sa.province);
+            if (sa.zip) locationParts.push(sa.zip);
+            
+            let locationText = locationParts.join(', ');
+            if (sa.references) {
+                locationText += ` (Ref: ${sa.references})`;
+            }
+            
+            // Formatear el monto total
+            const totalVal = typeof orderData.total === 'number' ? orderData.total : parseFloat(orderData.total);
+            const totalFormatted = !isNaN(totalVal) ? totalVal.toFixed(2) : orderData.total;
+            
+            // Construir el mensaje
+            const message = `*NUEVO PEDIDO PROCESADO* 🛍️\n\n` +
+                            `*Monto Pagado:* S/ ${totalFormatted}\n` +
+                            `*Método de Pago:* ${method}\n` +
+                            `*Método de Envío:* ${orderData.shippingMethod || 'No especificado'}\n` +
+                            `*Ubicación/Entrega:* ${locationText}\n\n` +
+                            `*Productos:*\n${productsText.trim()}`;
+                            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+            
+            // Redirigir la pestaña actual a WhatsApp para evitar bloqueadores de popups
+            window.location.href = whatsappUrl;
+        };
+
         // Registrar orden en DB/Local
         const processOrderSuccess = async (method) => {
             try {
@@ -2247,24 +2262,26 @@ const initAuth = () => {
                             console.error(`Error al actualizar stock de producto ${item.id}:`, stockErr);
                         }
                     }
-                    alert("¡Pago simulado con éxito y pedido realizado! Puedes revisarlo en la sección de Mi Cuenta.");
+                    alert("¡Pago simulado con éxito y pedido realizado! Redirigiendo a WhatsApp...");
                 } else {
                     // Fallback local
                     let localOrders = JSON.parse(localStorage.getItem('dummy_orders')) || [];
                     const orderId = 'order_local_' + Math.random().toString(36).substr(2, 9).toUpperCase();
                     localOrders.push({ id: orderId, paymentMethod: method, ...orderData });
                     localStorage.setItem('dummy_orders', JSON.stringify(localOrders));
-                    alert("¡Pago simulado con éxito (modo local)! Puedes revisarlo en la sección de Mi Cuenta.");
+                    alert("¡Pago simulado con éxito (modo local)! Redirigiendo a WhatsApp...");
                 }
 
-                // Limpiar carrito
+                // Limpiar carrito primero para que esté vacío al regresar
                 localStorage.removeItem('llamala_cart');
                 if (typeof window.updateCartUI === 'function') {
                     window.updateCartUI();
                 }
 
                 closePayment();
-                window.location.href = 'mi-cuenta.html';
+
+                // Enviar mensaje a WhatsApp (redirigiendo la pestaña actual)
+                sendWhatsAppNotification(method, orderData);
             } catch (error) {
                 alert("Error al procesar el pedido: " + error.message);
                 console.error("Error en checkout:", error);
